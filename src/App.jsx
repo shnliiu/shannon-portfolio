@@ -163,7 +163,7 @@ function Plate({ p }) {
     <Link to={`work/${p.id}`} className={`plate plate-${p.layout} tone-${p.tone}`} aria-label={`${p.title}: view case study`}>
       <div className="plate-art">
         {p.layout === "video" && <div className="cover-video"><Thumb id={p.video}/><span className="cover-play" aria-hidden="true">▶</span><span className="cover-video-label">WATCH THE PROJECT DEMO / 2025</span></div>}
-        {p.layout === "phones" && <div className="phone-gallery"><span className="phone-gallery-label">DESIGNED & BUILT FOR A 160-MEMBER COHORT</span>{m.map((x) => <Img key={x.f} f={x.f} w={x.w} h={x.h} alt="" />)}<span className="phone-gallery-foot">PASS / SCANNER / CHECK-IN</span></div>}
+        {p.layout === "phones" && <div className="phone-gallery"><span className="phone-gallery-label">DESIGNED & BUILT FOR A 160-MEMBER COHORT</span>{m.slice(0, 2).map((x) => <Img key={x.f} f={x.f} w={x.w} h={x.h} alt={x.alt} />)}<span className="phone-gallery-foot">PASS / SCANNER / CHECK-IN</span></div>}
         {p.layout === "diagram" && <div className="study-cover"><span>EDUCATION × ARTIFICIAL INTELLIGENCE</span><strong>Physics<br/>AI Study</strong><div className="study-flow"><span>01 / SELECT A BOOK</span><span>02 / EXPLORE CHAPTERS</span><span>03 / ASK THE AI TUTOR</span></div></div>}
         {p.layout === "type" && <div className="type-cover"><span>PROJECT / \u00a0{p.n}</span><strong>{p.title}</strong><small>{p.kind.toUpperCase()}</small></div>}
       </div>
@@ -193,7 +193,7 @@ function Work() {
           </div>
           <div className="cover-collage">
             <div className="collage-number">PORTFOLIO / 001</div>
-            <div className="collage-film"><Thumb id={mini.video}/><div className="film-strip"><span>MINI CLINT</span><span>AI / AGENTS</span></div></div>
+            <div className="collage-film"><Img f="mini-clint-team.jpg" w={782} h={1036} alt="Mini Clint team celebrating their first-place award" /><div className="film-strip"><span>MINI CLINT</span><span>AI / AGENTS</span></div></div>
             <div className="collage-ticket"><span>01 / FEATURED STORY</span><strong>FIRST PLACE</strong><span>CAL POLY AWS AI SUMMER CAMP</span></div>
             <Link to="work/mini-clint" className="collage-link">EXPLORE THE STORY ↗</Link>
           </div>
@@ -209,7 +209,7 @@ function Work() {
 
         <div className="work-feature">
           <div className="feature-visual feature-mini">
-            <Thumb id={mini.video}/>
+            <Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="Shannon holding her Cal Poly AWS AI Summer Camp award" />
             <div className="mini-overlay"><span>AWARD-WINNING AI PROJECT</span><b>Mini Clint</b><span>CAL POLY × AWS / 2025</span></div>
           </div>
           <div className="feature-copy">
@@ -263,6 +263,14 @@ function Case({ id }) {
       </div>
       {p.creds && <section className="creds" aria-label="Recognition and credentials"><h2 className="label">Recognition and credentials</h2><ul>{p.creds.map((c) => <li key={c}>{c}</li>)}</ul></section>}
       <Gallery items={p.media} label={`${p.title} images`} />
+      {p.certificate && (
+        <section className="certificate-section" aria-label="Certificate">
+          <div className="certificate-section-title"><p className="label">CERTIFICATION / 2025</p><h2>Completed the mentorship.</h2><p>View the original Chinchilla AI Academy certificate.</p></div>
+          <a className="certificate-preview-link" href={img(p.certificate)} target="_blank" rel="noopener noreferrer" aria-label="Open Chinchilla AI mentorship certificate PDF in a new tab">
+            <div className="certificate-preview-icon" aria-hidden="true">PDF</div><span>CHINCHILLA AI ACADEMY<br/><strong>View certificate ↗</strong></span>
+          </a>
+        </section>
+      )}
       
       <nav className="pn" aria-label="Project navigation">
         <Link to={`work/${prev.id}`}>← {prev.title}</Link>
