@@ -32,7 +32,7 @@ function Img({ f, src, w, h, alt, ...p }) {
 function Thumb({ id }) {
   const [bad, setBad] = useState(false);
   if (bad) return <div className="thumb-fallback" aria-hidden="true"><span>Project demo video</span></div>;
-  return <img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} width={480} height={360} alt="" loading="lazy" decoding="async" onError={() => setBad(true)} />;
+  return <img src={`https://i.ytimg.com/vi/${id}/sddefault.jpg`} width={640} height={480} alt="" loading="lazy" decoding="async" onError={() => setBad(true)} />;
 }
 
 function Video({ id, title }) {
