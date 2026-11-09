@@ -239,7 +239,7 @@ function Work() {
 }
 
 function DocumentLink({ file }) {
-  const href = img(`../docs/${file}`);
+  const href = `${import.meta.env.BASE_URL}assets/docs/${file}`;
   const [ready, setReady] = useState(false);
   useEffect(() => {
     let live = true;
