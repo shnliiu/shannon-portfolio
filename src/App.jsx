@@ -169,9 +169,9 @@ function Plate({ p }) {
       </div>
       <div className="plate-text">
         <span className="label">{p.n} · {p.kind} · {p.year}</span>
-        <h3>{p.title}</h3>
+        <h3>{p.title}<span className="plate-arrow" aria-hidden="true">↗</span></h3>
         <p>{p.lead}</p>
-        <span className="chip">{p.badge}</span>
+        <span className="plate-caption">{p.badge}</span>
       </div>
     </Link>
   );
@@ -182,24 +182,25 @@ function Work() {
   return (
     <>
       <section className="hero">
-        <div className="hero-text">
-          <p className="label">SHANNON LIU <span aria-hidden="true">✳</span> / PORTFOLIO VOL. 01</p>
-          <h1>Ideas made<br/><em>real.</em></h1><p className="hero-signature">SHANNON LIU / ENGINEERING × DESIGN</p>
-          <p className="deck">I’m Shannon, a Computer Science and Engineering student at USC. I build thoughtful software, AI agents, and tools that help people do more.</p><p className="hero-meta">LOS ANGELES · EXPECTED GRADUATION 2028 · SUMMER 2027 INTERN</p>
-          <ul className="facts">
-            <li><b>AI agents</b> Mini Clint, 1st of 15 teams</li>
-            <li><b>Full-stack</b> QR attendance for ~160 members</li>
-            <li><b>AI tutoring</b> Physics study platform</li>
-          </ul>
-          <p className="cta"><Link to="resume" className="btn">Résumé</Link> <a className="btn ghost" href={`mailto:${EMAIL}`}>{EMAIL}</a></p>
+        <div className="hero-note"><span>VOL. 01 / AN ENGINEER'S ARCHIVE</span><span>LOS ANGELES · 2026</span></div>
+        <div className="hero-composition">
+          <div className="hero-text">
+            <p className="label">HELLO, I'M SHANNON LIU <span aria-hidden="true">✳</span></p>
+            <h1>Making<br /><em>things</em><br />work<span className="hero-period">.</span></h1>
+            <p className="deck">Engineering with a creative point of view. I’m a USC Computer Science & Engineering student building AI agents, web applications, and useful tools for real communities.</p>
+            <p className="hero-meta">USC VITERBI · DECEMBER 2028 · AVAILABLE SUMMER 2027</p>
+            <div className="hero-actions"><a href="#archive" className="btn">Explore selected work <span aria-hidden="true">↘</span></a><Link to="resume" className="resume-text">Résumé ↗</Link></div>
+          </div>
+          <div className="hero-plate">
+            <div className="hero-plate-label"><span>FIG 01 / PROJECT DEMONSTRATION</span><span>MINI CLINT</span></div>
+            <Video id={a.video} title="Mini Clint project demonstration"/>
+            <div className="hero-video-caption"><span>FIRST PLACE / 15 TEAMS</span><Link to="work/mini-clint">OPEN CASE STUDY ↗</Link></div>
+          </div>
         </div>
-        <div className="hero-plate">
-          <Video id={a.video} title="Mini Clint project demonstration" />
-          <p className="label">01 / MINI CLINT — PROJECT DEMONSTRATION <Link to="work/mini-clint">View the story ↗</Link></p>
-        </div>
+        <div className="hero-bottom"><span>AI · PRODUCT ENGINEERING · CREATIVE TECHNOLOGY</span><span>SCROLL TO EXPLORE ↓</span></div>
       </section>
-      <section aria-labelledby="archive">
-        <header className="sec-head"><div><p className="label">INDEX / 001—005</p><h2 id="archive">The work<span className="type-star">✳</span></h2></div><p className="sec-blurb">A small archive of things I’ve designed, developed, debugged, and learned from.</p></header>
+      <section aria-labelledby="archive" id="archive-section">
+        <header className="sec-head"><div><p className="label">01 / PROJECT INDEX</p><h2 id="archive">Selected <em>work.</em></h2></div><p className="sec-blurb">What I built, why I built it, and the problems I worked through.</p></header>
         <div className="archive">
           <Plate p={a} /><Plate p={b} /><Plate p={c} />
           {rest.map((p) => <Plate key={p.id} p={p} />)}
@@ -322,7 +323,7 @@ export default function App() {
     <>
       <a className="skip" href="#main" onClick={(e) => { e.preventDefault(); main.current?.focus(); }}>Skip to content</a>
       <header className="top">
-        <Link to="work" className="wordmark">Shannon Liu</Link>
+        <Link to="work" className="wordmark">Shannon <span>✳</span> Liu</Link>
         <button className="menu-btn" aria-expanded={menu} aria-controls="tabs" onClick={() => setMenu(!menu)}>{menu ? "Close" : "Menu"}</button>
         <nav id="tabs" className={`tabs${menu ? " open" : ""}`} aria-label="Primary">
           {tabs.map(([k, l]) => <Link key={k} to={k} aria-current={page === k ? "page" : undefined}>{l}</Link>)}
