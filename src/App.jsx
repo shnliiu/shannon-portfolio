@@ -189,7 +189,7 @@ function Work() {
             <h1>Making<br /><em>things</em><br />work<span className="hero-period">.</span></h1>
             <p className="deck">Engineering with a creative point of view. I’m a USC Computer Science & Engineering student building AI agents, web applications, and useful tools for real communities.</p>
             <p className="hero-meta">USC VITERBI · DECEMBER 2028 · AVAILABLE SUMMER 2027</p>
-            <div className="hero-actions"><a href="#archive" className="btn">Explore selected work <span aria-hidden="true">↘</span></a><Link to="resume" className="resume-text">Résumé ↗</Link></div>
+            <div className="hero-actions"><button type="button" className="btn" onClick={() => document.getElementById("archive-section")?.scrollIntoView({ behavior: "smooth" })}>Explore selected work <span aria-hidden="true">↘</span></button><Link to="resume" className="resume-text">Résumé ↗</Link></div>
           </div>
           <div className="hero-plate">
             <div className="hero-plate-label"><span>FIG 01 / PROJECT DEMONSTRATION</span><span>MINI CLINT</span></div>
