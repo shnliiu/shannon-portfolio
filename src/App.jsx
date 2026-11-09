@@ -238,7 +238,29 @@ function Work() {
   );
 }
 
+function DocumentLink({ file }) {
+  const href = img(`../docs/${file}`);
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    let live = true;
+    fetch(href, { method: "HEAD" })
+      .then((r) => { if (live) setReady(r.ok); })
+      .catch(() => { if (live) setReady(false); });
+    return () => { live = false; };
+  }, [href]);
+  return ready ? <a href={href} target="_blank" rel="noopener noreferrer">View presentation PDF ↗</a> : <span className="doc-pending">Presentation PDF not yet uploaded</span>;
+}
+
 function Case({ id }) {
+  const [internshipReady, setInternshipReady] = useState(false);
+  useEffect(() => {
+    if (id !== "learningnco") { setInternshipReady(false); return; }
+    let live = true;
+    fetch(img("learningnco-vocab-cover.webp"), { method: "HEAD" })
+      .then((r) => { if (live) setInternshipReady(r.ok); })
+      .catch(() => { if (live) setInternshipReady(false); });
+    return () => { live = false; };
+  }, [id]);
   const i = projects.findIndex((p) => p.id === id);
   if (i < 0) return <section className="page"><h1 tabIndex={-1} className="focus-h">Project not found</h1><p><Link to="work">← Back to the work archive</Link></p></section>;
   const p = projects[i], next = projects[(i + 1) % projects.length], prev = projects[(i + projects.length - 1) % projects.length];
@@ -262,7 +284,24 @@ function Case({ id }) {
         </aside>
       </div>
       {p.creds && <section className="creds" aria-label="Recognition and credentials"><h2 className="label">Recognition and credentials</h2><ul>{p.creds.map((c) => <li key={c}>{c}</li>)}</ul></section>}
-      <Gallery items={p.media} label={`${p.title} images`} />
+      <Gallery items={p.id === "learningnco" && !internshipReady ? [] : p.media} label={`${p.title} images`} />
+      {p.documents && (
+        <section className="internship-documents">
+          <p className="label">PROJECT DELIVERABLES / CONCEPTS & USER FLOWS</p>
+          <h2>A closer look at the work.</h2>
+          <div className="internship-doc-grid">
+            {p.documents.map((doc, index) => (
+              <div key={doc.file} className="internship-doc-card">
+                <span className="internship-doc-num">0{index + 1} / LEARNINGNCO</span>
+                <h3>{doc.title}</h3>
+                <p>{doc.subtitle}</p>
+                <DocumentLink file={doc.file}/>
+              </div>
+            ))}
+          </div>
+          <p className="internship-disclosure">These presentations are design concepts, not screenshots of shipped applications. The internal SS101 developer handoff document is not published.</p>
+        </section>
+      )}
       {p.certificate && (
         <section className="certificate-section" aria-label="Certificate">
           <div className="certificate-section-title"><p className="label">CERTIFICATION / 2025</p><h2>Completed the mentorship.</h2><p>View the original Chinchilla AI Academy certificate.</p></div>
@@ -317,11 +356,20 @@ function Experience() {
 }
 
 function Resume() {
+  const [pdfReady, setPdfReady] = useState(false);
+  useEffect(() => {
+    if (!RESUME_URL) return;
+    let live = true;
+    fetch(RESUME_URL, { method: "HEAD" })
+      .then((r) => { if (live) setPdfReady(r.ok); })
+      .catch(() => { if (live) setPdfReady(false); });
+    return () => { live = false; };
+  }, []);
   return (
     <section className="page">
       <p className="label">DOCUMENTS / 04</p>
       <h1 tabIndex={-1} className="focus-h">The short <em>version.</em></h1>
-      {RESUME_URL ? (
+      {pdfReady ? (
         <>
           <p><a className="btn" href={RESUME_URL} download>Download PDF</a></p>
           <object className="pdf" data={RESUME_URL} type="application/pdf" aria-label="Résumé PDF preview"><p>Preview unavailable in this browser. Use the download button.</p></object>
@@ -329,7 +377,7 @@ function Resume() {
       ) : (
         <div className="callout" role="status">
           <b>The résumé PDF has not been published to this site yet.</b>
-          <p>Add <code>Shannon_Liu_Resume.pdf</code> to <code>public/</code> and set <code>RESUME_URL</code> in <code>src/data.js</code> to show a preview and download button here.</p>
+          <p>Upload <code>Shannon_Liu_Resume.pdf</code> into <code>public/assets/docs/</code>. The PDF preview and download button will appear automatically after deployment.</p>
           <p><a className="btn" href={`mailto:${EMAIL}?subject=Résumé request`}>Request the résumé</a></p>
         </div>
       )}
