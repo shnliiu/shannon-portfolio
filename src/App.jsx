@@ -18,7 +18,7 @@ const useRoute = () => {
 const Link = ({ to, children, ...p }) => <a href={`#/${to}`} {...p}>{children}</a>;
 const Ext = ({ href, children }) => (
   <a className="ext" href={href} target="_blank" rel="noreferrer noopener">
-    {children}<span aria-hidden="true"> ↗</span><span className="sr"> (opens in a new tab)</span>
+    {children}<span className="sr"> (opens in a new tab)</span>
   </a>
 );
 
@@ -49,6 +49,14 @@ function Video({ id, title }) {
 function Lightbox({ items, index, onClose, onMove }) {
   const ref = useRef(null);
   const it = items[index];
+  const touchX = useRef(null);
+  const onTouchStart = (e) => { touchX.current = e.touches[0]?.clientX ?? null; };
+  const onTouchEnd = (e) => {
+    if (touchX.current === null) return;
+    const delta = e.changedTouches[0].clientX - touchX.current;
+    if (Math.abs(delta) > 65) onMove(delta < 0 ? 1 : -1);
+    touchX.current = null;
+  };
   useEffect(() => {
     const prev = document.activeElement;
     ref.current?.focus();
@@ -63,12 +71,12 @@ function Lightbox({ items, index, onClose, onMove }) {
   }, []);
   return (
     <div className="lb" role="dialog" aria-modal="true" aria-label="Image viewer" onClick={onClose}>
-      <figure ref={ref} tabIndex={-1} onClick={(e) => e.stopPropagation()}>
+      <figure ref={ref} tabIndex={-1} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd} onClick={(e) => e.stopPropagation()}>
         <Img f={it.f} w={it.w} h={it.h} alt={it.alt} loading="eager" />
         <figcaption>{it.cap} </figcaption>
         <div className="lb-bar">
-          <button onClick={() => onMove(-1)} aria-label="Previous image">←</button>
-          <button onClick={() => onMove(1)} aria-label="Next image">→</button>
+          <button onClick={() => onMove(-1)} aria-label="Previous image">Previous</button>
+          <button onClick={() => onMove(1)} aria-label="Next image">Next</button>
           <button onClick={onClose}>Close (Esc)</button>
         </div>
       </figure>
@@ -145,7 +153,7 @@ function Badge() {
         <span>Seeking Summer 2027 software engineering internships.</span>
         <small>BUILDS</small>
         <span>AI agents, full-stack web apps, educational tools.</span>
-        <small>FLIP BACK ↺</small>
+        <small>TAP TO SEE FRONT</small>
       </span>
     </button>
   );
@@ -163,7 +171,7 @@ function Plate({ p }) {
         {p.layout === "type" && <div className="type-cover"><span>PROJECT / \u00a0{p.n}</span><strong>{p.title}</strong><small>{p.kind.toUpperCase()}</small></div>}
       </div>
       <div className="plate-text">
-        <div className="plate-overline"><span>{p.n} / {p.kind} / {p.year}</span><span>↗</span></div>
+        <div className="plate-overline"><span>{p.n} / {p.kind} / {p.year}</span><span className="plate-view">View project</span></div>
         <h3>{p.title}</h3>
         <p>{p.lead}</p>
         <span className="plate-caption">{p.badge}</span>
@@ -184,16 +192,16 @@ function Work() {
             <h1>Ideas in<br/><em>motion.</em></h1>
             <p className="deck">I'm a USC Computer Science & Engineering student building practical AI systems, interactive web products, and tools for communities.</p>
             <div className="intro-tags"><span>ENGINEERING</span><span>PRODUCT</span><span>CREATIVE THINKING</span></div>
-            <div className="intro-cta"><button onClick={() => document.getElementById("selected-projects")?.scrollIntoView({behavior:"smooth"})}>Discover my work <span aria-hidden="true">↘</span></button><Link to="resume">Résumé ↗</Link></div>
+            <div className="intro-cta"><button onClick={() => document.getElementById("selected-projects")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth"})}>Discover my work</button><Link to="resume">Résumé</Link></div>
           </div>
           <div className="cover-collage">
             <div className="collage-number">PORTFOLIO / 001</div>
             <div className="collage-film"><Img f="mini-clint-team.jpg" w={782} h={1036} alt="Mini Clint team celebrating their first-place award" /><div className="film-strip"><span>MINI CLINT</span><span>AI / AGENTS</span></div></div>
             <div className="collage-ticket"><span>01 / FEATURED STORY</span><strong>FIRST PLACE</strong><span>CAL POLY AWS AI SUMMER CAMP</span></div>
-            <Link to="work/mini-clint" className="collage-link">EXPLORE THE STORY ↗</Link>
+            <Link to="work/mini-clint" className="collage-link">EXPLORE THE STORY</Link>
           </div>
         </div>
-        <div className="cover-foot"><span>USC VITERBI / LOS ANGELES</span><span>AVAILABLE SUMMER 2027</span><span>SCROLL ↓</span></div>
+        <div className="cover-foot"><span>USC VITERBI / LOS ANGELES</span><span>AVAILABLE SUMMER 2027</span><span>SCROLL TO EXPLORE</span></div>
       </section>
 
       <section className="work-index" id="selected-projects" aria-labelledby="archive">
@@ -212,7 +220,7 @@ function Work() {
             <h3>Making math placement <em>make sense.</em></h3>
             <p>I led a five-person team and built an AWS SES email agent that uses retrieved information and synthetic student records to respond to placement questions.</p>
             <div className="feature-facts"><span>1ST PLACE / 15 TEAMS</span><span>RAG · AWS SES · AMAZON S3</span></div>
-            <Link to="work/mini-clint" className="feature-link">View case study <span>↗</span></Link>
+            <Link to="work/mini-clint" className="feature-link">View case study</Link>
           </div>
         </div>
         <div className="two-features">
@@ -221,13 +229,13 @@ function Work() {
         </div>
         <div className="index-footer">
           <p className="label">02 / MORE IN THE ARCHIVE</p>
-          {other.map((p)=><Link key={p.id} to={`work/${p.id}`} className="archive-line"><span>{p.n} / {p.year}</span><strong>{p.title}</strong><span>{p.kind}</span><span aria-hidden="true">↗</span></Link>)}
+          {other.map((p)=><Link key={p.id} to={`work/${p.id}`} className="archive-line"><span>{p.n} / {p.year}</span><strong>{p.title}</strong><span>{p.kind}</span></Link>)}
         </div>
       </section>
       <section className="contact-strip">
         <span className="label">A LITTLE MORE ABOUT ME</span>
         <h2>Curiosity meets <em>craft.</em></h2>
-        <Link to="about">Get to know me ↗</Link>
+        <Link to="about">Get to know me</Link>
       </section>
     </>
   );
@@ -243,7 +251,7 @@ function DocumentLink({ file }) {
       .catch(() => { if (live) setReady(false); });
     return () => { live = false; };
   }, [href]);
-  return ready ? <a href={href} target="_blank" rel="noopener noreferrer">View presentation PDF ↗</a> : <span className="doc-pending">Presentation PDF not yet uploaded</span>;
+  return ready ? <a href={href} target="_blank" rel="noopener noreferrer">View presentation PDF</a> : <span className="doc-pending">Presentation PDF not yet uploaded</span>;
 }
 
 function Case({ id }) {
@@ -257,11 +265,11 @@ function Case({ id }) {
     return () => { live = false; };
   }, [id]);
   const i = projects.findIndex((p) => p.id === id);
-  if (i < 0) return <section className="page"><h1 tabIndex={-1} className="focus-h">Project not found</h1><p><Link to="work">← Back to the work archive</Link></p></section>;
+  if (i < 0) return <section className="page"><h1 tabIndex={-1} className="focus-h">Project not found</h1><p><Link to="work">Back to the work archive</Link></p></section>;
   const p = projects[i], next = projects[(i + 1) % projects.length], prev = projects[(i + projects.length - 1) % projects.length];
   return (
     <article className={`case tone-${p.tone}`}>
-      <Link to="work" className="back">← Work archive</Link>
+      <Link to="work" className="back">Work archive</Link>
       <header className="case-head">
         <p className="label">{p.n} · {p.kind} · {p.year} · {p.org}</p>
         <h1 tabIndex={-1} className="focus-h">{p.title}</h1>
@@ -301,14 +309,14 @@ function Case({ id }) {
         <section className="certificate-section" aria-label="Certificate">
           <div className="certificate-section-title"><p className="label">CERTIFICATION / 2025</p><h2>Completed the mentorship.</h2><p>View the original Chinchilla AI Academy certificate.</p></div>
           <a className="certificate-preview-link" href={img(p.certificate)} target="_blank" rel="noopener noreferrer" aria-label="Open Chinchilla AI mentorship certificate PDF in a new tab">
-            <div className="certificate-preview-icon" aria-hidden="true">PDF</div><span>CHINCHILLA AI ACADEMY<br/><strong>View certificate ↗</strong></span>
+            <div className="certificate-preview-icon" aria-hidden="true">PDF</div><span>CHINCHILLA AI ACADEMY<br/><strong>View certificate</strong></span>
           </a>
         </section>
       )}
       
       <nav className="pn" aria-label="Project navigation">
-        <Link to={`work/${prev.id}`}>← {prev.title}</Link>
-        <Link to={`work/${next.id}`}>{next.title} →</Link>
+        <Link to={`work/${prev.id}`}>Previous: {prev.title}</Link>
+        <Link to={`work/${next.id}`}>Next: {next.title}</Link>
       </nav>
     </article>
   );
@@ -391,13 +399,33 @@ export default function App() {
   const [menu, setMenu] = useState(false);
   const main = useRef(null);
   useEffect(() => {
+    const root = main.current;
+    if (!root) return;
+    const targets = root.querySelectorAll(".cover-heading, .cover-collage, .index-heading, .work-feature, .two-features .plate, .archive-line, .contact-strip, .page > *, .case-head, .case-video, .case-body, .gallery, .internship-documents, .certificate-section");
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) return;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("entered");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: "0px 0px 20px 0px" });
+    targets.forEach((target, index) => {
+      target.classList.add("reveal-ready");
+      target.style.setProperty("--reveal-delay", `${Math.min(index % 3, 2) * 70}ms`);
+      observer.observe(target);
+    });
+    return () => observer.disconnect();
+  }, [page, id]);
+  useEffect(() => {
     const t = id ? projects.find((p) => p.id === id)?.title : titles[page];
     document.title = `${t || "Not found"} · Shannon Liu`;
     scrollTo(0, 0);
     setMenu(false);
     main.current?.querySelector(".focus-h")?.focus({ preventScroll: true });
   }, [page, id]);
-  const view = page === "work" && id ? <Case id={id} /> : page === "work" ? <Work /> : page === "about" ? <About /> : page === "experience" ? <Experience /> : page === "resume" ? <Resume /> : <section className="page"><h1 tabIndex={-1} className="focus-h">Page not found</h1><Link to="work">← Home</Link></section>;
+  const view = page === "work" && id ? <Case id={id} /> : page === "work" ? <Work /> : page === "about" ? <About /> : page === "experience" ? <Experience /> : page === "resume" ? <Resume /> : <section className="page"><h1 tabIndex={-1} className="focus-h">Page not found</h1><Link to="work">Home</Link></section>;
   return (
     <>
       <a className="skip" href="#main" onClick={(e) => { e.preventDefault(); main.current?.focus(); }}>Skip to content</a>
