@@ -238,3 +238,53 @@ main{max-width:1450px;min-height:70vh;padding:0 3.7% 72px;background:transparent
 .about .badge:focus-visible{outline:2px solid #aa333c}
 @media(max-width:880px){.about{grid-template-columns:1fr;gap:40px}.about .badge{margin:0 auto;max-width:470px}}
 @media(prefers-reduced-motion:reduce){.about .badge{transition:none}.about .badge .face{transition:none}}
+
+
+/* Motion and interaction pass: no ornamental arrow glyphs */
+/* JS marks only observed sections; content is never hidden without JavaScript. */
+@keyframes editorial-enter {from {opacity:0;transform:translate3d(0,25px,0)} to {opacity:1;transform:translate3d(0,0,0)}}
+@keyframes editorial-cover {from {opacity:.3;transform:translate3d(0,12px,0) scale(.985)} to {opacity:1;transform:translate3d(0,0,0) scale(1)}}
+.reveal-ready:not(.entered){opacity:0;transform:translate3d(0,25px,0)}
+.reveal-ready.entered{animation:editorial-enter .68s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--reveal-delay,0ms)}
+.cover-collage.reveal-ready.entered{animation:editorial-cover .75s cubic-bezier(.2,.7,.2,1) both}
+a,button{-webkit-tap-highlight-color:transparent}
+a:focus-visible,button:focus-visible{outline:2px solid var(--brick);outline-offset:4px}
+.intro-cta button,.intro-cta a,.feature-link,.collage-link,.contact-strip a,.resume-text,.internship-doc-card a,.certificate-preview-link,.tabs a,.archive-line{transition:color .22s ease,background-color .22s ease,border-color .22s ease,transform .22s ease}
+.intro-cta button:active,.menu-btn:active,.gallery button:active,.lb-bar button:active{transform:scale(.975)}
+.intro-cta a:hover,.feature-link:hover,.collage-link:hover,.contact-strip a:hover,.internship-doc-card a:hover{color:var(--brick)}
+.cover-collage{transition:background-color .35s ease}
+.cover-collage:hover{background-color:#d1d7d2}
+.collage-film{transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s ease}
+.cover-collage:hover .collage-film{transform:rotate(-1deg) translateY(-4px);box-shadow:17px 19px 0 #f3ecde}
+.collage-ticket{transition:transform .45s ease}
+.cover-collage:hover .collage-ticket{transform:rotate(4deg) translateY(-3px)}
+.work-feature .feature-mini img{transition:filter .45s ease,opacity .45s ease}
+.work-feature:hover .feature-mini img{filter:saturate(1.02);opacity:.87}
+.archive-line:hover{background:#e9e4db;padding-left:12px;padding-right:12px}
+.two-features .plate:hover .plate-art{filter:saturate(1.06)}
+.plate-view{font:500 10px var(--mono);text-decoration:underline;text-underline-offset:5px;color:var(--quiet)}
+.two-features .plate:hover .plate-view{color:var(--brick)}
+.gallery li button{transition:background-color .2s ease,transform .2s ease}
+.gallery li button:active{transform:scale(.98)}
+.gallery li button:hover{background:#d1d2ca}
+.gallery li img{transition:transform .28s ease}
+.gallery li button:hover img{transform:scale(1.025)}
+.lb figure{touch-action:pan-y}
+.lb-bar button{min-width:72px;min-height:42px;padding:8px 12px}
+.about .badge{transition:transform .22s ease;will-change:transform}
+.about .badge:active{filter:brightness(.98)}
+/* No duplicate symbols masquerading as emojis on iPhone */
+.plate-arrow,.plate-overline span[aria-hidden="true"]{display:none}
+@media(hover:none){
+  .cover-collage:hover .collage-film{transform:rotate(-3deg);box-shadow:14px 15px 0 #f3ecde}
+  .cover-collage:hover .collage-ticket{transform:rotate(7deg)}
+  .work-feature:hover .feature-mini img{filter:saturate(.85);opacity:.76}
+  .archive-line:hover{padding-left:0;padding-right:0;background:transparent}
+  .gallery li button:hover img{transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal-ready:not(.entered){opacity:1;transform:none}
+  .reveal-ready.entered,.cover-collage.reveal-ready.entered{animation:none;opacity:1;transform:none}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
