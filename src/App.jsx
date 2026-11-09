@@ -41,7 +41,7 @@ function Video({ id, title }) {
   return (
     <button className="yt poster" onClick={() => setOn(true)} aria-label={`Play video: ${title}`}>
       <Thumb id={id} />
-      <span className="play" aria-hidden="true">▶</span>
+      <span className="play" aria-hidden="true" />
     </button>
   );
 }
@@ -113,7 +113,7 @@ function Diagram() {
       <text x={x + w / 2} y={y + 45} className="sub">{t2}</text>
     </g>
   );
-  const arr = (x) => <path d={`M${x} 71h22m-6-5 6 5-6 5`} />;
+  const arr = (x) => <path d={`M${x} 71h22`} />;
   return (
     <figure className="diagram">
       <svg viewBox="0 0 700 142" role="img" aria-labelledby="dt dd">
@@ -165,7 +165,7 @@ function Plate({ p }) {
   return (
     <Link to={`work/${p.id}`} className={`plate plate-${p.layout} tone-${p.tone}`} aria-label={`${p.title}: view case study`}>
       <div className="plate-art">
-        {p.layout === "video" && <div className="cover-video"><Thumb id={p.video}/><span className="cover-play" aria-hidden="true">▶</span><span className="cover-video-label">WATCH THE PROJECT DEMO / 2025</span></div>}
+        {p.layout === "video" && <div className="cover-video"><Thumb id={p.video}/><span className="cover-play" aria-hidden="true" /><span className="cover-video-label">WATCH THE PROJECT DEMO / 2025</span></div>}
         {p.layout === "phones" && <div className="phone-gallery"><span className="phone-gallery-label">DESIGNED & BUILT FOR A 160-MEMBER COHORT</span>{m.slice(0, 2).map((x) => <Img key={x.f} f={x.f} w={x.w} h={x.h} alt={x.alt} />)}<span className="phone-gallery-foot">PASS / SCANNER / CHECK-IN</span></div>}
         {p.layout === "diagram" && <div className="study-cover"><span>EDUCATION × ARTIFICIAL INTELLIGENCE</span><strong>Physics<br/>AI Study</strong><div className="study-flow"><span>01 / SELECT A BOOK</span><span>02 / EXPLORE CHAPTERS</span><span>03 / ASK THE AI TUTOR</span></div></div>}
         {p.layout === "type" && <div className="type-cover"><span>PROJECT / \u00a0{p.n}</span><strong>{p.title}</strong><small>{p.kind.toUpperCase()}</small></div>}
@@ -430,7 +430,7 @@ export default function App() {
     <>
       <a className="skip" href="#main" onClick={(e) => { e.preventDefault(); main.current?.focus(); }}>Skip to content</a>
       <header className="top">
-        <Link to="work" className="wordmark">Shannon <span>✳</span> Liu</Link>
+        <Link to="work" className="wordmark">Shannon <span>·</span> Liu</Link>
         <button className="menu-btn" aria-expanded={menu} aria-controls="tabs" onClick={() => setMenu(!menu)}>{menu ? "Close" : "Menu"}</button>
         <nav id="tabs" className={`tabs${menu ? " open" : ""}`} aria-label="Primary">
           {tabs.map(([k, l]) => <Link key={k} to={k} aria-current={page === k ? "page" : undefined}>{l}</Link>)}
