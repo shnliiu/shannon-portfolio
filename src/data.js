@@ -3,8 +3,7 @@
 export const BASE = import.meta.env.BASE_URL;
 export const img = (f) => `${BASE}assets/img/${f}`;
 
-// Set to e.g. `${BASE}Shannon_Liu_Resume.pdf` after placing the file in /public.
-export const RESUME_URL = null;
+export const RESUME_URL = `${BASE}assets/docs/Shannon_Liu_Resume.pdf`;
 export const EMAIL = "shannon.liu04@gmail.com";
 export const LINKS = {
   github: "https://github.com/shnliiu",
@@ -94,15 +93,29 @@ export const projects = [
     id: "learningnco", n: "05", title: "LearningNCo", kind: "Product design & docs", year: "2026",
     tone: "sand", layout: "type",
     org: "Developer intern, Seoul, South Korea",
-    lead: "Educational app concepts, from interface plans to a technical handoff.",
-    badge: "Design and documentation",
-    stack: ["User flows", "UI planning", "Technical documentation"],
+    lead: "Designing approachable English-learning experiences, from app concepts to developer handoff.",
+    badge: "Vocabulary prototype + SS101 product specification",
+    stack: ["Product design", "UI/UX", "Learning flows", "Technical handoff", "Canva"],
     links: [],
     sections: [
-      ["What I did", "The company asked us to propose an app based on its SS101 educational book. We developed the planned user interface and later wrote a detailed technical handoff document. I also independently designed a vocabulary learning app, including user flows and planned screens."],
-      ["Scope", "These were primarily design and documentation projects, not fully shipped applications."],
+      ["The work", "During my developer internship at LearningNCo in Seoul, I worked on educational application concepts for young English learners. My role focused on interface planning, design and documentation rather than deploying production software."],
+      ["Vocabulary learning app", "I independently designed a 44-page vocabulary-learning app prototype covering onboarding, student learning journeys, themed flashcards, pronunciation and listening practice, quizzes, review, and progress tracking. The screens show how the experience would work, with design notes explaining key choices."],
+      ["Sentence Stretching 101", "Our team proposed an application based on LearningNCo's Sentence Stretching 101 book. We explored its user experience in a concept presentation, then prepared a detailed 71-page developer handoff with proposed screens, feature behavior, user flows, and technical considerations."],
+      ["My contribution", "I designed the vocabulary app prototype independently. The SS101 presentation and technical documentation were collaborative work. The 71-page manual is an internal draft and is not published on this portfolio."],
+      ["Project status", "These are UI concepts and implementation specifications, not fully built or launched applications."],
     ],
-    media: [], missing: ["Public-safe versions of the design documents"],
+    media: [
+      { f: "learningnco-vocab-cover.webp", w: 1440, h: 810, alt: "Vocabulary learning app concept cover", cap: "Vocabulary learning prototype / cover" },
+      { f: "learningnco-vocab-dashboard.webp", w: 1440, h: 810, alt: "Vocabulary learning app dashboard concept", cap: "Vocabulary app / dashboard" },
+      { f: "learningnco-vocab-lesson.webp", w: 1440, h: 810, alt: "Vocabulary learning lesson and pronunciation screen", cap: "Vocabulary app / interactive lessons" },
+      { f: "learningnco-ss101-cover.webp", w: 1440, h: 810, alt: "SS101 sentence stretching app concept presentation cover", cap: "SS101 / concept presentation" },
+      { f: "learningnco-ss101-home.webp", w: 1440, h: 810, alt: "SS101 mascot-based home screen design", cap: "SS101 / home screen" },
+      { f: "learningnco-ss101-diagnostic.webp", w: 1440, h: 810, alt: "SS101 diagnostic placement flow concept", cap: "SS101 / placement flow" },
+    ],
+    documents: [
+      { title: "Vocabulary Learning App", subtitle: "44-page independently designed prototype", file: "LearningNCo_Vocabulary_Prototype.pdf" },
+      { title: "Sentence Stretching 101", subtitle: "32-page collaborative concept presentation", file: "LearningNCo_SS101_Concept.pdf" },
+    ],
   },
 ];
 
