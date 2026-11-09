@@ -161,15 +161,15 @@ function Plate({ p }) {
   const m = p.media;
   return (
     <Link to={`work/${p.id}`} className={`plate plate-${p.layout} tone-${p.tone}`} aria-label={`${p.title}: view case study`}>
-      <div className="plate-art" aria-hidden={p.layout === "type"}>
-        {p.layout === "video" && <><Thumb id={p.video} /><span className="play">▶</span></>}
-        {p.layout === "phones" && m.map((x) => <Img key={x.f} f={x.f} w={x.w} h={x.h} alt="" style={{ height: x.h > 300 ? 300 : 170, width: "auto" }} />)}
-        {p.layout === "diagram" && <div className="mini-flow"><i>question</i><i>textbook</i><i>tutor</i></div>}
-        {p.layout === "type" && <span className="big-n">{p.n}</span>}
+      <div className="plate-art">
+        {p.layout === "video" && <div className="cover-video"><Thumb id={p.video}/><span className="cover-play" aria-hidden="true">▶</span><span className="cover-video-label">WATCH THE PROJECT DEMO / 2025</span></div>}
+        {p.layout === "phones" && <div className="phone-gallery"><span className="phone-gallery-label">DESIGNED & BUILT FOR A 160-MEMBER COHORT</span>{m.map((x) => <Img key={x.f} f={x.f} w={x.w} h={x.h} alt="" />)}<span className="phone-gallery-foot">PASS / SCANNER / CHECK-IN</span></div>}
+        {p.layout === "diagram" && <div className="study-cover"><span>EDUCATION × ARTIFICIAL INTELLIGENCE</span><strong>Physics<br/>AI Study</strong><div className="study-flow"><span>01 / SELECT A BOOK</span><span>02 / EXPLORE CHAPTERS</span><span>03 / ASK THE AI TUTOR</span></div></div>}
+        {p.layout === "type" && <div className="type-cover"><span>PROJECT / \u00a0{p.n}</span><strong>{p.title}</strong><small>{p.kind.toUpperCase()}</small></div>}
       </div>
       <div className="plate-text">
-        <span className="label">{p.n} · {p.kind} · {p.year}</span>
-        <h3>{p.title}<span className="plate-arrow" aria-hidden="true">↗</span></h3>
+        <div className="plate-overline"><span>{p.n} / {p.kind} / {p.year}</span><span>↗</span></div>
+        <h3>{p.title}</h3>
         <p>{p.lead}</p>
         <span className="plate-caption">{p.badge}</span>
       </div>
@@ -178,33 +178,61 @@ function Plate({ p }) {
 }
 
 function Work() {
-  const [a, b, c, ...rest] = projects;
+  const [mini, flavors, physics, ...other] = projects;
   return (
     <>
-      <section className="hero">
-        <div className="hero-note"><span>VOL. 01 / AN ENGINEER'S ARCHIVE</span><span>LOS ANGELES · 2026</span></div>
-        <div className="hero-composition">
-          <div className="hero-text">
-            <p className="label">HELLO, I'M SHANNON LIU <span aria-hidden="true">✳</span></p>
-            <h1>Making<br /><em>things</em><br />work<span className="hero-period">.</span></h1>
-            <p className="deck">Engineering with a creative point of view. I’m a USC Computer Science & Engineering student building AI agents, web applications, and useful tools for real communities.</p>
-            <p className="hero-meta">USC VITERBI · DECEMBER 2028 · AVAILABLE SUMMER 2027</p>
-            <div className="hero-actions"><button type="button" className="btn" onClick={() => document.getElementById("archive-section")?.scrollIntoView({ behavior: "smooth" })}>Explore selected work <span aria-hidden="true">↘</span></button><Link to="resume" className="resume-text">Résumé ↗</Link></div>
+      <section className="cover-intro">
+        <div className="cover-topline"><span>SHANNON LIU / PORTFOLIO 2026</span><span>SOFTWARE ENGINEERING · CREATIVE TECHNOLOGY</span></div>
+        <div className="cover-layout">
+          <div className="cover-heading">
+            <p className="label">HELLO, I'M SHANNON.</p>
+            <h1>Ideas in<br/><em>motion.</em></h1>
+            <p className="deck">I'm a USC Computer Science & Engineering student building practical AI systems, interactive web products, and tools for communities.</p>
+            <div className="intro-tags"><span>ENGINEERING</span><span>PRODUCT</span><span>CREATIVE THINKING</span></div>
+            <div className="intro-cta"><button onClick={() => document.getElementById("selected-projects")?.scrollIntoView({behavior:"smooth"})}>Discover my work <span aria-hidden="true">↘</span></button><Link to="resume">Résumé ↗</Link></div>
           </div>
-          <div className="hero-plate">
-            <div className="hero-plate-label"><span>FIG 01 / PROJECT DEMONSTRATION</span><span>MINI CLINT</span></div>
-            <Video id={a.video} title="Mini Clint project demonstration"/>
-            <div className="hero-video-caption"><span>FIRST PLACE / 15 TEAMS</span><Link to="work/mini-clint">OPEN CASE STUDY ↗</Link></div>
+          <div className="cover-collage">
+            <div className="collage-number">PORTFOLIO / 001</div>
+            <div className="collage-film"><Thumb id={mini.video}/><div className="film-strip"><span>MINI CLINT</span><span>AI / AGENTS</span></div></div>
+            <div className="collage-ticket"><span>01 / FEATURED STORY</span><strong>FIRST PLACE</strong><span>CAL POLY AWS AI SUMMER CAMP</span></div>
+            <Link to="work/mini-clint" className="collage-link">EXPLORE THE STORY ↗</Link>
           </div>
         </div>
-        <div className="hero-bottom"><span>AI · PRODUCT ENGINEERING · CREATIVE TECHNOLOGY</span><span>SCROLL TO EXPLORE ↓</span></div>
+        <div className="cover-foot"><span>USC VITERBI / LOS ANGELES</span><span>AVAILABLE SUMMER 2027</span><span>SCROLL ↓</span></div>
       </section>
-      <section aria-labelledby="archive" id="archive-section">
-        <header className="sec-head"><div><p className="label">01 / PROJECT INDEX</p><h2 id="archive">Selected <em>work.</em></h2></div><p className="sec-blurb">What I built, why I built it, and the problems I worked through.</p></header>
-        <div className="archive">
-          <Plate p={a} /><Plate p={b} /><Plate p={c} />
-          {rest.map((p) => <Plate key={p.id} p={p} />)}
+
+      <section className="work-index" id="selected-projects" aria-labelledby="archive">
+        <header className="index-heading">
+          <div><p className="label">01 / SELECTED PROJECTS</p><h2 id="archive">The work<span>.</span></h2></div>
+          <p>Projects with a purpose. Explore the process, the engineering, and the results behind each one.</p>
+        </header>
+
+        <div className="work-feature">
+          <div className="feature-visual feature-mini">
+            <Thumb id={mini.video}/>
+            <div className="mini-overlay"><span>AWARD-WINNING AI PROJECT</span><b>Mini Clint</b><span>CAL POLY × AWS / 2025</span></div>
+          </div>
+          <div className="feature-copy">
+            <span className="label">01 / AI AGENTS</span>
+            <h3>Making math placement <em>make sense.</em></h3>
+            <p>I led a five-person team and built an AWS SES email agent that uses retrieved information and synthetic student records to respond to placement questions.</p>
+            <div className="feature-facts"><span>1ST PLACE / 15 TEAMS</span><span>RAG · AWS SES · AMAZON S3</span></div>
+            <Link to="work/mini-clint" className="feature-link">View case study <span>↗</span></Link>
+          </div>
         </div>
+        <div className="two-features">
+          <Plate p={flavors}/>
+          <Plate p={physics}/>
+        </div>
+        <div className="index-footer">
+          <p className="label">02 / MORE IN THE ARCHIVE</p>
+          {other.map((p)=><Link key={p.id} to={`work/${p.id}`} className="archive-line"><span>{p.n} / {p.year}</span><strong>{p.title}</strong><span>{p.kind}</span><span aria-hidden="true">↗</span></Link>)}
+        </div>
+      </section>
+      <section className="contact-strip">
+        <span className="label">A LITTLE MORE ABOUT ME</span>
+        <h2>Curiosity meets <em>craft.</em></h2>
+        <Link to="about">Get to know me ↗</Link>
       </section>
     </>
   );
