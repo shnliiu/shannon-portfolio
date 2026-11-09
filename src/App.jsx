@@ -65,7 +65,7 @@ function Lightbox({ items, index, onClose, onMove }) {
     <div className="lb" role="dialog" aria-modal="true" aria-label="Image viewer" onClick={onClose}>
       <figure ref={ref} tabIndex={-1} onClick={(e) => e.stopPropagation()}>
         <Img f={it.f} w={it.w} h={it.h} alt={it.alt} loading="eager" />
-        <figcaption>{it.cap} · {it.w}×{it.h}px preview, shown at actual size</figcaption>
+        <figcaption>{it.cap} </figcaption>
         <div className="lb-bar">
           <button onClick={() => onMove(-1)} aria-label="Previous image">←</button>
           <button onClick={() => onMove(1)} aria-label="Next image">→</button>
@@ -183,9 +183,9 @@ function Work() {
     <>
       <section className="hero">
         <div className="hero-text">
-          <p className="label">Portfolio · 2026</p>
-          <h1>Shannon Liu</h1>
-          <p className="deck">Computer Science & Engineering at USC, graduating December 2028. I build AI agents, full-stack web apps and educational tools, and I’m looking for Summer 2027 software engineering internships.</p>
+          <p className="label">SHANNON LIU <span aria-hidden="true">✳</span> / PORTFOLIO VOL. 01</p>
+          <h1>Ideas made<br/><em>real.</em></h1><p className="hero-signature">SHANNON LIU / ENGINEERING × DESIGN</p>
+          <p className="deck">I’m Shannon, a Computer Science and Engineering student at USC. I build thoughtful software, AI agents, and tools that help people do more.</p><p className="hero-meta">LOS ANGELES · EXPECTED GRADUATION 2028 · SUMMER 2027 INTERN</p>
           <ul className="facts">
             <li><b>AI agents</b> Mini Clint, 1st of 15 teams</li>
             <li><b>Full-stack</b> QR attendance for ~160 members</li>
@@ -195,11 +195,11 @@ function Work() {
         </div>
         <div className="hero-plate">
           <Video id={a.video} title="Mini Clint project demonstration" />
-          <p className="label">Mini Clint · project demo · <Link to="work/mini-clint">read the case study</Link></p>
+          <p className="label">01 / MINI CLINT — PROJECT DEMONSTRATION <Link to="work/mini-clint">View the story ↗</Link></p>
         </div>
       </section>
       <section aria-labelledby="archive">
-        <header className="sec-head"><p className="label">The work</p><h2 id="archive">Selected projects</h2></header>
+        <header className="sec-head"><div><p className="label">INDEX / 001—005</p><h2 id="archive">The work<span className="type-star">✳</span></h2></div><p className="sec-blurb">A small archive of things I’ve designed, developed, debugged, and learned from.</p></header>
         <div className="archive">
           <Plate p={a} /><Plate p={b} /><Plate p={c} />
           {rest.map((p) => <Plate key={p.id} p={p} />)}
@@ -234,7 +234,7 @@ function Case({ id }) {
       </div>
       {p.creds && <section className="creds" aria-label="Recognition and credentials"><h2 className="label">Recognition and credentials</h2><ul>{p.creds.map((c) => <li key={c}>{c}</li>)}</ul></section>}
       <Gallery items={p.media} label={`${p.title} images`} />
-      {p.missing.length > 0 && <p className="note"><b>Not in the archive yet:</b> {p.missing.join("; ")}.</p>}
+      
       <nav className="pn" aria-label="Project navigation">
         <Link to={`work/${prev.id}`}>← {prev.title}</Link>
         <Link to={`work/${next.id}`}>{next.title} →</Link>
@@ -247,8 +247,8 @@ function About() {
   return (
     <section className="page about">
       <div>
-        <p className="label">About</p>
-        <h1 tabIndex={-1} className="focus-h">Engineering, with an eye for how things look and feel.</h1>
+        <p className="label">PERSONAL FILE / 02</p>
+        <h1 tabIndex={-1} className="focus-h">A little more <em>human.</em></h1>
         <p className="deck">I’m a Computer Science and Engineering student at USC Viterbi, transferring in with five associate degrees from Norco College and Mt. SAC. I like building software people can use right away: AI assistants, check-in tools, study aids, websites.</p>
         <p>I lead teams (project manager for Mini Clint, ACM vice president) and I care about the design side too, from Figma-to-code frontends to email templates that survive dark mode.</p>
         <p><Link to="experience" className="btn">Experience</Link> <Link to="work" className="btn ghost">The work</Link></p>
@@ -261,8 +261,8 @@ function About() {
 function Experience() {
   return (
     <section className="page">
-      <p className="label">Experience</p>
-      <h1 tabIndex={-1} className="focus-h">Where I’ve been building.</h1>
+      <p className="label">TIMELINE / 03</p>
+      <h1 tabIndex={-1} className="focus-h">Work in <em>progress.</em></h1>
       <ol className="xp">
         {experience.map((x) => (
           <li key={x.org} className={`tone-${x.tone}`}>
@@ -282,8 +282,8 @@ function Experience() {
 function Resume() {
   return (
     <section className="page">
-      <p className="label">Résumé</p>
-      <h1 tabIndex={-1} className="focus-h">Résumé</h1>
+      <p className="label">DOCUMENTS / 04</p>
+      <h1 tabIndex={-1} className="focus-h">The short <em>version.</em></h1>
       {RESUME_URL ? (
         <>
           <p><a className="btn" href={RESUME_URL} download>Download PDF</a></p>
