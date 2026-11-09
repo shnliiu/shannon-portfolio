@@ -136,14 +136,9 @@ function Badge() {
   const reset = () => { ref.current.style.setProperty("--rx", "0deg"); ref.current.style.setProperty("--ry", "0deg"); };
   return (
     <button ref={ref} className={`badge${flip ? " flip" : ""}`} onPointerMove={move} onPointerLeave={reset}
-      onClick={() => setFlip(!flip)} aria-pressed={flip} aria-label="Shannon Liu ID badge. Press to flip.">
-      <span className="badge-clip" aria-hidden="true" />
+      onClick={() => setFlip(!flip)} aria-pressed={flip} aria-label="USC student ID. Press to flip for a little more about Shannon.">
       <span className="face front">
-        <small>USC · VITERBI SCHOOL OF ENGINEERING</small>
-        <b className="mono-mark" aria-hidden="true">SL</b>
-        <strong>Shannon Liu</strong>
-        <span>Computer Science & Engineering</span>
-        <small>CLASS OF DEC 2028</small>
+        <Img f="about-usc-id.png" w={1400} h={600} alt="Shannon Liu USC student ID, with student number obscured" />
       </span>
       <span className="face back">
         <small>CURRENTLY</small>
