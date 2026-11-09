@@ -3,3 +3,23 @@
 @media(max-width:950px){.nav-label{display:none}.nav nav{margin-left:auto}.cover-grid{grid-template-columns:1fr 1fr}.cover h1{font-size:77px}.cover-art{min-height:400px}.cover-orbit{font-size:150px}.feature-mini{grid-template-columns:1fr 1fr}.featured-writing h3{font-size:80px}.about-columns{grid-template-columns:1fr 270px;gap:30px}}
 @media(max-width:680px){.nav{padding:18px 5%;flex-wrap:wrap}.nav .logo{font-size:25px}.nav nav{gap:13px}.nav nav button{font-size:11px}.cover{padding-top:38px}.cover-grid,.selected-intro,.features,.case-grid,.about-columns,.resume-content{grid-template-columns:1fr}.cover-art{min-height:300px;margin-top:30px}.cover h1,.secondary h1,.case-top h1{font-size:clamp(62px,13vw,90px)}.cover-orbit{font-size:125px}.issue-line{gap:20px}.selected{padding-top:55px}.feature-mini{grid-template-columns:1fr}.featured-writing{padding:30px}.featured-writing h3{font-size:84px;margin:25px 0}.featured-graphic{min-height:280px}.flavors-visual,.physics-visual{height:320px}.more-work button{grid-template-columns:1fr auto;gap:5px}.more-work button b{grid-column:1/-1;grid-row:2}.more-work button span:last-child{grid-column:2;grid-row:1}.endcap{padding:50px 5%}.secondary,.case{padding:45px 5% 70px}.secondary h1{margin-bottom:38px}.id-badge{max-width:340px}.experience-list article{grid-template-columns:35px 1fr}.experience-list time{grid-column:2;text-align:left}.case-grid{padding:50px 0}.case-grid h2{font-size:45px}.case-top h1{font-size:66px}.flavors-display{flex-direction:column;gap:16px;padding-bottom:60px}.flavors-word{font-size:54px}.flavors-caption{font-size:9px}.award-list{grid-template-columns:1fr}.next-project{gap:15px}.next-project button{font-size:25px}footer{flex-wrap:wrap}footer>span{display:none}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+
+
+/* Real-media gallery enhancements */
+.asset-gallery{padding:54px 0 44px;border-bottom:1px solid #c5bdb0}
+.asset-gallery h2{font:normal 47px 'DM Serif Display',Georgia,serif;margin:10px 0 25px;letter-spacing:-.035em}
+.asset-gallery>p{font-size:13px;line-height:1.5;color:#625b56}
+.gallery-horizontal{display:block;width:100%;max-height:560px;object-fit:contain;background:#e8e1d5;padding:20px}
+.flavors-gallery{display:grid;grid-template-columns:1.4fr .65fr;gap:20px;align-items:stretch;background:#b92231;padding:26px}
+.flavors-gallery>img{width:100%;min-width:0;max-height:500px;object-fit:contain;background:#fbf5e9}
+.certificate-preview{max-width:750px;overflow:hidden;background:#e1e7eb;display:flex;margin:25px 0;padding:12px}
+.certificate-preview img{display:block;max-width:none;width:200%;height:auto;flex-shrink:0}
+.certificate-preview.right img{transform:translateX(-50%)}
+.video-frame.real-photo{border:7px solid #eac95c;outline:4px solid #f9f4e8;background:#ece3c5;box-shadow:12px 12px #17223b9c;padding:0;overflow:hidden;gap:0;display:flex;flex-direction:column;justify-content:stretch}
+.video-frame.real-photo img{width:100%;flex:1;min-height:0;display:block;object-fit:cover}
+.video-frame.real-photo small{background:#142e57;color:#fff;width:100%;font-size:8px;letter-spacing:.05em;padding:8px 5px}
+.mini-phone.real-flavors{padding:0;overflow:hidden;background:#fbf6ec;border:4px solid #faf8ee;height:330px;width:220px;box-shadow:0 16px 35px #3e0a1760}
+.mini-phone.real-flavors img{width:100%;height:100%;object-fit:cover;display:block}
+.physics-certificate{position:absolute;right:12px;bottom:12px;width:135px;height:90px;overflow:hidden;background:#fff;border:3px solid white;transform:rotate(5deg)}
+.physics-certificate img{display:block;width:200%;max-width:none;transform:translateX(-50%)}
+@media(max-width:680px){.flavors-gallery{grid-template-columns:1fr 1fr;padding:10px;gap:8px}.asset-gallery h2{font-size:37px}.gallery-horizontal{padding:10px}.physics-certificate{width:105px;height:65px}.video-frame.real-photo{width:84%;}}
