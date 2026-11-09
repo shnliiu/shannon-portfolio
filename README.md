@@ -1,22 +1,18 @@
 # Shannon Liu — Portfolio
 
-A personal software engineering portfolio built with React and Vite. It highlights selected AI, web, and product projects, experience, and resume access.
+React + Vite, deployed to GitHub Pages by `.github/workflows/deploy.yml`. Hash routing (`#/work/mini-clint`) keeps deep links working on Pages.
 
-Development: `npm install` then `npm run dev`.
+    npm install
+    npm run dev      # local
+    npm run build    # production build into dist/
 
-Deployment: GitHub Actions builds the website for GitHub Pages. Enable **Settings → Pages → GitHub Actions** to publish.
+## Adding content
+- **Projects, experience, résumé link:** edit `src/data.js`. A project is one object; add it to `projects`.
+- **Images:** put files in `public/assets/img/` and reference them in the project's `media` list with their real width/height (used to prevent layout shift). Add public-safe PDFs or other files under `public/` and link them from the project's `links`.
+- **Résumé PDF:** place `Shannon_Liu_Resume.pdf` in `public/`, then set `RESUME_URL` in `src/data.js`. Until then the page says plainly that the PDF is not published.
 
-This is a starter version. Replace visual placeholders with approved project images, videos, and a public-safe resume before sharing it with recruiters.
-
-
-## Public media currently in use
-
-The website includes compressed previews derived from Shannon's original project materials:
-
-- `public/assets/mini-clint-photos.svg`: Mini Clint team photo and first-place award
-- `public/assets/flavors-interface.svg`: privacy-redacted Flavors check-in scanner screen
-- `public/assets/flavors-member-pass.svg`: privacy-redacted member pass screen
-- `public/assets/award-certificates.svg`: AWS Bedrock certificate (Mini Clint) and Chinchilla AI mentorship certificate (Physics AI), shown in separate cropped views
-- Mini Clint demonstration: embedded from https://www.youtube.com/watch?v=ty9m0VWL6cA
-
-These SVG containers embed small JPEG previews. They are not the original high-resolution files. Keep member-identifying details and scannable QR credentials out of public materials. The downloadable resume and full certificate files are not yet deployed.
+## Media provenance (read before publishing more)
+- `mini-clint-team.jpg`, `mini-clint-first-place.jpg`, `flavors-pass.jpg`, `flavors-scanner.jpg` are the real images, cropped out of the old SVG wrappers. They are **small previews (<= 390px)**, not originals. Replace them with the original files when available; the layout adapts.
+- The old AWS and Chinchilla certificate previews were **corrupted** (the embedded JPEG data was damaged) and were removed. Certificates appear as text credentials until clean originals are added.
+- The Physics AI diagram is drawn from `physics-aid/src/app/api/chat/route.ts` and is labeled as a diagram, not a screenshot.
+- Flavors images are privacy-redacted. Never add member names, student info, scannable QR codes or private backend URLs.
