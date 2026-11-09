@@ -288,3 +288,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--brick);outline-offs
   .reveal-ready.entered,.cover-collage.reveal-ready.entered{animation:none;opacity:1;transform:none}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
+
+
+/* Draw play symbol in CSS so mobile browsers cannot substitute an emoji glyph. */
+.yt.poster .play{padding:0}
+.yt.poster .play::after,.cover-play::after{content:"";display:block;width:0;height:0;border-top:10px solid transparent;border-bottom:10px solid transparent;border-left:16px solid #fff;margin-left:5px}
+.cover-play{display:grid;place-items:center}
+.wordmark span{font-family:Georgia,serif;font-size:27px;font-weight:400;color:var(--brick)}
