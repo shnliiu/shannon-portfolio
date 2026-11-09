@@ -208,3 +208,19 @@ main{max-width:1450px;min-height:70vh;padding:0 3.7% 72px;background:transparent
 @media(max-width:850px){.gallery ul{grid-template-columns:repeat(2,minmax(0,1fr))}.gallery li button{height:260px}}
 @media(max-width:620px){.gallery ul{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 12px}.gallery li button{height:220px;padding:8px}.gallery li span{font-size:10px}.certificate-section{grid-template-columns:1fr;gap:20px}.certificate-preview-link{min-height:140px}.collage-film img{object-position:center 35%}}
 @media(max-width:380px){.gallery li button{height:175px}}
+
+
+/* LearningNCo — internship portfolio presentation */
+.internship-documents{padding:52px 0;margin-top:38px;border-top:1px solid var(--ink)}
+.internship-documents>h2{font:400 clamp(39px,5vw,72px)/1.04 var(--serif);letter-spacing:-.04em;margin:12px 0 25px}
+.internship-doc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.internship-doc-card{background:#e8e4db;min-height:250px;padding:27px;display:flex;align-items:start;flex-direction:column}
+.internship-doc-card:nth-child(2){background:#dce4dc}
+.internship-doc-num{font:500 10px var(--mono);letter-spacing:.09em;color:#585f5b}
+.internship-doc-card h3{font:400 clamp(31px,3.6vw,51px)/1.08 var(--serif);margin:29px 0 9px;letter-spacing:-.035em}
+.internship-doc-card p{font:400 13px/1.6 var(--sans);color:#555a57;margin:0 0 20px}
+.internship-doc-card a,.doc-pending{margin-top:auto;font:600 12px var(--sans)}
+.internship-doc-card a{color:#152b2c;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:6px}
+.doc-pending{color:#6b655f}
+.internship-disclosure{font:400 12px/1.65 var(--sans);color:#64635d;max-width:710px;margin:20px 0 0}
+@media(max-width:650px){.internship-doc-grid{grid-template-columns:1fr}.internship-doc-card{min-height:205px}}
