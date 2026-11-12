@@ -46,8 +46,8 @@ export const projects = [
     links: [{ label: "Source", href: "https://github.com/shnliiu/usc-flavors-attendance" }],
     sections: [
       ["Context", "The organization considered a digital wallet API for attendance, at roughly $50 per month, which was too expensive. I built an alternative with digital member passes, unique QR codes, an officer scanner interface, check-in tracking and meeting management. Google Sheets is the data source and Google Apps Script is the backend."],
-      ["The hard part", "When about 160 members tried to load their passes at the same time, the app slowed down substantially. We reduced unnecessary backend requests, including adjustments to polling behavior."],
-      ["Outcome", "The improved system has worked in use since. It has not been retested with 160 simultaneous users."],
+      ["Design, testing and improvement", "Built the pass and scanner workflow with Google Sheets, Apps Script, and static HTTPS pages to avoid an approximately $50/month paid service. When a large group attempted to open passes simultaneously, the site became slow; I adjusted polling and request frequency to reduce unnecessary backend traffic."],
+      ["Results and next steps", "The attendance system is functioning in subsequent use, and the test pass screenshots show its check-in states. I have not yet repeated the full simultaneous-load test, so capacity under a 160-person surge is still an open validation task."],
       ["Privacy", "The screenshots use a test account. Its QR credential has been disabled and is no longer valid."],
     ],
     media: [
@@ -69,7 +69,7 @@ export const projects = [
     sections: [
       ["Context", "During a four-week developer mentorship I learned Claude Code, MCP servers and AI-assisted engineering workflows. At Riverside City College, students used three separate textbooks with class materials scattered across chapters."],
       ["What I built", "A website with textbook selection, chapter navigation, practice problems and a retrieval-based AI tutoring chatbot. These core features worked."],
-      ["Not finished", "I explored a community forum for student questions and collaboration but did not complete it."],
+      ["Engineering decisions and next steps", "The delivered platform focused on making three textbooks searchable through chapter navigation, practice problems, and an AI tutor. I also explored adding a student forum, but kept it outside the completed scope because moderation and implementation requirements needed further work."],
     ],
     creds: ["Chinchilla AI Academy mentorship completion certificate"],
     media: [],
@@ -85,7 +85,7 @@ export const projects = [
     links: [{ label: "Live site", href: "https://harange.org" }],
     sections: [
       ["What I did", "Given Figma designs, I built the initial desktop website from scratch using Claude Code. I developed the frontend experience and created placeholder mosaic tiles because another team was building the backend."],
-      ["Not mine", "Mobile responsiveness and later integration work were done by teammates."],
+      ["Collaboration and scope", "I implemented the initial desktop frontend from Figma and created placeholder mosaic tiles while the backend was developed separately. Teammates subsequently handled mobile responsiveness and later integration, allowing us to divide responsibilities across the project."],
     ],
     media: [], missing: ["Screenshots of the site"],
   },
@@ -98,11 +98,11 @@ export const projects = [
     stack: ["Product design", "UI/UX", "Learning flows", "Technical handoff", "Canva"],
     links: [],
     sections: [
-      ["The work", "During my developer internship at LearningNCo in Seoul, I worked on educational application concepts for young English learners. My role focused on interface planning, design and documentation rather than deploying production software."],
+      ["Problem and approach", "LearningNCo wanted to turn existing English-learning materials into approachable digital experiences. I worked on vocabulary-learning interface designs and an implementation-ready SS101 product specification so the team could evaluate features and guide future development."],
       ["Vocabulary learning app", "I independently designed a 44-page vocabulary-learning app prototype covering onboarding, student learning journeys, themed flashcards, pronunciation and listening practice, quizzes, review, and progress tracking. The screens show how the experience would work, with design notes explaining key choices."],
       ["Sentence Stretching 101", "Our team proposed an application based on LearningNCo's Sentence Stretching 101 book. We explored its user experience in a concept presentation, then prepared a detailed 71-page developer handoff with proposed screens, feature behavior, user flows, and technical considerations."],
       ["My contribution", "I designed the vocabulary app prototype independently. The SS101 presentation and technical documentation were collaborative work. The 71-page manual is an internal draft and is not published on this portfolio."],
-      ["Project status", "These are UI concepts and implementation specifications, not fully built or launched applications."],
+      ["Outcome and learning", "Delivered a 44-page vocabulary-app prototype and contributed to a 71-page SS101 technical handoff that communicated user flows, feature requirements, and proposed APIs. I learned how to turn loosely defined educational ideas into concrete, reviewable product deliverables. The documents are designs and specifications, not evidence of a launched production app."],
     ],
     media: [
       { f: "learningnco-vocab-cover.webp", w: 1440, h: 810, alt: "Vocabulary learning app concept cover", cap: "Vocabulary learning prototype / cover" },
