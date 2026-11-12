@@ -348,49 +348,99 @@ function ClientWebsites() {
   );
 }
 
+const deskPieces = [
+  { id:"mini-clint", label:"01 / AI AGENTS", title:"Mini Clint", sub:"A math placement agent, built with a team.", photo:"mini-clint-terminal.jpg", positions:[{left:"3%",top:"12%",rotate:"-8deg"},{left:"53%",top:"34%",rotate:"6deg"}] },
+  { id:"usc-flavors", label:"02 / COMMUNITY", title:"Flavors Attendance", sub:"A faster way to check in.", photo:"flavors-scanner-login.jpg", positions:[{left:"32%",top:"7%",rotate:"5deg"},{left:"4%",top:"32%",rotate:"-5deg"}] },
+  { id:"physics-ai", label:"03 / EDUCATION", title:"Physics Study Hub", sub:"Three textbooks, one tutor.", photo:"physics-study-hub.jpg", positions:[{left:"62%",top:"20%",rotate:"-5deg"},{left:"30%",top:"5%",rotate:"-8deg"}] },
+  { id:"harange", label:"04 / WEB", title:"Harangè", sub:"A home for stories and voices.", photo:"harange-home.jpg", positions:[{left:"23%",top:"46%",rotate:"-3deg"},{left:"65%",top:"0%",rotate:"5deg"}] }
+];
+
+function InteractiveDesk() {
+  const [layout, setLayout] = useState(0);
+  const [offsets, setOffsets] = useState({});
+  const [front, setFront] = useState("harange");
+  const [dragging, setDragging] = useState(null);
+  const drag = useRef(null);
+  const startDrag = (e, id) => {
+    if (e.pointerType === "touch" || e.button !== 0) return;
+    const current = offsets[id] || { x: 0, y: 0 };
+    drag.current = { id, pointerId: e.pointerId, startX: e.clientX, startY: e.clientY, x: current.x, y: current.y };
+    e.currentTarget.setPointerCapture(e.pointerId);
+    setDragging(id);
+    setFront(id);
+  };
+  const moveDrag = (e) => {
+    const d = drag.current;
+    if (!d || d.pointerId !== e.pointerId) return;
+    const x = Math.max(-300, Math.min(300, d.x + e.clientX - d.startX));
+    const y = Math.max(-250, Math.min(250, d.y + e.clientY - d.startY));
+    setOffsets((old) => ({ ...old, [d.id]: { x, y } }));
+  };
+  const stopDrag = () => { drag.current = null; setDragging(null); };
+  const nudge = (e, id) => {
+    const steps = { ArrowLeft: [-20,0], ArrowRight: [20,0], ArrowUp: [0,-20], ArrowDown: [0,20] };
+    if (!steps[e.key]) return;
+    e.preventDefault();
+    const [dx,dy] = steps[e.key];
+    setOffsets((old) => {
+      const current = old[id] || { x:0, y:0 };
+      return { ...old, [id]: { x: Math.max(-300,Math.min(300,current.x+dx)), y:Math.max(-250,Math.min(250,current.y+dy)) } };
+    });
+    setFront(id);
+  };
+  return (
+    <section className="desk-section" aria-labelledby="desk-heading">
+      <div className="desk-heading-row">
+        <div><span className="desk-eyebrow">A LOOK INSIDE MY WORKSPACE</span><h2 id="desk-heading">A little bit of <em>everything.</em></h2></div>
+        <div className="desk-utilities"><p>Pick up the projects. Move them around. Open anything that catches your eye.</p><button type="button" onClick={() => { setLayout((n) => (n+1)%2); setOffsets({}); setFront("harange"); }}>Rearrange the desk</button></div>
+      </div>
+      <div className="desk-board">
+        <div className="desk-board-label">SHANNON'S DESK / PLEASE TOUCH</div>
+        <div className="desk-glass-corner" aria-hidden="true"><span/><span/><span/><span/></div>
+        {deskPieces.map((piece) => {
+          const base = piece.positions[layout];
+          const delta = offsets[piece.id] || {x:0,y:0};
+          return <article key={piece.id} className={`desk-piece desk-piece-${piece.id} ${dragging===piece.id?"is-dragging":""}`} style={{left:base.left,top:base.top,transform:`translate(${delta.x}px,${delta.y}px) rotate(${base.rotate})`,zIndex:front===piece.id?8:2}}>
+            <button className="desk-grab" type="button" aria-label={`Move ${piece.title} card using pointer or arrow keys`}
+              onPointerDown={(e)=>startDrag(e,piece.id)}
+              onPointerMove={moveDrag}
+              onPointerUp={stopDrag}
+              onPointerCancel={stopDrag}
+              onKeyDown={(e)=>nudge(e,piece.id)}
+              onFocus={()=>setFront(piece.id)}>
+              <span>{piece.label}</span><span aria-hidden="true">DRAG / MOVE</span>
+            </button>
+            <div className="desk-piece-picture"><Img f={piece.photo} w={800} h={550} alt={`${piece.title} project screenshot`} /></div>
+            <div className="desk-piece-footer"><div><strong>{piece.title}</strong><small>{piece.sub}</small></div><Link to={`work/${piece.id}`}>See project</Link></div>
+          </article>;
+        })}
+        <div className="desk-board-note">FOUR PROJECTS, MANY POSSIBILITIES</div>
+      </div>
+      <p className="desk-mobile-note">Tap a project to read its case study. On desktop, drag the top edge to move it around.</p>
+    </section>
+  );
+}
+
 function Work() {
   return (
     <>
-      <section className="portfolio-opening" aria-labelledby="opening-heading">
-        <div className="opening-index">
-          <span>SHANNON LIU / AN ONLINE PORTFOLIO</span>
-          <span>DESIGN · ENGINEERING · THINGS IN BETWEEN</span>
-          <span>2026 / LOS ANGELES</span>
-        </div>
-        <header className="opening-header">
-          <div className="opening-heading-group">
-            <span className="opening-overline">A PERSONAL COLLECTION</span>
-            <h1 id="opening-heading">Something <em>worth making.</em></h1>
+      <section className="personality-intro" aria-labelledby="personal-title">
+        <div className="personality-topline"><span>SHANNON LIU / MY LITTLE CORNER OF THE INTERNET</span><span>USC · CS&E · LOS ANGELES</span></div>
+        <div className="personality-hero">
+          <div className="personality-type">
+            <p className="personality-hello">HELLO, I'M SHANNON.</p>
+            <h1 id="personal-title">I make<br/><em>things.</em></h1>
+            <p className="personality-summary">From AI tutors to tiny tools that make everyday life easier, I love making ideas into things you can actually use.</p>
+            <div className="personality-actions"><Link to="about">The person behind the projects</Link><button type="button" onClick={() => document.getElementById("desk-heading")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"})}>Play with my work</button></div>
           </div>
-          <p>I'm Shannon. I study Computer Science & Engineering at USC and make AI tools, interactive websites, and software for people.</p>
-        </header>
-        <div className="opening-feature">
-          <div className="opening-feature-media">
-            <ShowcaseImage file="harange-home.jpg" fallback={<Img f="learningnco-vocab-lesson.webp" w={1440} h={810} alt="Screenshot of an educational web interface" />} />
+          <div className="personality-portrait">
+            <Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="Shannon smiling and holding an award at the Cal Poly AWS AI Summer Camp" />
+            <div className="personality-caption">SHANNON IRL / CAL POLY AWS AI SUMMER CAMP</div>
+            <span className="personality-photo-mark" aria-hidden="true">SL.</span>
           </div>
-          <div className="opening-feature-caption">
-            <span>FROM THE WORK ARCHIVE / DIGITAL EXPERIENCES</span>
-            <Link to="work/harange">EXPLORE HARANGÈ</Link>
-          </div>
-          <div className="opening-glass" aria-hidden="true"><i/><i/><i/><i/><i/><i/></div>
-          <span className="opening-feature-number" aria-hidden="true">01 / 05</span>
-        </div>
-        <div className="opening-after">
-          <figure className="opening-portrait">
-            <Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="Shannon holding an award at the Cal Poly AWS AI Summer Camp" />
-            <figcaption>HI, THAT'S ME / 2025</figcaption>
-          </figure>
-          <div className="opening-after-copy">
-            <span className="opening-overline">ABOUT THE PERSON BEHIND THE WORK</span>
-            <h2>Curious about <em>how things work.</em> Even more curious about making them.</h2>
-            <div className="opening-after-actions">
-              <button type="button" onClick={() => document.getElementById("selected-projects")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"})}>Browse projects</button>
-              <Link to="about">Get to know me</Link>
-            </div>
-          </div>
-          <div className="opening-after-index"><span>01—05</span><small>SOFTWARE PROJECTS</small><span>06—09</span><small>CLIENT WEBSITES</small></div>
         </div>
       </section>
+      <InteractiveDesk />
       <ProjectShowcase />
       <ClientWebsites />
       <section className="contact-strip">
