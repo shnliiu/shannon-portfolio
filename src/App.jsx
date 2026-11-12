@@ -351,40 +351,42 @@ function ClientWebsites() {
 function Work() {
   return (
     <>
-      <section className="gallery-cover" aria-labelledby="cover-title">
-        <div className="gallery-edition"><span>SHANNON LIU</span><span>AN ARCHIVE OF WORK & EXPERIMENTS</span><span>2026 / LOS ANGELES</span></div>
-        <div className="gallery-title-row">
-          <div className="gallery-title-lockup">
-            <span className="gallery-eyebrow">PORTFOLIO Nº 01 — COMPUTER SCIENCE & CREATIVE TECHNOLOGY</span>
-            <h1 id="cover-title">Shannon<br/><em>Liu</em><span className="gallery-period">.</span></h1>
+      <section className="atelier-opening" aria-labelledby="atelier-title">
+        <div className="atelier-edition"><span>SHANNON LIU / DIGITAL WORKS</span><span>2024—2026 / LOS ANGELES</span></div>
+        <div className="atelier-canvas">
+          <div className="atelier-photo-wrap">
+            <figure className="atelier-photo">
+              <Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="Shannon with an award at the Cal Poly AWS AI summer camp" />
+              <figcaption>CAL POLY / AWS AI SUMMER CAMP / 2025</figcaption>
+            </figure>
+            <div className="atelier-photo-index" aria-hidden="true">01 / 05</div>
           </div>
-          <div className="gallery-side-note">
-            <span>ABOUT THE PERSON</span>
-            <p>I'm a Computer Science & Engineering student at USC. I like building things people can actually use, from AI tools to websites.</p>
-            <Link to="about">A little more about me</Link>
-          </div>
-        </div>
-        <div className="gallery-composition">
-          <figure className="gallery-portrait">
-            <Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="Shannon receiving recognition at the Cal Poly AWS AI summer camp" />
-            <figcaption>THE BUILDER / SUMMER 2025</figcaption>
-          </figure>
-          <div className="gallery-case-file">
-            <span className="gallery-file-tab">OPEN FILE / 001</span>
-            <p className="gallery-file-preamble">AN ONGOING COLLECTION</p>
-            <h2>Ideas are meant to be <em>made.</em></h2>
-            <div className="gallery-file-copy">
-              <p>Five software projects, four client websites, and the things I learned along the way.</p>
-              <button type="button" onClick={() => document.getElementById("selected-projects")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth"})}>Explore selected work</button>
+          <div className="atelier-page">
+            <div className="atelier-page-top"><span>HELLO, I'M SHANNON</span><span>USC / COMPUTER SCIENCE & ENGINEERING</span></div>
+            <div className="atelier-story">
+              <h1 id="atelier-title">Making<br/><em>things</em><br/>happen<span className="atelier-dot">.</span></h1>
+              <p>I'm a USC Computer Science & Engineering student. I make AI tools, useful websites, and software for the communities around me.</p>
+              <div className="atelier-links">
+                <button type="button" onClick={() => document.getElementById("selected-projects")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth"})}>See what I've made</button>
+                <Link to="about">Meet Shannon</Link>
+              </div>
+            </div>
+            <div className="atelier-bottom">
+              <div className="atelier-caption"><span>THE WORK / SOFTWARE + DESIGN</span><strong>Made to be used.</strong></div>
+              <figure className="atelier-detail">
+                <Img f="learningnco-vocab-lesson.webp" w={1440} h={810} alt="LearningNCo vocabulary learning interface" />
+                <figcaption>LEARNINGNCO / VOCABULARY APP</figcaption>
+              </figure>
             </div>
           </div>
-          <figure className="gallery-detail-photo">
-            <Img f="learningnco-vocab-lesson.webp" w={1440} h={810} alt="Screenshot of an interactive vocabulary application" />
-            <figcaption>FROM THE ARCHIVE / LEARNINGNCO</figcaption>
-          </figure>
-          <span className="gallery-side-type" aria-hidden="true">ENGINEERING / DESIGN / PEOPLE</span>
+          <div className="atelier-card">
+            <span>PERSONAL FILE / 001</span>
+            <strong>Shannon Liu</strong>
+            <small>CODE / DESIGN / CURIOSITY</small>
+            <Link to="about">About the builder</Link>
+          </div>
         </div>
-        <div className="gallery-bottom-meta"><span>01—05 / FEATURED PROJECTS</span><span>PLUS FOUR CLIENT WEBSITES</span><span>AVAILABLE SUMMER 2027</span></div>
+        <div className="atelier-tail"><span>FIVE SOFTWARE PROJECTS</span><span>FOUR CLIENT WEBSITES</span><span>KEEP SCROLLING TO EXPLORE</span></div>
       </section>
       <ProjectShowcase />
       <ClientWebsites />
