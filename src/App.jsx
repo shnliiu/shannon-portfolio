@@ -351,39 +351,45 @@ function ClientWebsites() {
 function Work() {
   return (
     <>
-      <section className="glass-home" aria-labelledby="glass-home-title">
-        <div className="glass-home-intro">
-          <span>SHANNON LIU / PORTFOLIO</span>
-          <span>COMPUTER SCIENCE · CREATIVE TECHNOLOGY</span>
-          <span>LOS ANGELES / 2026</span>
+      <section className="portfolio-opening" aria-labelledby="opening-heading">
+        <div className="opening-index">
+          <span>SHANNON LIU / AN ONLINE PORTFOLIO</span>
+          <span>DESIGN · ENGINEERING · THINGS IN BETWEEN</span>
+          <span>2026 / LOS ANGELES</span>
         </div>
-        <div className="glass-home-title">
-          <h1 id="glass-home-title">A little curiosity.<br/><em>A lot of making.</em></h1>
-          <p>I'm Shannon, a Computer Science & Engineering student at USC. I build AI tools, websites, and practical things for people.</p>
-        </div>
-        <div className="glass-home-feature">
-          <div className="glass-feature-photo">
-            <Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="Shannon with her award at the Cal Poly AWS AI Summer Camp" />
-            <span className="glass-photo-caption">SHANNON / CAL POLY AWS AI SUMMER CAMP, 2025</span>
+        <header className="opening-header">
+          <div className="opening-heading-group">
+            <span className="opening-overline">A PERSONAL COLLECTION</span>
+            <h1 id="opening-heading">Something <em>worth making.</em></h1>
           </div>
-          <div className="glass-feature-identity">
-            <div className="glass-feature-top">
-              <span>01 / THE PERSON BEHIND THE WORK</span>
-              <span>USC / CS&E</span>
-            </div>
-            <p className="glass-feature-headline">Hi, I'm<br/><em>Shannon.</em></p>
-            <div className="glass-feature-bottom">
-              <span>CODE, DESIGN & THE SPACE IN BETWEEN</span>
-              <div className="glass-home-actions">
-                <button type="button" onClick={() => document.getElementById("selected-projects")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"})}>Explore projects</button>
-                <Link to="about">Get to know me</Link>
-              </div>
+          <p>I'm Shannon. I study Computer Science & Engineering at USC and make AI tools, interactive websites, and software for people.</p>
+        </header>
+        <div className="opening-feature">
+          <div className="opening-feature-media">
+            <ShowcaseImage file="harange-home.jpg" fallback={<Img f="learningnco-vocab-lesson.webp" w={1440} h={810} alt="Screenshot of an educational web interface" />} />
+          </div>
+          <div className="opening-feature-caption">
+            <span>FROM THE WORK ARCHIVE / DIGITAL EXPERIENCES</span>
+            <Link to="work/harange">EXPLORE HARANGÈ</Link>
+          </div>
+          <div className="opening-glass" aria-hidden="true"><i/><i/><i/><i/><i/><i/></div>
+          <span className="opening-feature-number" aria-hidden="true">01 / 05</span>
+        </div>
+        <div className="opening-after">
+          <figure className="opening-portrait">
+            <Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="Shannon holding an award at the Cal Poly AWS AI Summer Camp" />
+            <figcaption>HI, THAT'S ME / 2025</figcaption>
+          </figure>
+          <div className="opening-after-copy">
+            <span className="opening-overline">ABOUT THE PERSON BEHIND THE WORK</span>
+            <h2>Curious about <em>how things work.</em> Even more curious about making them.</h2>
+            <div className="opening-after-actions">
+              <button type="button" onClick={() => document.getElementById("selected-projects")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"})}>Browse projects</button>
+              <Link to="about">Get to know me</Link>
             </div>
           </div>
-          <div className="glass-feature-fragment" aria-hidden="true"></div>
+          <div className="opening-after-index"><span>01—05</span><small>SOFTWARE PROJECTS</small><span>06—09</span><small>CLIENT WEBSITES</small></div>
         </div>
-        <div className="glass-block-run" aria-hidden="true"></div>
-        <div className="glass-home-foot"><span>FIVE FEATURED PROJECTS</span><span>FOUR CLIENT WEBSITES</span><span>SCROLL TO EXPLORE</span></div>
       </section>
       <ProjectShowcase />
       <ClientWebsites />
