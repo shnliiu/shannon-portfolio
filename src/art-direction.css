@@ -683,55 +683,100 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--brick);outline-offs
 }
 
 
-/* Center the Physics Study Hub homepage inside the expanded card.
-   The blurred duplicate fills its background without stretching or clipping the page. */
+
+
+/* Project-specific editorial lettering and full-bleed Physics homepage.
+   Only project titles and cursor-follow labels use expressive display fonts. */
 .showcase-panel .scene-physics,
-.showcase-panel.is-active .scene-physics {
+.showcase-panel.is-active .scene-physics{
   position:absolute!important;
   inset:0!important;
   display:block!important;
+  width:100%!important;
+  height:100%!important;
   padding:0!important;
+  background:#111a2b!important;
   overflow:hidden!important;
-  background:#111b2f!important;
 }
-.showcase-panel .scene-physics .physics-image-backdrop,
-.showcase-panel .scene-physics .physics-image-centered {
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  overflow:hidden;
-}
-.showcase-panel .scene-physics .physics-image-backdrop img{
-  width:100%!important;
-  height:100%!important;
-  object-fit:cover!important;
-  object-position:center!important;
-  filter:blur(14px) brightness(.6)!important;
-  transform:scale(1.08)!important;
-}
-.showcase-panel .scene-physics .physics-image-centered{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:1;
-}
-.showcase-panel .scene-physics .physics-image-centered img{
+.showcase-panel .scene-physics>img,
+.showcase-panel.is-active .scene-physics>img{
+  position:absolute!important;
+  inset:0!important;
   display:block!important;
-  position:relative!important;
   width:100%!important;
   height:100%!important;
-  object-fit:contain!important;
-  object-position:50% 50%!important;
-  padding:0!important;
-  margin:0!important;
-  transform:none!important;
-  border:0!important;
   max-width:none!important;
   max-height:none!important;
-  filter:none!important;
-}
-.showcase-panel:not(.is-active) .scene-physics .physics-image-centered img{
+  padding:0!important;
+  margin:0!important;
+  border:0!important;
+  transform:none!important;
   object-fit:cover!important;
-  opacity:.76;
+  object-position:50% 50%!important;
+  image-rendering:auto;
+}
+.showcase-panel:not(.is-active) .scene-physics>img{filter:brightness(.75) saturate(.85)!important}
+.showcase-panel.is-active .scene-physics>img{filter:brightness(.94) saturate(.96)!important}
+/* Mini Clint: expressive, slightly playful humanist serif. */
+.showcase-panel:nth-child(1) .showcase-name,
+.showcase-stage[data-active="0"] .showcase-cursor{
+  font-family:"Fraunces",Georgia,serif!important;
+  font-weight:800!important;
+  font-style:italic!important;
+  letter-spacing:-.065em!important;
+}
+/* Flavors: punchy condensed lettering that echoes the project's strong branding. */
+.showcase-panel:nth-child(2) .showcase-name,
+.showcase-stage[data-active="1"] .showcase-cursor{
+  font-family:"Barlow Condensed","Arial Narrow",Impact,sans-serif!important;
+  font-weight:900!important;
+  font-style:normal!important;
+  text-transform:uppercase!important;
+  letter-spacing:-.025em!important;
+}
+/* Physics Study Hub: structured yet friendly technical type. */
+.showcase-panel:nth-child(3) .showcase-name,
+.showcase-stage[data-active="2"] .showcase-cursor{
+  font-family:"Space Grotesk",Arial,sans-serif!important;
+  font-weight:700!important;
+  font-style:normal!important;
+  letter-spacing:-.065em!important;
+}
+/* Harangè: expressive exhibition-style italic serif. */
+.showcase-panel:nth-child(4) .showcase-name,
+.showcase-stage[data-active="3"] .showcase-cursor{
+  font-family:"Instrument Serif",Georgia,serif!important;
+  font-weight:400!important;
+  font-style:italic!important;
+  letter-spacing:-.025em!important;
+}
+/* LearningNCo: rounded, youthful display lettering. */
+.showcase-panel:nth-child(5) .showcase-name,
+.showcase-stage[data-active="4"] .showcase-cursor{
+  font-family:"Bricolage Grotesque",Arial,sans-serif!important;
+  font-weight:800!important;
+  font-style:normal!important;
+  letter-spacing:-.06em!important;
+}
+.showcase-panel.is-active .showcase-name{
+  white-space:normal!important;
+  overflow-wrap:break-word!important;
+  word-break:normal!important;
+  hyphens:none!important;
+  max-width:100%!important;
+}
+.showcase-panel:nth-child(2).is-active .showcase-name{font-size:clamp(34px,3.5vw,54px)!important;line-height:.98!important}
+.showcase-panel:nth-child(3).is-active .showcase-name{font-size:clamp(31px,3vw,46px)!important;line-height:1.05!important}
+.showcase-panel:nth-child(4).is-active .showcase-name{font-size:clamp(40px,4vw,61px)!important}
+.showcase-panel:nth-child(5).is-active .showcase-name{font-size:clamp(31px,2.8vw,45px)!important}
+.showcase-stage[data-active="1"] .showcase-cursor,
+.showcase-stage[data-active="2"] .showcase-cursor{
+  font-size:clamp(24px,2.5vw,38px)!important;
+  max-width:min(440px,60vw)!important;
+  overflow-wrap:break-word!important;
+}
+@media(max-width:760px){
+  .showcase-panel:nth-child(2).is-active .showcase-name{font-size:clamp(32px,7.5vw,45px)!important}
+  .showcase-panel:nth-child(3).is-active .showcase-name{font-size:clamp(28px,6.6vw,40px)!important}
+  .showcase-panel:nth-child(5).is-active .showcase-name{font-size:clamp(28px,6.5vw,41px)!important}
 }
