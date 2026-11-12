@@ -326,6 +326,46 @@ function DocumentLink({ file }) {
   return ready ? <a href={href} target="_blank" rel="noopener noreferrer">View presentation PDF</a> : <span className="doc-pending">Presentation PDF not yet uploaded</span>;
 }
 
+function HarangeLivePreview() {
+  const [previewOpen, setPreviewOpen] = useState(false);
+  return (
+    <section className="harange-live" aria-labelledby="harange-live-title">
+      <div className="harange-live-heading">
+        <div>
+          <p className="label">INTERACTIVE PROJECT PREVIEW</p>
+          <h2 id="harange-live-title">Explore the real website.</h2>
+          <p>Browse the live Harangè site here, or open it full screen. This is the actual public website, not a recreation.</p>
+        </div>
+        <a href="https://www.harange.org/" target="_blank" rel="noopener noreferrer" className="harange-open-site">Open full website</a>
+      </div>
+      <div className="harange-browser">
+        <div className="harange-browser-bar">
+          <div className="harange-browser-dots" aria-hidden="true"><span/><span/><span/></div>
+          <span className="harange-browser-address">www.harange.org</span>
+          <span className="harange-browser-status">LIVE SITE</span>
+        </div>
+        {previewOpen ? (
+          <iframe
+            title="Interactive preview of the Harangè website"
+            src="https://www.harange.org/"
+            loading="lazy"
+            referrerPolicy="strict-origin-when-cross-origin"
+            className="harange-iframe"
+          />
+        ) : (
+          <div className="harange-preview-intro">
+            <span>HARANGÈ / GIRLSWHOML × MOZILLA FESTIVAL 2025</span>
+            <strong>Experience the live project.</strong>
+            <p>Open the interactive preview to browse Harangè from within this portfolio.</p>
+            <button type="button" onClick={() => setPreviewOpen(true)}>Launch interactive preview</button>
+          </div>
+        )}
+      </div>
+      <p className="harange-embed-note">Some browsers or website security settings may prevent embedded viewing. If the preview is blank or displays an error, use <a href="https://www.harange.org/" target="_blank" rel="noopener noreferrer">Open full website</a> instead.</p>
+    </section>
+  );
+}
+
 function Case({ id }) {
   const [internshipReady, setInternshipReady] = useState(false);
   useEffect(() => {
@@ -350,6 +390,7 @@ function Case({ id }) {
         <span className="chip">{p.badge}</span>
       </header>
       {p.video && <section aria-label="Project demonstration video" className="case-video"><Video id={p.video} title={`${p.title} project demonstration`} /></section>}
+      {p.id === "harange" && <HarangeLivePreview />}
       {p.layout === "diagram" && <Diagram />}
       <div className="case-body">
         <div className="prose">{p.sections.map(([h, t]) => <section key={h}><h2>{h}</h2><p>{t}</p></section>)}</div>
