@@ -351,42 +351,39 @@ function ClientWebsites() {
 function Work() {
   return (
     <>
-      <section className="cover-intro studio-cover">
-        <div className="studio-overline">
-          <span>SHANNON LIU / PORTFOLIO</span>
-          <span>ENGINEERING + DESIGN</span>
-          <span>LOS ANGELES / 2026</span>
-        </div>
-        <div className="studio-masthead">
-          <h1><span>Shannon</span><span>Liu<span className="studio-period">.</span></span></h1>
-          <div className="studio-introduction">
-            <span className="studio-smallcaps">A NOTE FROM THE MAKER</span>
-            <p>I'm a Computer Science & Engineering student at USC. I build AI tools, useful websites, and small solutions to everyday problems.</p>
-            <div className="studio-actions">
-              <button type="button" onClick={() => document.getElementById("selected-projects")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth"})}>Explore selected work</button>
-              <Link to="about">About me</Link>
+      <section className="folio-cover" aria-labelledby="folio-title">
+        <div className="folio-meta"><span>SL / 2026</span><span>A PERSONAL COLLECTION OF THINGS I'VE MADE</span><span>LOS ANGELES, CA</span></div>
+        <div className="folio-head">
+          <div className="folio-name">
+            <span className="folio-kicker">DESIGNED, BUILT & CURIOUS</span>
+            <h1 id="folio-title">Shannon <em>Liu.</em></h1>
+          </div>
+          <div className="folio-description">
+            <p>I'm a Computer Science & Engineering student at USC who likes making useful things feel good to use.</p>
+            <div className="folio-actions">
+              <button type="button" onClick={() => document.getElementById("selected-projects")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth"})}>Selected work</button>
+              <Link to="about">More about me</Link>
             </div>
           </div>
         </div>
-        <div className="studio-gallery" aria-label="Shannon's work and creative process">
-          <figure className="studio-gallery-main">
-            <Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="Shannon holding an award at the Cal Poly AWS AI summer camp" />
-            <figcaption>01 / BUILDING WITH PEOPLE · CAL POLY AWS AI SUMMER CAMP</figcaption>
+        <div className="folio-visuals">
+          <figure className="folio-photo">
+            <Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="Shannon with an award from the Cal Poly AWS AI summer camp" />
+            <figcaption><span>01 / REAL-WORLD PROBLEMS</span><span>CAL POLY / 2025</span></figcaption>
           </figure>
-          <div className="studio-gallery-side">
-            <div className="studio-side-heading">
-              <span>BEHIND THE WORK</span>
-              <p>Projects made from curiosity, constraints, and a lot of figuring things out.</p>
+          <div className="folio-sidebar">
+            <div className="folio-blueprint">
+              <span>IN MY ELEMENT</span>
+              <strong>Code, design, and everything in between.</strong>
+              <small>ENGINEERING / DIGITAL EXPERIENCES / PEOPLE</small>
             </div>
-            <figure className="studio-gallery-detail">
-              <Img f="learningnco-vocab-lesson.webp" w={1440} h={810} alt="Vocabulary learning app interface designed during the LearningNCo internship" />
-              <figcaption>02 / INTERFACES FOR LEARNING</figcaption>
+            <figure className="folio-interface">
+              <Img f="learningnco-vocab-lesson.webp" w={1440} h={810} alt="Vocabulary learning app interface from LearningNCo" />
+              <figcaption>02 / MAKING LEARNING MORE APPROACHABLE</figcaption>
             </figure>
-            <Link to="resume" className="studio-resume">The résumé <span>PDF / 2026</span></Link>
           </div>
-          <div className="studio-stamp" aria-hidden="true"><span>SL</span><small>MADE WITH INTENTION</small></div>
         </div>
-        <div className="studio-bottomline"><span>SCROLL TO EXPLORE FIVE FEATURED PROJECTS</span><span>AVAILABLE SUMMER 2027</span></div>
+        <div className="folio-foot"><span>05 FEATURED ENGINEERING PROJECTS</span><span>04 CLIENT WEBSITES</span><span>AVAILABLE SUMMER 2027</span></div>
       </section>
       <ProjectShowcase />
       <ClientWebsites />
