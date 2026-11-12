@@ -233,7 +233,7 @@ function ProjectShowcase() {
     );
     if (p.id === "harange") return (
       <div className="cover-scene scene-harange">
-        <div className="harange-art"><span>MOSAIC OF VOICES</span><strong>Harangè</strong><span>GIRLSWHOML / MOZILLA FESTIVAL</span></div>
+        <div className="harange-art" aria-hidden="true"><i/><i/><i/><i/><i/><i/><i/><i/><i/></div>
       </div>
     );
     return (
