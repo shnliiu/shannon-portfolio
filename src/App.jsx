@@ -351,35 +351,39 @@ function ClientWebsites() {
 function Work() {
   return (
     <>
-      <section className="brand-cover" aria-labelledby="brand-cover-title">
-        <div className="brand-overline"><span>SHANNON LIU / PERSONAL PORTFOLIO</span><span>ENGINEERING × DESIGN × COMMUNITY</span><span>2026 / LOS ANGELES</span></div>
-        <div className="brand-stage">
-          <div className="brand-intro">
-            <div className="brand-intro-top">
-              <span className="brand-issue">INDEPENDENT WORK / VOL. 01</span>
-              <span className="brand-orbit" aria-hidden="true"></span>
+      <section className="glass-home" aria-labelledby="glass-home-title">
+        <div className="glass-home-intro">
+          <span>SHANNON LIU / PORTFOLIO</span>
+          <span>COMPUTER SCIENCE · CREATIVE TECHNOLOGY</span>
+          <span>LOS ANGELES / 2026</span>
+        </div>
+        <div className="glass-home-title">
+          <h1 id="glass-home-title">A little curiosity.<br/><em>A lot of making.</em></h1>
+          <p>I'm Shannon, a Computer Science & Engineering student at USC. I build AI tools, websites, and practical things for people.</p>
+        </div>
+        <div className="glass-home-feature">
+          <div className="glass-feature-photo">
+            <Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="Shannon with her award at the Cal Poly AWS AI Summer Camp" />
+            <span className="glass-photo-caption">SHANNON / CAL POLY AWS AI SUMMER CAMP, 2025</span>
+          </div>
+          <div className="glass-feature-identity">
+            <div className="glass-feature-top">
+              <span>01 / THE PERSON BEHIND THE WORK</span>
+              <span>USC / CS&E</span>
             </div>
-            <h1 id="brand-cover-title">A LITTLE<br/>BIT OF <span>EVERYTHING.</span></h1>
-            <div className="brand-intro-footer">
-              <p>I'm Shannon, a USC Computer Science & Engineering student making AI tools, web experiences, and useful things for real people.</p>
-              <div className="brand-cta">
-                <button type="button" onClick={() => document.getElementById("selected-projects")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"})}>Explore the work</button>
+            <p className="glass-feature-headline">Hi, I'm<br/><em>Shannon.</em></p>
+            <div className="glass-feature-bottom">
+              <span>CODE, DESIGN & THE SPACE IN BETWEEN</span>
+              <div className="glass-home-actions">
+                <button type="button" onClick={() => document.getElementById("selected-projects")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"})}>Explore projects</button>
                 <Link to="about">Get to know me</Link>
               </div>
             </div>
           </div>
-          <figure className="brand-portrait">
-            <Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="Shannon at the Cal Poly AWS AI summer camp with her award" />
-            <figcaption><span>ME, WITH A VERY PURPLE TROPHY</span><span>01 / 2025</span></figcaption>
-          </figure>
-          <div className="brand-stamp"><span>SHANNON</span><strong>LIU</strong><small>CS&E · USC</small></div>
+          <div className="glass-feature-fragment" aria-hidden="true"></div>
         </div>
-        <div className="brand-filmstrip" aria-label="Glimpses of featured projects">
-          <div className="brand-film-label"><span>THE INDEX</span><strong>Things I've<br/>worked on.</strong></div>
-          <figure><ShowcaseImage file="mini-clint-terminal.jpg" fallback={<Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="" />} /><figcaption>01 / AI AGENTS</figcaption></figure>
-          <figure><Img f="flavors-scanner-login.jpg" w={920} h={1640} alt="Flavors attendance app" /><figcaption>02 / COMMUNITY TOOLS</figcaption></figure>
-          <figure><ShowcaseImage file="harange-home.jpg" fallback={<Img f="learningnco-vocab-lesson.webp" w={1440} h={810} alt="" />} /><figcaption>03 / WEB EXPERIENCES</figcaption></figure>
-        </div>
+        <div className="glass-block-run" aria-hidden="true"></div>
+        <div className="glass-home-foot"><span>FIVE FEATURED PROJECTS</span><span>FOUR CLIENT WEBSITES</span><span>SCROLL TO EXPLORE</span></div>
       </section>
       <ProjectShowcase />
       <ClientWebsites />
