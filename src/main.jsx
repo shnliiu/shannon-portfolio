@@ -3,5 +3,5 @@ import App from "./App.jsx";
 import "./styles.css";
 import "./art-direction.css";
 import "./editorial-archive.css";
-import "./rebrand.css";
+import "./glass-editorial.css";
 createRoot(document.getElementById("root")).render(<App />);
