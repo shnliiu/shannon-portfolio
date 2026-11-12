@@ -3,4 +3,5 @@ import App from "./App.jsx";
 import "./styles.css";
 import "./art-direction.css";
 import "./editorial-archive.css";
+import "./gallery-direction.css";
 createRoot(document.getElementById("root")).render(<App />);
