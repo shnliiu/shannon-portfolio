@@ -181,12 +181,10 @@ function Plate({ p }) {
 }
 
 function ShowcaseImage({ file, fallback }) {
-  return <img src={img(file)} alt="" loading="lazy" decoding="async" onError={(event) => {
-    const el = event.currentTarget;
-    if (el.dataset.fallbackApplied === "true") return;
-    el.dataset.fallbackApplied = "true";
-    el.src = img(fallback);
-  }} />;
+  const [unavailable, setUnavailable] = useState(false);
+  if (unavailable) return fallback;
+  return <img src={img(file)} alt="" loading="lazy" decoding="async"
+    onError={() => setUnavailable(true)} />;
 }
 
 function ProjectShowcase() {
@@ -225,7 +223,7 @@ function ProjectShowcase() {
   const visual = (p, isActive) => {
     if (p.id === "mini-clint") return (
       <div className="cover-scene scene-clint">
-        <ShowcaseImage file="mini-clint-terminal.jpg" fallback="mini-clint-award-photo.jpg" />
+        <ShowcaseImage file="mini-clint-terminal.jpg" fallback={<Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="" />} />
       </div>
     );
     if (p.id === "usc-flavors") return (
@@ -237,12 +235,12 @@ function ProjectShowcase() {
     );
     if (p.id === "physics-ai") return (
       <div className="cover-scene scene-physics">
-        <ShowcaseImage file="physics-study-hub.jpg" fallback="learningnco-vocab-cover.webp" />
+        <ShowcaseImage file="physics-study-hub.jpg" fallback={<div className="cover-screenshot-pending">Physics Study Hub</div>} />
       </div>
     );
     if (p.id === "harange") return (
       <div className="cover-scene scene-harange">
-        <ShowcaseImage file="harange-home.jpg" fallback="learningnco-ss101-cover.webp" />
+        <ShowcaseImage file="harange-home.jpg" fallback={<div className="cover-screenshot-pending">Harangè / Live website</div>} />
       </div>
     );
     return (
