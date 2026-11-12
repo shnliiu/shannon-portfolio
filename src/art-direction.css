@@ -391,3 +391,71 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--brick);outline-offs
 .case-quicklinks .ext{display:inline-flex;align-items:center;border:1px solid var(--ink);padding:11px 18px;background:var(--ink);color:#fff;text-decoration:none;font:600 12px/1.35 var(--sans)}
 .case-quicklinks .ext:hover{background:var(--brick);border-color:var(--brick)}
 @media(max-width:760px){.case-quicklinks .ext{width:100%;justify-content:center;text-align:center}}
+
+
+/* November 2026 editorial cover art direction.
+   Real work remains available in case-study media; these are curated cover treatments. */
+.showcase-visual .cover-scene{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;display:flex;align-items:center;justify-content:center;isolation:isolate}
+.showcase-panel .cover-scene{transform:scale(1);transition:transform .65s cubic-bezier(.2,.7,.2,1)}
+.showcase-panel.is-active .cover-scene{transform:scale(1.015)}
+.showcase-visual .cover-scene img{display:block;width:100%;height:100%;object-fit:cover;filter:none!important;transform:none!important;max-width:none}
+.showcase-shade{background:linear-gradient(180deg,rgba(4,9,12,.68) 0%,rgba(6,9,12,.31) 25%,rgba(5,9,12,.18) 50%,rgba(4,12,20,.89) 100%)}
+.showcase-panel:not(.is-active) .showcase-shade{background:linear-gradient(180deg,rgba(4,9,12,.75) 0%,rgba(5,10,13,.48) 51%,rgba(4,9,14,.8) 100%)}
+.showcase-panel.is-active .showcase-shade{background:linear-gradient(180deg,rgba(3,8,12,.56) 0%,rgba(7,10,13,.19) 34%,rgba(5,11,16,.12) 55%,rgba(3,12,24,.94) 100%)}
+/* Mini Clint — documentary photograph, softly graded and centered. */
+.scene-clint{background:#665d56}
+.scene-clint img{object-position:50% 38%;filter:sepia(.09) saturate(.75) contrast(.97)!important}
+.showcase-panel.is-active .scene-clint img{filter:sepia(.05) saturate(.82) contrast(1)!important}
+/* Flavors — actual pass in a clean device-like frame instead of oversized screenshot. */
+.scene-flavors{background:radial-gradient(ellipse at 40% 23%,#c77c6e 0%,#9c4244 48%,#682c39 100%);padding:62px 14px 44px}
+.cover-phone{height:83%;max-height:480px;width:auto;aspect-ratio:9 / 16;max-width:87%;overflow:hidden;border:7px solid #2d2224;border-radius:29px;background:#f8f3e8;box-shadow:13px 23px 35px #2a0f1966,0 0 0 2px #ffffff44;transform:rotate(-4deg);transition:transform .55s ease;flex:none}
+.cover-phone img{object-fit:cover!important;object-position:center top!important;border-radius:20px}
+.showcase-panel.is-active .cover-phone{transform:rotate(-2deg) scale(1.025)}
+.showcase-panel:not(.is-active) .cover-phone{width:90%;height:75%;max-width:none;transform:rotate(-3deg) translateX(11%)}
+.scene-flavors:before{content:"";position:absolute;inset:14% -30% auto 5%;height:50%;background:radial-gradient(circle,#ffffff38 0%,transparent 70%);pointer-events:none}
+/* Physics AI — editorial illustration of three course texts, not a fake product screenshot. */
+.scene-physics{background:#b9c4b8;gap:0;padding:12% 6% 15%;perspective:800px}
+.scene-physics:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,#ede9db77,transparent 58%),repeating-linear-gradient(0deg,#ffffff11 0px,#ffffff11 1px,transparent 1px,transparent 10px)}
+.book-spine{position:relative;display:flex;flex-direction:column;justify-content:space-between;height:72%;min-width:0;width:29%;max-width:130px;border-left:8px solid #ffffff65;padding:18px 9px 24px;box-shadow:11px 15px 18px #263d3444, inset -5px 0 9px #0002;transform:rotate(-4deg);font:600 10px/1.3 var(--mono);color:#f7f2e6}
+.book-spine span{letter-spacing:.15em;opacity:.85}
+.book-spine strong{writing-mode:vertical-rl;transform:rotate(180deg);font:500 clamp(15px,2vw,24px)/1 var(--serif);letter-spacing:.01em;white-space:nowrap}
+.book-a{background:#35575a}
+.book-b{background:#a66b5e;transform:rotate(1deg) translateY(13px)}
+.book-c{background:#516a59;transform:rotate(5deg) translateY(3px)}
+/* Harangè — abstract mosaic collage; no fictitious site screenshot. */
+.scene-harange{background:#beb2b8;padding:16% 9%}
+.harange-art{width:min(88%,320px);height:min(60%,360px);display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:6px;transform:rotate(-5deg);box-shadow:12px 15px 28px #2d252e40;flex:none}
+.harange-art i{display:block;background:#66525f}
+.harange-art i:nth-child(2),.harange-art i:nth-child(8){background:#d9d1c9}
+.harange-art i:nth-child(3),.harange-art i:nth-child(7){background:#a17c7e}
+.harange-art i:nth-child(4){background:#8c99a4}
+.harange-art i:nth-child(5){background:#e2b8ab}
+.harange-art i:nth-child(6){background:#534960}
+.harange-art i:nth-child(9){background:#a6b6af}
+.harange-art:after{content:"";position:absolute;inset:12% 8%;border:1px solid #ffffff65;pointer-events:none}
+/* LearningNCo — real learning screen set into warm editorial page. */
+.scene-learning{background:linear-gradient(155deg,#dfd6c6,#b6c3b6);padding:11% 6%;align-items:center;justify-content:center}
+.learning-screen{width:108%;max-width:none;aspect-ratio:16 / 10;overflow:hidden;border:9px solid #fbf7f0;border-radius:10px;background:#f1e9de;box-shadow:14px 21px 32px #333f3a4d;transform:rotate(-3deg) translateY(10px);transition:transform .55s ease;flex:none}
+.learning-screen img{object-fit:cover!important;object-position:50% 50%!important}
+.showcase-panel.is-active .learning-screen{transform:rotate(-1.2deg) translateY(7px)}
+.showcase-panel:not(.is-active) .learning-screen{width:320%;transform:rotate(-3deg) translateX(16%)}
+/* Keep the project labels readable; the cover composition stays secondary. */
+.showcase-panel .showcase-select,.showcase-panel .showcase-details{z-index:3}
+.showcase-panel .showcase-visual{z-index:0}
+.showcase-panel .showcase-shade{z-index:1}
+.showcase-panel .showcase-stat{font-size:clamp(19px,2.15vw,32px);max-width:100%}
+@media(max-width:760px){
+ .scene-flavors{padding:45px 22px 35px}
+ .cover-phone{height:77%}
+ .showcase-panel:not(.is-active) .cover-phone{height:140%;width:auto;transform:rotate(-3deg) translateX(14%)}
+ .scene-physics{padding:8% 14% 17%}
+ .book-spine{height:68%}
+ .scene-harange{padding:8% 17%}
+ .harange-art{height:76%}
+ .learning-screen{width:111%}
+ .showcase-panel:not(.is-active) .learning-screen{width:110%;transform:rotate(-3deg)}
+ .showcase-panel.is-active .showcase-stat{font-size:clamp(21px,5.8vw,29px)}
+}
+@media(prefers-reduced-motion:reduce){
+ .cover-scene,.cover-phone,.learning-screen{transition:none!important}
+}
