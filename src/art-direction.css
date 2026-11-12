@@ -681,3 +681,57 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--brick);outline-offs
 @media(prefers-reduced-motion:reduce){
   .showcase-panel .flavors-open-image{transition:none}
 }
+
+
+/* Center the Physics Study Hub homepage inside the expanded card.
+   The blurred duplicate fills its background without stretching or clipping the page. */
+.showcase-panel .scene-physics,
+.showcase-panel.is-active .scene-physics {
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  padding:0!important;
+  overflow:hidden!important;
+  background:#111b2f!important;
+}
+.showcase-panel .scene-physics .physics-image-backdrop,
+.showcase-panel .scene-physics .physics-image-centered {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+}
+.showcase-panel .scene-physics .physics-image-backdrop img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  filter:blur(14px) brightness(.6)!important;
+  transform:scale(1.08)!important;
+}
+.showcase-panel .scene-physics .physics-image-centered{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:1;
+}
+.showcase-panel .scene-physics .physics-image-centered img{
+  display:block!important;
+  position:relative!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  object-position:50% 50%!important;
+  padding:0!important;
+  margin:0!important;
+  transform:none!important;
+  border:0!important;
+  max-width:none!important;
+  max-height:none!important;
+  filter:none!important;
+}
+.showcase-panel:not(.is-active) .scene-physics .physics-image-centered img{
+  object-fit:cover!important;
+  opacity:.76;
+}
