@@ -291,6 +291,63 @@ function ProjectShowcase() {
   );
 }
 
+const clientWebsites = [
+  {
+    name: "The Cross Schools",
+    type: "Education",
+    detail: "School website and online enrollment presence",
+    url: "https://www.thecrossschools.com/",
+    domain: "thecrossschools.com"
+  },
+  {
+    name: "East Lake Cleaners",
+    type: "Local business",
+    detail: "Service-led website for a garment-care business",
+    url: "https://www.eastlakecleaners.com/",
+    domain: "eastlakecleaners.com"
+  },
+  {
+    name: "Olive Tree College Applications",
+    type: "College advising",
+    detail: "Client website for admissions and advising services",
+    url: "https://www.olivetreecollegeapps.com/",
+    domain: "olivetreecollegeapps.com"
+  },
+  {
+    name: "Re-Digging the Wells",
+    type: "Community & nonprofit",
+    detail: "Website for a faith-based community organization",
+    url: "https://www.rediggingthewells.org/",
+    domain: "rediggingthewells.org"
+  }
+];
+
+function ClientWebsites() {
+  return (
+    <section className="client-sites" aria-labelledby="client-sites-title">
+      <div className="client-sites-heading">
+        <div>
+          <p className="label">ALSO MADE / CLIENT WEBSITES</p>
+          <h2 id="client-sites-title">Made for <em>real people.</em></h2>
+        </div>
+        <p>Alongside coding projects, I've worked with clients to turn their ideas into usable websites through visual website builders, content design, and brand decisions.</p>
+      </div>
+      <div className="client-sites-index">
+        {clientWebsites.map((site, i) => (
+          <a className="client-site-row" key={site.url} href={site.url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${site.name} website in a new tab`}>
+            <span className="client-site-index">{String(i + 1).padStart(2, "0")}</span>
+            <span className="client-site-name">{site.name}</span>
+            <span className="client-site-meta"><span>{site.type}</span><small>{site.detail}</small></span>
+            <span className="client-site-domain">{site.domain}</span>
+            <span className="client-site-visit">Visit site</span>
+          </a>
+        ))}
+      </div>
+      <p className="client-sites-note">Website design and builder-based implementation are shown separately from the software engineering case studies above. Website content and availability may change after handoff.</p>
+    </section>
+  );
+}
+
 function Work() {
   return (
     <>
@@ -323,6 +380,7 @@ function Work() {
         <div className="cover-foot"><span>SELECTED WORK / SCROLL TO EXPLORE</span><span>AI · WEB · CREATIVE TECHNOLOGY</span><span>AVAILABLE SUMMER 2027</span></div>
       </section>
       <ProjectShowcase />
+      <ClientWebsites />
       <section className="contact-strip">
         <span className="label">A LITTLE MORE ABOUT ME</span>
         <h2>Curiosity meets <em>craft.</em></h2>
