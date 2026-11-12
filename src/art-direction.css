@@ -509,3 +509,66 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--brick);outline-offs
  .showcase-panel.is-active .showcase-name{font-size:clamp(32px,7.7vw,44px)}
  .showcase-panel:nth-child(2).is-active .showcase-name,.showcase-panel:nth-child(3).is-active .showcase-name{font-size:clamp(29px,7.2vw,40px)}
 }
+
+
+/* Square-style cropping: one image per card, never contained or framed.
+   The image remains full-bleed and fixed at the card's height while width animates.
+   Collapsed = narrow center crop; expanded = same image with more visible. */
+.showcase-panel .showcase-visual,
+.showcase-panel.is-active .showcase-visual {
+  position:absolute!important;
+  inset:0!important;
+  display:block;
+  height:100%!important;
+  width:100%!important;
+  overflow:hidden!important;
+  padding:0!important;
+  opacity:1!important;
+}
+.showcase-panel .showcase-visual .cover-scene,
+.showcase-panel.is-active .showcase-visual .cover-scene {
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  overflow:hidden!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  padding:0!important;
+  margin:0!important;
+  transform:none!important;
+  border:none!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+.showcase-panel .cover-scene > img,
+.showcase-panel .cover-scene > .img-missing,
+.showcase-panel.is-active .cover-scene > img {
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  max-height:none!important;
+  display:block!important;
+  padding:0!important;
+  margin:0!important;
+  border:0!important;
+  border-radius:0!important;
+  transform:none!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+  image-rendering:auto;
+}
+.showcase-panel .scene-flavors img{object-position:50% 42%!important}
+.showcase-panel .scene-learning img{object-position:50% 50%!important}
+.showcase-panel .scene-clint img{object-position:50% 43%!important}
+.showcase-panel .scene-physics img{object-position:33% 50%!important}
+.showcase-panel .scene-harange img{object-position:50% 50%!important}
+.showcase-panel:not(.is-active) .cover-scene > img{filter:brightness(.75) saturate(.86)!important}
+.showcase-panel.is-active .cover-scene > img{filter:brightness(.95) saturate(.94)!important}
+.showcase-panel .showcase-shade{pointer-events:none}
+@media(max-width:760px){
+  .showcase-panel .cover-scene > img,
+  .showcase-panel.is-active .cover-scene > img{object-fit:cover!important}
+}
