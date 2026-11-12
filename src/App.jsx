@@ -183,52 +183,79 @@ function Plate({ p }) {
 function ProjectShowcase() {
   const [active, setActive] = useState(0);
   const [cursor, setCursor] = useState({ x: 0, y: 0, visible: false });
-  const container = useRef(null);
-  const reduced = useRef(false);
-  useEffect(() => { reduced.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches; }, []);
+  const stageRef = useRef(null);
   const projectsToShow = projects;
-  const choose = (index) => { setActive(index); };
+
+  const choose = (index) => {
+    setActive(index);
+    setCursor((c) => ({ ...c, visible: false }));
+  };
   const track = (event) => {
-    if (event.pointerType !== "mouse" || reduced.current || !container.current) return;
-    const r = container.current.getBoundingClientRect();
+    if (event.pointerType !== "mouse" || !stageRef.current ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const stage = stageRef.current;
+    const panel = event.target.closest(".showcase-panel");
+    if (!panel || event.target.closest(".showcase-details") || event.target.closest("a")) {
+      setCursor((c) => c.visible ? { ...c, visible: false } : c);
+      return;
+    }
+    const panelRect = panel.getBoundingClientRect();
+    const info = panel.querySelector(".showcase-details")?.getBoundingClientRect();
+    const stageRect = stage.getBoundingClientRect();
+    if (info && event.clientY >= info.top - 8) {
+      setCursor((c) => c.visible ? { ...c, visible: false } : c);
+      return;
+    }
+    const safeX = Math.min(panelRect.right - 10, Math.max(panelRect.left + 10, event.clientX));
     setCursor({
-      x: Math.max(110, Math.min(r.width - 110, event.clientX - r.left)),
-      y: Math.max(46, Math.min(r.height - 46, event.clientY - r.top)),
+      x: safeX - stageRect.left,
+      y: Math.min(stageRect.height - 150, Math.max(55, event.clientY - stageRect.top)),
       visible: true
     });
   };
   const visual = (p) => {
-    if (p.id === "mini-clint") return <Img f="mini-clint-team.jpg" w={782} h={1036} alt="Mini Clint award-winning team" />;
-    if (p.id === "usc-flavors") return <Img f="flavors-pass.jpg" w={920} h={1640} alt="USC Flavors digital check-in pass" />;
-    if (p.id === "physics-ai") return <div className="showcase-graphic showcase-physics"><span>PHYSICS / RAG</span><strong>AI Study</strong><span>3 textbooks · 1 study space</span></div>;
-    if (p.id === "harange") return <div className="showcase-graphic showcase-harange"><span>GIRLSWHOML × MOZILLA FESTIVAL</span><strong>Harangè</strong><span>Frontend development</span></div>;
-    return <Img f="learningnco-vocab-dashboard.webp" w={1440} h={810} alt="LearningNCo vocabulary learning interface design" />;
+    if (p.id === "mini-clint") return <Img f="mini-clint-team.jpg" w={782} h={1036} alt="" />;
+    if (p.id === "usc-flavors") return <Img f="flavors-pass.jpg" w={920} h={1640} alt="" />;
+    if (p.id === "physics-ai") return <div className="showcase-graphic showcase-physics"><span>PHYSICS / RAG</span><strong>AI STUDY</strong><span>3 TEXTBOOKS / ONE STUDY SPACE</span></div>;
+    if (p.id === "harange") return <div className="showcase-graphic showcase-harange"><span>GIRLSWHOML / MOZILLA FESTIVAL</span><strong>HARANGÈ</strong><span>FRONTEND DEVELOPMENT</span></div>;
+    return <Img f="learningnco-vocab-dashboard.webp" w={1440} h={810} alt="" />;
   };
   return (
     <section className="project-showcase" id="selected-projects" aria-labelledby="archive">
       <div className="showcase-intro">
         <p className="label">01 / SELECTED WORK</p>
         <h2 id="archive">Selected <em>projects.</em></h2>
-        <p>Five projects across AI, software, and design. Select one to see its story, then open the full case study for the engineering details.</p>
+        <p>Explore five projects across AI, software, and design. Select a project to see the problem, outcome, and full case study.</p>
       </div>
-      <div className="showcase-stage" data-active={active} ref={container} onPointerMove={track} onPointerLeave={() => setCursor(c => ({ ...c, visible: false }))}>
+      <div className={`showcase-stage ${cursor.visible ? "has-cursor" : ""}`} data-active={active}
+        ref={stageRef} onPointerMove={track}
+        onPointerLeave={() => setCursor((c) => ({ ...c, visible: false }))}>
         {projectsToShow.map((p, i) => (
-          <article key={p.id} className={`showcase-panel ${i === active ? "is-active" : ""}`} style={{ "--panel-index": i }} onPointerEnter={(e) => { if (e.pointerType === "mouse") choose(i); }}>
-            <button type="button" className="showcase-select" aria-pressed={i === active} onClick={() => choose(i)} onFocus={() => choose(i)} aria-label={`Select project ${p.n}, ${p.title}`}>
+          <article key={p.id} className={`showcase-panel ${i === active ? "is-active" : ""}`}
+            onPointerEnter={(e) => { if (e.pointerType === "mouse" && active !== i) choose(i); }}>
+            <div className="showcase-visual" aria-hidden="true">{visual(p)}</div>
+            <div className="showcase-shade" aria-hidden="true" />
+            <button type="button" className="showcase-select"
+              aria-pressed={i === active} onClick={() => choose(i)} onFocus={() => choose(i)}
+              aria-label={`Select project ${p.n}: ${p.title}`}>
               <span className="showcase-number">{p.n} / {p.kind}</span>
               <span className="showcase-name">{p.title}</span>
               <span className="showcase-lead">{p.lead}</span>
             </button>
-            <div className="showcase-visual" aria-hidden="true">{visual(p)}</div>
-            <div className="showcase-bottom">
-              <span className="showcase-year">{p.year} / {p.badge}</span>
-              <Link to={`work/${p.id}`} className="showcase-link" onFocus={() => choose(i)}>View {p.title} case study</Link>
+            <div className="showcase-details">
+              <div className="showcase-rule" aria-hidden="true"/>
+              <strong className="showcase-stat">{p.badge}</strong>
+              <div className="showcase-details-row">
+                <span className="showcase-year">{p.year} / {p.lead}</span>
+                <Link to={`work/${p.id}`} className="showcase-link" onFocus={() => setCursor(c => ({...c, visible:false}))}>View case study</Link>
+              </div>
             </div>
           </article>
         ))}
-        {cursor.visible && <div className="showcase-cursor" aria-hidden="true" style={{ left: cursor.x, top: cursor.y }}>{projectsToShow[active].title}</div>}
+        {cursor.visible && <div className="showcase-cursor" aria-hidden="true"
+          style={{ left: cursor.x, top: cursor.y }}>{projectsToShow[active].title}</div>}
       </div>
-      <p className="showcase-access-note">On mobile, tap a project to expand it. Select “View case study” to read more.</p>
+      <p className="showcase-access-note">On mobile, tap a project to expand it, then select View case study.</p>
     </section>
   );
 }
