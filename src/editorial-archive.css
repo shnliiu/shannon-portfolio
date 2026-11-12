@@ -132,3 +132,40 @@ main{max-width:none;padding:0 clamp(22px,4.5vw,82px) 70px}
  html{scroll-behavior:auto}
  .editorial-image-tile img,.editorial-masthead-actions button{transition:none}
 }
+
+
+/* Interactive Physics Study Hub preview: clean browser framing, no oversized device mockup. */
+.physics-live{margin:clamp(40px,7vw,100px) 0;border-top:1px solid var(--ink);padding-top:30px}
+.physics-live-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:30px}
+.physics-live-heading .label{color:var(--brick);font-size:10px}
+.physics-live-heading h2{font:400 clamp(43px,5vw,77px)/1 var(--serif);letter-spacing:-.045em}
+.physics-live-heading p:not(.label){max-width:590px;font-size:15px;color:#494b46;line-height:1.65;margin:14px 0 0}
+.physics-open-site{display:inline-block;white-space:nowrap;padding-bottom:5px;border-bottom:1px solid currentColor;font:600 13px var(--sans);text-decoration:none}
+.physics-live-window{background:#101c2e;border:1px solid #333e4a;overflow:hidden}
+.physics-live-bar{background:#eff0ee;color:#333a3a;min-height:46px;display:flex;gap:20px;align-items:center;padding:10px 17px;font:500 11px var(--mono)}
+.physics-live-dots{display:flex;gap:6px}
+.physics-live-dots i{display:block;width:8px;height:8px;border-radius:50%;background:#a0a7a3}
+.physics-live-dots i:first-child{background:#be635d}
+.physics-live-dots i:nth-child(2){background:#c3a160}
+.physics-live-dots i:nth-child(3){background:#77947e}
+.physics-live-address{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;text-align:center}
+.physics-live-status{white-space:nowrap;font-size:9px;letter-spacing:.08em}
+.physics-live-iframe{display:block;border:0;width:100%;height:min(72vh,800px);min-height:500px;background:#fff}
+.physics-live-poster{position:relative;min-height:350px;aspect-ratio:16/9;overflow:hidden}
+.physics-live-poster>img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;object-position:50% 20%;filter:brightness(.6);max-width:none}
+.physics-live-poster:after{content:"";position:absolute;inset:50% 0 0;background:linear-gradient(transparent,#071321b8);pointer-events:none}
+.physics-live-poster-action{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;text-align:center;color:#fff}
+.physics-live-poster-action span{font:500 10px var(--mono);letter-spacing:.1em}
+.physics-live-poster-action button{cursor:pointer;border:1px solid white;background:#f5f2e9;color:#161d24;padding:15px 23px;font:700 13px var(--sans);transition:transform .2s,background .2s}
+.physics-live-poster-action button:hover{background:white;transform:translateY(-2px)}
+.physics-live-note{font-size:12px;color:#565d5d;margin-top:14px}
+.physics-live-note a{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:680px){
+.physics-live-heading{display:block}
+.physics-open-site{margin-top:19px}
+.physics-live-poster{aspect-ratio:4/3;min-height:260px}
+.physics-live-iframe{min-height:540px;height:72vh}
+.physics-live-status{display:none}
+.physics-live-address{text-align:right;font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){.physics-live-poster-action button{transition:none}}
