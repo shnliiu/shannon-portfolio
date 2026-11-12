@@ -180,8 +180,60 @@ function Plate({ p }) {
   );
 }
 
+function ProjectShowcase() {
+  const [active, setActive] = useState(0);
+  const [cursor, setCursor] = useState({ x: 0, y: 0, visible: false });
+  const container = useRef(null);
+  const reduced = useRef(false);
+  useEffect(() => { reduced.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches; }, []);
+  const projectsToShow = projects;
+  const choose = (index) => { setActive(index); };
+  const track = (event) => {
+    if (event.pointerType !== "mouse" || reduced.current || !container.current) return;
+    const r = container.current.getBoundingClientRect();
+    setCursor({
+      x: Math.max(110, Math.min(r.width - 110, event.clientX - r.left)),
+      y: Math.max(46, Math.min(r.height - 46, event.clientY - r.top)),
+      visible: true
+    });
+  };
+  const visual = (p) => {
+    if (p.id === "mini-clint") return <Img f="mini-clint-team.jpg" w={782} h={1036} alt="Mini Clint award-winning team" />;
+    if (p.id === "usc-flavors") return <Img f="flavors-pass.jpg" w={920} h={1640} alt="USC Flavors digital check-in pass" />;
+    if (p.id === "physics-ai") return <div className="showcase-graphic showcase-physics"><span>PHYSICS / RAG</span><strong>AI Study</strong><span>3 textbooks · 1 study space</span></div>;
+    if (p.id === "harange") return <div className="showcase-graphic showcase-harange"><span>GIRLSWHOML × MOZILLA FESTIVAL</span><strong>Harangè</strong><span>Frontend development</span></div>;
+    return <Img f="learningnco-vocab-dashboard.webp" w={1440} h={810} alt="LearningNCo vocabulary learning interface design" />;
+  };
+  return (
+    <section className="project-showcase" id="selected-projects" aria-labelledby="archive">
+      <div className="showcase-intro">
+        <p className="label">01 / SELECTED WORK</p>
+        <h2 id="archive">Selected <em>projects.</em></h2>
+        <p>Five projects across AI, software, and design. Select one to see its story, then open the full case study for the engineering details.</p>
+      </div>
+      <div className="showcase-stage" ref={container} onPointerMove={track} onPointerLeave={() => setCursor(c => ({ ...c, visible: false }))}>
+        {projectsToShow.map((p, i) => (
+          <article key={p.id} className={`showcase-panel ${i === active ? "is-active" : ""}`} style={{ "--panel-index": i }} onPointerEnter={(e) => { if (e.pointerType === "mouse") choose(i); }}>
+            <button type="button" className="showcase-select" aria-pressed={i === active} onClick={() => choose(i)} onFocus={() => choose(i)} aria-label={`Select project ${p.n}, ${p.title}`}>
+              <span className="showcase-number">{p.n} / {p.kind}</span>
+              <span className="showcase-name">{p.title}</span>
+              <span className="showcase-lead">{p.lead}</span>
+            </button>
+            <div className="showcase-visual" aria-hidden="true">{visual(p)}</div>
+            <div className="showcase-bottom">
+              <span className="showcase-year">{p.year} / {p.badge}</span>
+              <Link to={`work/${p.id}`} className="showcase-link" onFocus={() => choose(i)}>View {p.title} case study</Link>
+            </div>
+          </article>
+        ))}
+        {cursor.visible && <div className="showcase-cursor" aria-hidden="true" style={{ left: cursor.x, top: cursor.y }}>{projectsToShow[active].title}</div>}
+      </div>
+      <p className="showcase-access-note">On mobile, tap a project to expand it. Select “View case study” to read more.</p>
+    </section>
+  );
+}
+
 function Work() {
-  const [mini, flavors, physics, ...other] = projects;
   return (
     <>
       <section className="cover-intro">
@@ -203,35 +255,7 @@ function Work() {
         </div>
         <div className="cover-foot"><span>USC VITERBI / LOS ANGELES</span><span>AVAILABLE SUMMER 2027</span><span>SCROLL TO EXPLORE</span></div>
       </section>
-
-      <section className="work-index" id="selected-projects" aria-labelledby="archive">
-        <header className="index-heading">
-          <div><p className="label">01 / SELECTED PROJECTS</p><h2 id="archive">The work<span>.</span></h2></div>
-          <p>Projects with a purpose. Explore the process, the engineering, and the results behind each one.</p>
-        </header>
-
-        <div className="work-feature">
-          <div className="feature-visual feature-mini">
-            <Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="Shannon holding her Cal Poly AWS AI Summer Camp award" />
-            <div className="mini-overlay"><span>AWARD-WINNING AI PROJECT</span><b>Mini Clint</b><span>CAL POLY × AWS / 2025</span></div>
-          </div>
-          <div className="feature-copy">
-            <span className="label">01 / AI AGENTS</span>
-            <h3>Making math placement <em>make sense.</em></h3>
-            <p>I led a five-person team and built an AWS SES email agent that uses retrieved information and synthetic student records to respond to placement questions.</p>
-            <div className="feature-facts"><span>1ST PLACE / 15 TEAMS</span><span>RAG · AWS SES · AMAZON S3</span></div>
-            <Link to="work/mini-clint" className="feature-link">View case study</Link>
-          </div>
-        </div>
-        <div className="two-features">
-          <Plate p={flavors}/>
-          <Plate p={physics}/>
-        </div>
-        <div className="index-footer">
-          <p className="label">02 / MORE IN THE ARCHIVE</p>
-          {other.map((p)=><Link key={p.id} to={`work/${p.id}`} className="archive-line"><span>{p.n} / {p.year}</span><strong>{p.title}</strong><span>{p.kind}</span></Link>)}
-        </div>
-      </section>
+      <ProjectShowcase />
       <section className="contact-strip">
         <span className="label">A LITTLE MORE ABOUT ME</span>
         <h2>Curiosity meets <em>craft.</em></h2>
@@ -401,7 +425,7 @@ export default function App() {
   useEffect(() => {
     const root = main.current;
     if (!root) return;
-    const targets = root.querySelectorAll(".cover-heading, .cover-collage, .index-heading, .work-feature, .two-features .plate, .archive-line, .contact-strip, .page > *, .case-head, .case-video, .case-body, .gallery, .internship-documents, .certificate-section");
+    const targets = root.querySelectorAll(".cover-heading, .cover-collage, .showcase-intro, .showcase-stage, .contact-strip, .page > *, .case-head, .case-video, .case-body, .gallery, .internship-documents, .certificate-section");
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) return;
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
