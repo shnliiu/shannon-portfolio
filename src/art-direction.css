@@ -373,3 +373,16 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--brick);outline-offs
   .showcase-panel,.showcase-visual,.showcase-lead{transition:none!important}
   .showcase-cursor{display:none}
 }
+
+
+/* Each active title gets its own typographic treatment, with the cursor label
+   remaining attached to the pointer until a different project is selected. */
+.showcase-stage[data-active="0"] .showcase-cursor{font-family:Georgia,serif;font-style:italic;font-weight:500;letter-spacing:-.07em}
+.showcase-stage[data-active="1"] .showcase-cursor{font-family:Arial,sans-serif;font-weight:900;text-transform:uppercase;letter-spacing:-.07em}
+.showcase-stage[data-active="2"] .showcase-cursor{font-family:Georgia,serif;font-style:normal;font-weight:400;letter-spacing:-.04em}
+.showcase-stage[data-active="3"] .showcase-cursor{font-family:Georgia,serif;font-style:italic;font-weight:700;letter-spacing:-.045em}
+.showcase-stage[data-active="4"] .showcase-cursor{font-family:Georgia,serif;font-style:normal;font-weight:500;letter-spacing:-.05em}
+.case-quicklinks{display:flex;flex-wrap:wrap;gap:12px;margin:23px 0 12px}
+.case-quicklinks .ext{display:inline-flex;align-items:center;border:1px solid var(--ink);padding:11px 18px;background:var(--ink);color:#fff;text-decoration:none;font:600 12px/1.35 var(--sans)}
+.case-quicklinks .ext:hover{background:var(--brick);border-color:var(--brick)}
+@media(max-width:760px){.case-quicklinks .ext{width:100%;justify-content:center;text-align:center}}
