@@ -238,7 +238,12 @@ function ProjectShowcase() {
     );
     if (p.id === "physics-ai") return (
       <div className="cover-scene scene-physics">
-        <ShowcaseImage file="physics-study-hub.jpg" fallback={<div className="cover-screenshot-pending">Physics Study Hub</div>} />
+        <div className="physics-image-backdrop" aria-hidden="true">
+          <ShowcaseImage file="physics-study-hub.jpg" fallback={null} />
+        </div>
+        <div className="physics-image-centered">
+          <ShowcaseImage file="physics-study-hub.jpg" fallback={<div className="cover-screenshot-pending">Physics Study Hub</div>} />
+        </div>
       </div>
     );
     if (p.id === "harange") return (
