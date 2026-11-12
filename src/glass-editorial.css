@@ -208,3 +208,85 @@ a:focus-visible,button:focus-visible{outline:2px solid #ac6581;outline-offset:4p
 }
 @media(max-width:390px){.opening-heading-group h1{font-size:40px}.opening-heading-group h1 em{font-size:52px}.opening-after{grid-template-columns:95px 1fr}.opening-after-copy h2{font-size:28px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.opening-feature-media img{transition:none}}
+
+
+/* Small screens get a tappable gallery rather than clipped draggable cards. */
+@media(max-width:1080px){
+ .personality-hero{min-height:530px}
+ .personality-type h1{font-size:clamp(74px,9.2vw,117px)}
+ .personality-type h1 em{font-size:clamp(86px,11vw,139px)}
+ .desk-board{height:680px}
+ .desk-piece{width:clamp(230px,28vw,320px)}
+}
+@media(max-width:800px){
+ .personality-hero{grid-template-columns:1.2fr .8fr;gap:24px;min-height:470px}
+ .personality-type h1{font-size:clamp(57px,8.6vw,87px)}
+ .personality-type h1 em{font-size:clamp(70px,10.5vw,105px)}
+ .personality-summary{font-size:15px}
+ .desk-board{height:auto;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:15px;padding:55px 16px 32px}
+ .desk-piece,.desk-piece.is-dragging{position:relative!important;left:auto!important;top:auto!important;transform:none!important;width:auto!important;box-shadow:3px 5px 0 #dbd3df}
+ .desk-piece-picture{height:155px}
+ .desk-glass-corner{display:none}
+ .desk-board-note{bottom:9px;font-size:8px}
+ .desk-grab{cursor:default;touch-action:auto}
+ .desk-grab span:last-child{display:none}
+ .desk-piece-footer{min-height:98px}
+ .desk-piece-footer strong{font-size:23px}
+ .desk-heading-row{align-items:start}
+ .desk-utilities{max-width:220px}
+}
+@media(max-width:680px){
+ .top{padding:13px 5%;min-height:66px}
+ .wordmark{font-size:21px!important}
+ .menu-btn{display:block;margin:0;border-radius:0}
+ .tabs{display:none}
+ .tabs.open{display:flex;flex-direction:column;align-items:stretch;gap:0;position:absolute;top:65px;left:0;right:0;z-index:20;padding:13px 5%;background:#f7f8f8;border-bottom:1px solid #bdb7c1}
+ .tabs a,.tabs a:nth-child(n),.tabs a[aria-current="page"]{padding:11px 0}
+ main{padding:0 5% 58px}
+ .foot{padding:22px 5% 36px}
+ .personality-topline{font-size:9px}
+ .personality-topline span:nth-child(2){display:none}
+ .personality-hero{display:flex;flex-direction:column;gap:24px;padding:34px 0 44px;min-height:0}
+ .personality-type{padding:0}
+ .personality-type h1{font-size:clamp(70px,16vw,108px);margin:12px 0 22px}
+ .personality-type h1 em{font-size:clamp(87px,20vw,137px)}
+ .personality-summary{font-size:15px;max-width:450px}
+ .personality-actions{gap:18px;margin-top:22px}
+ .personality-actions a,.personality-actions button{font-size:11px}
+ .personality-portrait{height:min(90vw,490px)}
+ .personality-portrait img{object-position:50% 42%}
+ .personality-photo-mark{font-size:46px}
+ .desk-section{padding:35px 0 48px}
+ .desk-heading-row{display:block}
+ .desk-heading-row h2{font-size:clamp(40px,10vw,66px)}
+ .desk-heading-row h2 em{font-size:clamp(59px,14vw,92px)}
+ .desk-utilities{max-width:100%;align-items:start;margin-top:17px;gap:10px}
+ .desk-utilities p{font-size:12px}
+ .desk-utilities button{font-size:11px;padding:9px 12px}
+ .desk-board{grid-template-columns:1fr 1fr;padding:48px 9px 28px;gap:9px}
+ .desk-board-label{top:15px;left:12px;font-size:9px}
+ .desk-piece-picture{height:125px}
+ .desk-piece-footer{display:block;padding:10px;min-height:0}
+ .desk-piece-footer strong{font-size:19px}
+ .desk-piece-footer small{font-size:10px}
+ .desk-piece-footer a{display:inline-block;margin-top:11px;font-size:10px}
+ .desk-grab{padding:8px 9px;font-size:8px}
+ .desk-mobile-note{font-size:10px}
+ .project-showcase{padding:58px 0 35px}
+ .showcase-intro{display:block}
+ .showcase-intro h2{font-size:clamp(44px,9vw,65px);margin-top:14px}
+ .showcase-intro h2 em{font-size:clamp(59px,12vw,90px)}
+ .showcase-intro>p:last-child{margin-top:17px}
+}
+@media(max-width:400px){
+ .personality-type h1{font-size:65px}
+ .personality-type h1 em{font-size:82px}
+ .desk-board{grid-template-columns:1fr}
+ .desk-piece-picture{height:180px}
+ .desk-piece-footer strong{font-size:24px}
+ .desk-piece-footer{display:flex}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ .desk-piece{transition:none}
+}
