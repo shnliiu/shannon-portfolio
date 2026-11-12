@@ -228,9 +228,7 @@ function ProjectShowcase() {
     );
     if (p.id === "usc-flavors") return (
       <div className="cover-scene scene-flavors">
-        <div className="cover-phone" key={isActive ? "pass" : "scanner"}>
-          <Img f={isActive ? "flavors-pass.jpg" : "flavors-scanner.jpg"} w={920} h={1640} alt="" />
-        </div>
+        <Img f={"flavors-scanner.jpg"} w={920} h={1640} alt="" />
       </div>
     );
     if (p.id === "physics-ai") return (
@@ -245,7 +243,7 @@ function ProjectShowcase() {
     );
     return (
       <div className="cover-scene scene-learning">
-        <div className="learning-screen"><Img f="learningnco-vocab-lesson.webp" w={1440} h={810} alt="" /></div>
+        <Img f="learningnco-vocab-lesson.webp" w={1440} h={810} alt="" />
       </div>
     );
   };
