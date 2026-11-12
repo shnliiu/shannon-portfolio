@@ -351,33 +351,42 @@ function ClientWebsites() {
 function Work() {
   return (
     <>
-      <section className="cover-intro new-editorial-hero">
-        <div className="cover-topline">
-          <span>PORTFOLIO / SHANNON LIU</span>
-          <span>ENGINEERING, DIGITAL EXPERIENCES & THE PEOPLE USING THEM</span>
-          <span>2026 / LOS ANGELES</span>
+      <section className="cover-intro studio-cover">
+        <div className="studio-overline">
+          <span>SHANNON LIU / PORTFOLIO</span>
+          <span>ENGINEERING + DESIGN</span>
+          <span>LOS ANGELES / 2026</span>
         </div>
-        <div className="editorial-masthead">
-          <div className="editorial-masthead-main">
-            <p className="label">HELLO, I'M SHANNON.</p>
-            <h1>Making <span>ideas</span><br/>feel <em>real.</em></h1>
-          </div>
-          <div className="editorial-masthead-aside">
-            <span className="editorial-index">A PERSONAL ARCHIVE / 001—005</span>
-            <p>Computer Science & Engineering at USC. I build AI tools, useful software, and digital experiences with people in mind.</p>
-            <div className="editorial-masthead-actions">
-              <button type="button" onClick={() => document.getElementById("selected-projects")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth"})}>Explore the work</button>
-              <Link to="resume">Résumé</Link>
+        <div className="studio-masthead">
+          <h1><span>Shannon</span><span>Liu<span className="studio-period">.</span></span></h1>
+          <div className="studio-introduction">
+            <span className="studio-smallcaps">A NOTE FROM THE MAKER</span>
+            <p>I'm a Computer Science & Engineering student at USC. I build AI tools, useful websites, and small solutions to everyday problems.</p>
+            <div className="studio-actions">
+              <button type="button" onClick={() => document.getElementById("selected-projects")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth"})}>Explore selected work</button>
+              <Link to="about">About me</Link>
             </div>
           </div>
         </div>
-        <div className="editorial-image-story" aria-label="Selected moments from Shannon's work">
-          <div className="editorial-image-tile tile-one"><Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="Shannon holding an award at an AI summer camp" /><span>01 / BUILDING WITH PEOPLE</span></div>
-          <div className="editorial-image-tile tile-two"><Img f="flavors-scanner-login.jpg" w={920} h={1640} alt="Flavors attendance scanner interface" /><span>02 / THE THINGS I MAKE</span></div>
-          <div className="editorial-image-tile tile-three"><ShowcaseImage file="harange-home.jpg" fallback={<Img f="learningnco-vocab-lesson.webp" w={1440} h={810} alt="Education app interface" />} /><span>03 / DESIGN & EXPERIMENT</span></div>
-          <div className="editorial-id-slip"><span>FILE No. 001</span><strong>Shannon Liu</strong><span>STUDENT / BUILDER / CURIOUS PERSON</span><Link to="about">Read my story</Link></div>
+        <div className="studio-gallery" aria-label="Shannon's work and creative process">
+          <figure className="studio-gallery-main">
+            <Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="Shannon holding an award at the Cal Poly AWS AI summer camp" />
+            <figcaption>01 / BUILDING WITH PEOPLE · CAL POLY AWS AI SUMMER CAMP</figcaption>
+          </figure>
+          <div className="studio-gallery-side">
+            <div className="studio-side-heading">
+              <span>BEHIND THE WORK</span>
+              <p>Projects made from curiosity, constraints, and a lot of figuring things out.</p>
+            </div>
+            <figure className="studio-gallery-detail">
+              <Img f="learningnco-vocab-lesson.webp" w={1440} h={810} alt="Vocabulary learning app interface designed during the LearningNCo internship" />
+              <figcaption>02 / INTERFACES FOR LEARNING</figcaption>
+            </figure>
+            <Link to="resume" className="studio-resume">The résumé <span>PDF / 2026</span></Link>
+          </div>
+          <div className="studio-stamp" aria-hidden="true"><span>SL</span><small>MADE WITH INTENTION</small></div>
         </div>
-        <div className="cover-foot"><span>SELECTED WORK / SCROLL TO EXPLORE</span><span>AI · WEB · CREATIVE TECHNOLOGY</span><span>AVAILABLE SUMMER 2027</span></div>
+        <div className="studio-bottomline"><span>SCROLL TO EXPLORE FIVE FEATURED PROJECTS</span><span>AVAILABLE SUMMER 2027</span></div>
       </section>
       <ProjectShowcase />
       <ClientWebsites />
@@ -562,7 +571,7 @@ function About() {
     <section className="page about">
       <div>
         <p className="label">PERSONAL FILE / 02</p>
-        <h1 tabIndex={-1} className="focus-h">A little more <em>human.</em></h1>
+        <h1 tabIndex={-1} className="focus-h">A little more <em>about me.</em></h1>
         <p className="deck">I’m a Computer Science and Engineering student at USC Viterbi, transferring in with five associate degrees from Norco College and Mt. SAC. I like building software people can use right away: AI assistants, check-in tools, study aids, websites.</p>
         <p>I lead teams (project manager for Mini Clint, ACM vice president) and I care about the design side too, from Figma-to-code frontends to email templates that survive dark mode.</p>
         <p><Link to="experience" className="btn">Experience</Link> <Link to="work" className="btn ghost">The work</Link></p>
@@ -576,7 +585,7 @@ function Experience() {
   return (
     <section className="page">
       <p className="label">TIMELINE / 03</p>
-      <h1 tabIndex={-1} className="focus-h">Work in <em>progress.</em></h1>
+      <h1 tabIndex={-1} className="focus-h">Places I’ve <em>worked.</em></h1>
       <ol className="xp">
         {experience.map((x) => (
           <li key={x.org} className={`tone-${x.tone}`}>
@@ -606,7 +615,7 @@ function Resume() {
   return (
     <section className="page">
       <p className="label">DOCUMENTS / 04</p>
-      <h1 tabIndex={-1} className="focus-h">The short <em>version.</em></h1>
+      <h1 tabIndex={-1} className="focus-h">My <em>résumé.</em></h1>
       {pdfReady ? (
         <>
           <p><a className="btn" href={RESUME_URL} download>Download PDF</a></p>
