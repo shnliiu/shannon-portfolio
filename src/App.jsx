@@ -214,11 +214,33 @@ function ProjectShowcase() {
     });
   };
   const visual = (p) => {
-    if (p.id === "mini-clint") return <Img f="mini-clint-team.jpg" w={782} h={1036} alt="" />;
-    if (p.id === "usc-flavors") return <Img f="flavors-pass.jpg" w={920} h={1640} alt="" />;
-    if (p.id === "physics-ai") return <div className="showcase-graphic showcase-physics"><span>PHYSICS / RAG</span><strong>AI STUDY</strong><span>3 TEXTBOOKS / ONE STUDY SPACE</span></div>;
-    if (p.id === "harange") return <div className="showcase-graphic showcase-harange"><span>GIRLSWHOML / MOZILLA FESTIVAL</span><strong>HARANGÈ</strong><span>FRONTEND DEVELOPMENT</span></div>;
-    return <Img f="learningnco-vocab-cover.webp" w={1440} h={810} alt="" />;
+    if (p.id === "mini-clint") return (
+      <div className="cover-scene scene-clint">
+        <Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="" />
+      </div>
+    );
+    if (p.id === "usc-flavors") return (
+      <div className="cover-scene scene-flavors">
+        <div className="cover-phone"><Img f="flavors-pass.jpg" w={920} h={1640} alt="" /></div>
+      </div>
+    );
+    if (p.id === "physics-ai") return (
+      <div className="cover-scene scene-physics">
+        <div className="book-spine book-a"><span>01</span><strong>Mechanics</strong></div>
+        <div className="book-spine book-b"><span>02</span><strong>E&amp;M</strong></div>
+        <div className="book-spine book-c"><span>03</span><strong>Modern Physics</strong></div>
+      </div>
+    );
+    if (p.id === "harange") return (
+      <div className="cover-scene scene-harange">
+        <div className="harange-art"><span>MOSAIC OF VOICES</span><strong>Harangè</strong><span>GIRLSWHOML / MOZILLA FESTIVAL</span></div>
+      </div>
+    );
+    return (
+      <div className="cover-scene scene-learning">
+        <div className="learning-screen"><Img f="learningnco-vocab-lesson.webp" w={1440} h={810} alt="" /></div>
+      </div>
+    );
   };
   return (
     <section className="project-showcase" id="selected-projects" aria-labelledby="archive">
