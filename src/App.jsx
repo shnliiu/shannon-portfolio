@@ -351,42 +351,30 @@ function ClientWebsites() {
 function Work() {
   return (
     <>
-      <section className="atelier-opening" aria-labelledby="atelier-title">
-        <div className="atelier-edition"><span>SHANNON LIU / DIGITAL WORKS</span><span>2024—2026 / LOS ANGELES</span></div>
-        <div className="atelier-canvas">
-          <div className="atelier-photo-wrap">
-            <figure className="atelier-photo">
-              <Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="Shannon with an award at the Cal Poly AWS AI summer camp" />
-              <figcaption>CAL POLY / AWS AI SUMMER CAMP / 2025</figcaption>
-            </figure>
-            <div className="atelier-photo-index" aria-hidden="true">01 / 05</div>
-          </div>
-          <div className="atelier-page">
-            <div className="atelier-page-top"><span>HELLO, I'M SHANNON</span><span>USC / COMPUTER SCIENCE & ENGINEERING</span></div>
-            <div className="atelier-story">
-              <h1 id="atelier-title">Making<br/><em>things</em><br/>happen<span className="atelier-dot">.</span></h1>
-              <p>I'm a USC Computer Science & Engineering student. I make AI tools, useful websites, and software for the communities around me.</p>
-              <div className="atelier-links">
-                <button type="button" onClick={() => document.getElementById("selected-projects")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth"})}>See what I've made</button>
-                <Link to="about">Meet Shannon</Link>
+      <section className="identity-cover" aria-labelledby="identity-title">
+        <div className="identity-marquee">
+          <span>SHANNON LIU — CREATIVE ENGINEERING</span>
+          <span>LOS ANGELES / 2026</span>
+        </div>
+        <div className="identity-stage">
+          <div className="identity-title-block">
+            <span className="identity-issue">VOL. 01 / A PERSONAL PORTFOLIO</span>
+            <h1 id="identity-title"><span>SHANNON</span><span>LIU<span className="identity-asterisk" aria-hidden="true">✳</span></span></h1>
+            <div className="identity-manifesto">
+              <p>Computer Science & Engineering at USC. I build AI tools, interactive websites, and practical things people can use.</p>
+              <div className="identity-cta">
+                <button type="button" onClick={() => document.getElementById("selected-projects")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"})}>Explore my work <span aria-hidden="true">↗</span></button>
+                <Link to="about">Behind the work</Link>
               </div>
             </div>
-            <div className="atelier-bottom">
-              <div className="atelier-caption"><span>THE WORK / SOFTWARE + DESIGN</span><strong>Made to be used.</strong></div>
-              <figure className="atelier-detail">
-                <Img f="learningnco-vocab-lesson.webp" w={1440} h={810} alt="LearningNCo vocabulary learning interface" />
-                <figcaption>LEARNINGNCO / VOCABULARY APP</figcaption>
-              </figure>
-            </div>
           </div>
-          <div className="atelier-card">
-            <span>PERSONAL FILE / 001</span>
-            <strong>Shannon Liu</strong>
-            <small>CODE / DESIGN / CURIOSITY</small>
-            <Link to="about">About the builder</Link>
-          </div>
+          <figure className="identity-photo">
+            <Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="Shannon with an award from the Cal Poly AWS AI summer camp" />
+            <figcaption>SHANNON / BUILDING THINGS WITH PEOPLE</figcaption>
+          </figure>
+          <div className="identity-sticker" aria-hidden="true"><span>CS +</span><span>CREATIVE</span><span>TECH</span></div>
+          <div className="identity-bottom-bar"><span>DESIGN / CODE / COMMUNITY</span><span>SCROLL TO EXPLORE THE WORK</span></div>
         </div>
-        <div className="atelier-tail"><span>FIVE SOFTWARE PROJECTS</span><span>FOUR CLIENT WEBSITES</span><span>KEEP SCROLLING TO EXPLORE</span></div>
       </section>
       <ProjectShowcase />
       <ClientWebsites />
