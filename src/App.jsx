@@ -357,7 +357,7 @@ function Work() {
           <div className="brand-intro">
             <div className="brand-intro-top">
               <span className="brand-issue">INDEPENDENT WORK / VOL. 01</span>
-              <span className="brand-orbit" aria-hidden="true">✳</span>
+              <span className="brand-orbit" aria-hidden="true"></span>
             </div>
             <h1 id="brand-cover-title">A LITTLE<br/>BIT OF <span>EVERYTHING.</span></h1>
             <div className="brand-intro-footer">
