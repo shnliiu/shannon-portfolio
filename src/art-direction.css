@@ -613,3 +613,71 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--brick);outline-offs
  .showcase-panel .scene-flavors{padding:0!important}
 }
 @media(prefers-reduced-motion:reduce){.flavors-device,.flavors-device-screen>.flavors-scan-state{transition:none!important}}
+
+
+/* Nov 11: centered editorial image crops and full-bleed Flavors, without device mockup. */
+.showcase-panel .scene-flavors,
+.showcase-panel.is-active .scene-flavors{
+  display:block!important;
+  place-items:unset!important;
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  padding:0!important;
+  margin:0!important;
+  background:#a12b36!important;
+  overflow:hidden!important;
+}
+.showcase-panel .scene-flavors>img,
+.showcase-panel.is-active .scene-flavors>img,
+.showcase-panel .flavors-open-image>img{
+  display:block!important;
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  max-height:none!important;
+  object-fit:cover!important;
+  object-position:50% 50%!important;
+  transform:none!important;
+  border:0!important;
+  border-radius:0!important;
+  padding:0!important;
+  margin:0!important;
+  image-rendering:auto;
+}
+.showcase-panel .flavors-open-image{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  opacity:0;
+  z-index:1;
+  pointer-events:none;
+  transition:opacity .32s ease;
+}
+.showcase-panel .flavors-open-image.is-visible{opacity:1}
+.showcase-panel .scene-physics>img,
+.showcase-panel.is-active .scene-physics>img{
+  object-position:center center!important;
+  object-fit:cover!important;
+}
+/* Prevent the pointer-following title from being clipped into the card edge. */
+.showcase-stage .showcase-cursor{
+  max-width:min(420px,55vw)!important;
+  white-space:normal!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+  overflow-wrap:normal;
+  text-align:center;
+  pointer-events:none;
+}
+@media(max-width:760px){
+  .showcase-panel .scene-flavors>img,
+  .showcase-panel .flavors-open-image>img{object-fit:cover!important;object-position:50% 50%!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .showcase-panel .flavors-open-image{transition:none}
+}
