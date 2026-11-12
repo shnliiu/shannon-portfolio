@@ -351,39 +351,40 @@ function ClientWebsites() {
 function Work() {
   return (
     <>
-      <section className="folio-cover" aria-labelledby="folio-title">
-        <div className="folio-meta"><span>SL / 2026</span><span>A PERSONAL COLLECTION OF THINGS I'VE MADE</span><span>LOS ANGELES, CA</span></div>
-        <div className="folio-head">
-          <div className="folio-name">
-            <span className="folio-kicker">SHANNON LIU / SELECTED WORK</span>
-            <h1 id="folio-title">Shannon <em>Liu.</em></h1>
+      <section className="gallery-cover" aria-labelledby="cover-title">
+        <div className="gallery-edition"><span>SHANNON LIU</span><span>AN ARCHIVE OF WORK & EXPERIMENTS</span><span>2026 / LOS ANGELES</span></div>
+        <div className="gallery-title-row">
+          <div className="gallery-title-lockup">
+            <span className="gallery-eyebrow">PORTFOLIO Nº 01 — COMPUTER SCIENCE & CREATIVE TECHNOLOGY</span>
+            <h1 id="cover-title">Shannon<br/><em>Liu</em><span className="gallery-period">.</span></h1>
           </div>
-          <div className="folio-description">
-            <p>I'm studying Computer Science & Engineering at USC. I build AI study tools, websites, and software that people actually use.</p>
-            <div className="folio-actions">
-              <button type="button" onClick={() => document.getElementById("selected-projects")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth"})}>Selected work</button>
-              <Link to="about">More about me</Link>
-            </div>
+          <div className="gallery-side-note">
+            <span>ABOUT THE PERSON</span>
+            <p>I'm a Computer Science & Engineering student at USC. I like building things people can actually use, from AI tools to websites.</p>
+            <Link to="about">A little more about me</Link>
           </div>
         </div>
-        <div className="folio-visuals">
-          <figure className="folio-photo">
-            <Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="Shannon with an award from the Cal Poly AWS AI summer camp" />
-            <figcaption><span>01 / REAL-WORLD PROBLEMS</span><span>CAL POLY / 2025</span></figcaption>
+        <div className="gallery-composition">
+          <figure className="gallery-portrait">
+            <Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="Shannon receiving recognition at the Cal Poly AWS AI summer camp" />
+            <figcaption>THE BUILDER / SUMMER 2025</figcaption>
           </figure>
-          <div className="folio-sidebar">
-            <div className="folio-blueprint">
-              <span>NOTES FROM THE STUDIO / 01</span>
-              <strong>Things that begin as questions.</strong>
-              <small>AND SOMETIMES BECOME WORKING PROJECTS.</small>
+          <div className="gallery-case-file">
+            <span className="gallery-file-tab">OPEN FILE / 001</span>
+            <p className="gallery-file-preamble">AN ONGOING COLLECTION</p>
+            <h2>Ideas are meant to be <em>made.</em></h2>
+            <div className="gallery-file-copy">
+              <p>Five software projects, four client websites, and the things I learned along the way.</p>
+              <button type="button" onClick={() => document.getElementById("selected-projects")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth"})}>Explore selected work</button>
             </div>
-            <figure className="folio-interface">
-              <Img f="learningnco-vocab-lesson.webp" w={1440} h={810} alt="Vocabulary learning app interface from LearningNCo" />
-              <figcaption>02 / MAKING LEARNING MORE APPROACHABLE</figcaption>
-            </figure>
           </div>
+          <figure className="gallery-detail-photo">
+            <Img f="learningnco-vocab-lesson.webp" w={1440} h={810} alt="Screenshot of an interactive vocabulary application" />
+            <figcaption>FROM THE ARCHIVE / LEARNINGNCO</figcaption>
+          </figure>
+          <span className="gallery-side-type" aria-hidden="true">ENGINEERING / DESIGN / PEOPLE</span>
         </div>
-        <div className="folio-foot"><span>05 FEATURED ENGINEERING PROJECTS</span><span>04 CLIENT WEBSITES</span><span>AVAILABLE SUMMER 2027</span></div>
+        <div className="gallery-bottom-meta"><span>01—05 / FEATURED PROJECTS</span><span>PLUS FOUR CLIENT WEBSITES</span><span>AVAILABLE SUMMER 2027</span></div>
       </section>
       <ProjectShowcase />
       <ClientWebsites />
