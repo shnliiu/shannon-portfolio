@@ -180,6 +180,15 @@ function Plate({ p }) {
   );
 }
 
+function ShowcaseImage({ file, fallback }) {
+  return <img src={img(file)} alt="" loading="lazy" decoding="async" onError={(event) => {
+    const el = event.currentTarget;
+    if (el.dataset.fallbackApplied === "true") return;
+    el.dataset.fallbackApplied = "true";
+    el.src = img(fallback);
+  }} />;
+}
+
 function ProjectShowcase() {
   const [active, setActive] = useState(0);
   const [cursor, setCursor] = useState({ x: 0, y: 0, visible: false });
@@ -213,27 +222,27 @@ function ProjectShowcase() {
       visible: true
     });
   };
-  const visual = (p) => {
+  const visual = (p, isActive) => {
     if (p.id === "mini-clint") return (
       <div className="cover-scene scene-clint">
-        <Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="" />
+        <ShowcaseImage file="mini-clint-terminal.jpg" fallback="mini-clint-award-photo.jpg" />
       </div>
     );
     if (p.id === "usc-flavors") return (
       <div className="cover-scene scene-flavors">
-        <div className="cover-phone"><Img f="flavors-pass.jpg" w={920} h={1640} alt="" /></div>
+        <div className="cover-phone" key={isActive ? "pass" : "scanner"}>
+          <Img f={isActive ? "flavors-pass.jpg" : "flavors-scanner.jpg"} w={920} h={1640} alt="" />
+        </div>
       </div>
     );
     if (p.id === "physics-ai") return (
       <div className="cover-scene scene-physics">
-        <div className="book-spine book-a"><span>01</span><strong>Mechanics</strong></div>
-        <div className="book-spine book-b"><span>02</span><strong>E&amp;M</strong></div>
-        <div className="book-spine book-c"><span>03</span><strong>Modern Physics</strong></div>
+        <ShowcaseImage file="physics-study-hub.jpg" fallback="learningnco-vocab-cover.webp" />
       </div>
     );
     if (p.id === "harange") return (
       <div className="cover-scene scene-harange">
-        <div className="harange-art" aria-hidden="true"><i/><i/><i/><i/><i/><i/><i/><i/><i/></div>
+        <ShowcaseImage file="harange-home.jpg" fallback="learningnco-ss101-cover.webp" />
       </div>
     );
     return (
@@ -255,13 +264,13 @@ function ProjectShowcase() {
         {projectsToShow.map((p, i) => (
           <article key={p.id} className={`showcase-panel ${i === active ? "is-active" : ""}`}
             onPointerEnter={(e) => { if (e.pointerType === "mouse" && active !== i) choose(i); }}>
-            <div className="showcase-visual" aria-hidden="true">{visual(p)}</div>
+            <div className="showcase-visual" aria-hidden="true">{visual(p, i === active)}</div>
             <div className="showcase-shade" aria-hidden="true" />
             <button type="button" className="showcase-select"
               aria-pressed={i === active} onClick={() => choose(i)} onFocus={() => choose(i)}
               aria-label={`Select project ${p.n}: ${p.title}`}>
               <span className="showcase-number">{p.n} / {p.kind}</span>
-              <span className="showcase-name">{p.title}</span>
+              <span className="showcase-name">{i === active ? p.title : ({ "usc-flavors": "USC Flavors", "physics-ai": "Physics Study Hub" }[p.id] || p.title)}</span>
             </button>
             <div className="showcase-details">
               <div className="showcase-rule" aria-hidden="true"/>
