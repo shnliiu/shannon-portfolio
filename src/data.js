@@ -65,7 +65,7 @@ export const projects = [
     lead: "One place to study from three physics textbooks, with an AI tutor.",
     badge: "Four-week mentorship project",
     stack: ["Next.js", "TypeScript", "Claude Code", "MCP servers", "AI-assisted workflows"],
-    links: [{ label: "Source on GitHub", href: "https://github.com/shnliiu/physics-aid" }],
+    links: [{ label: "Live Physics Tutor", href: "https://physics-aid.vercel.app/tutor" }, { label: "Source on GitHub", href: "https://github.com/shnliiu/physics-aid" }],
     sections: [
       ["Context", "During a four-week developer mentorship I learned Claude Code, MCP servers and AI-assisted engineering workflows. At Riverside City College, students used three separate textbooks with class materials scattered across chapters."],
       ["What I built", "A website with textbook selection, chapter navigation, practice problems and a retrieval-based AI tutoring chatbot. These core features worked."],
