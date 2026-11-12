@@ -59,7 +59,7 @@ export const projects = [
     ],
   },
   {
-    id: "physics-ai", n: "03", title: "Physics AI Study Platform", kind: "AI / education", year: "2025",
+    id: "physics-ai", n: "03", title: "Physics Study Hub", kind: "AI / education", year: "2025",
     tone: "green", layout: "diagram",
     org: "Chinchilla AI Academy",
     lead: "One place to study from three physics textbooks, with an AI tutor.",
