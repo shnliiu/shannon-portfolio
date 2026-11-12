@@ -345,6 +345,49 @@ function DocumentLink({ file }) {
   return ready ? <a href={href} target="_blank" rel="noopener noreferrer">View presentation PDF</a> : <span className="doc-pending">Presentation PDF not yet uploaded</span>;
 }
 
+function PhysicsLivePreview() {
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const url = "https://physics-aid.vercel.app/tutor";
+  return (
+    <section className="physics-live" aria-labelledby="physics-live-title">
+      <div className="physics-live-heading">
+        <div>
+          <p className="label">LIVE PROJECT / TRY THE TUTOR</p>
+          <h2 id="physics-live-title">Try Physics Study Hub.</h2>
+          <p>Explore the deployed physics tutor here or open the full application in a new tab.</p>
+        </div>
+        <a href={url} target="_blank" rel="noopener noreferrer" className="physics-open-site">Open live app</a>
+      </div>
+      <div className="physics-live-window">
+        <div className="physics-live-bar">
+          <span className="physics-live-dots" aria-hidden="true"><i/><i/><i/></span>
+          <span className="physics-live-address">physics-aid.vercel.app/tutor</span>
+          <span className="physics-live-status">LIVE PREVIEW</span>
+        </div>
+        {previewOpen ? (
+          <iframe
+            title="Interactive Physics Study Hub tutor"
+            src={url}
+            loading="lazy"
+            referrerPolicy="strict-origin-when-cross-origin"
+            className="physics-live-iframe"
+            allow="clipboard-write"
+          />
+        ) : (
+          <div className="physics-live-poster">
+            <Img f="physics-study-hub.jpg" w={1600} h={900} alt="Physics Study Hub homepage screenshot" />
+            <div className="physics-live-poster-action">
+              <span>THE ACTUAL DEPLOYED PROJECT</span>
+              <button type="button" onClick={() => setPreviewOpen(true)}>Launch interactive preview</button>
+            </div>
+          </div>
+        )}
+      </div>
+      <p className="physics-live-note">If the preview cannot load, the app may block embedding or require its own browser session. <a href={url} target="_blank" rel="noopener noreferrer">Open Physics Study Hub directly</a>.</p>
+    </section>
+  );
+}
+
 function HarangeLivePreview() {
   const [previewOpen, setPreviewOpen] = useState(false);
   return (
@@ -409,6 +452,7 @@ function Case({ id }) {
         <span className="chip">{p.badge}</span>
       </header>
       {p.video && <section aria-label="Project demonstration video" className="case-video"><Video id={p.video} title={`${p.title} project demonstration`} /></section>}
+      {p.id === "physics-ai" && <PhysicsLivePreview />}
       {p.id === "harange" && <HarangeLivePreview />}
       {p.layout === "diagram" && <Diagram />}
       <div className="case-body">
