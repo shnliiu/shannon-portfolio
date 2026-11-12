@@ -351,29 +351,34 @@ function ClientWebsites() {
 function Work() {
   return (
     <>
-      <section className="identity-cover" aria-labelledby="identity-title">
-        <div className="identity-marquee">
-          <span>SHANNON LIU — CREATIVE ENGINEERING</span>
-          <span>LOS ANGELES / 2026</span>
-        </div>
-        <div className="identity-stage">
-          <div className="identity-title-block">
-            <span className="identity-issue">VOL. 01 / A PERSONAL PORTFOLIO</span>
-            <h1 id="identity-title"><span>SHANNON</span><span>LIU<span className="identity-asterisk" aria-hidden="true">✳</span></span></h1>
-            <div className="identity-manifesto">
-              <p>Computer Science & Engineering at USC. I build AI tools, interactive websites, and practical things people can use.</p>
-              <div className="identity-cta">
-                <button type="button" onClick={() => document.getElementById("selected-projects")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"})}>Explore my work <span aria-hidden="true">↗</span></button>
-                <Link to="about">Behind the work</Link>
+      <section className="brand-cover" aria-labelledby="brand-cover-title">
+        <div className="brand-overline"><span>SHANNON LIU / PERSONAL PORTFOLIO</span><span>ENGINEERING × DESIGN × COMMUNITY</span><span>2026 / LOS ANGELES</span></div>
+        <div className="brand-stage">
+          <div className="brand-intro">
+            <div className="brand-intro-top">
+              <span className="brand-issue">INDEPENDENT WORK / VOL. 01</span>
+              <span className="brand-orbit" aria-hidden="true">✳</span>
+            </div>
+            <h1 id="brand-cover-title">A LITTLE<br/>BIT OF <span>EVERYTHING.</span></h1>
+            <div className="brand-intro-footer">
+              <p>I'm Shannon, a USC Computer Science & Engineering student making AI tools, web experiences, and useful things for real people.</p>
+              <div className="brand-cta">
+                <button type="button" onClick={() => document.getElementById("selected-projects")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"})}>Explore the work</button>
+                <Link to="about">Get to know me</Link>
               </div>
             </div>
           </div>
-          <figure className="identity-photo">
-            <Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="Shannon with an award from the Cal Poly AWS AI summer camp" />
-            <figcaption>SHANNON / BUILDING THINGS WITH PEOPLE</figcaption>
+          <figure className="brand-portrait">
+            <Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="Shannon at the Cal Poly AWS AI summer camp with her award" />
+            <figcaption><span>ME, WITH A VERY PURPLE TROPHY</span><span>01 / 2025</span></figcaption>
           </figure>
-          <div className="identity-sticker" aria-hidden="true"><span>CS +</span><span>CREATIVE</span><span>TECH</span></div>
-          <div className="identity-bottom-bar"><span>DESIGN / CODE / COMMUNITY</span><span>SCROLL TO EXPLORE THE WORK</span></div>
+          <div className="brand-stamp"><span>SHANNON</span><strong>LIU</strong><small>CS&E · USC</small></div>
+        </div>
+        <div className="brand-filmstrip" aria-label="Glimpses of featured projects">
+          <div className="brand-film-label"><span>THE INDEX</span><strong>Things I've<br/>worked on.</strong></div>
+          <figure><ShowcaseImage file="mini-clint-terminal.jpg" fallback={<Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="" />} /><figcaption>01 / AI AGENTS</figcaption></figure>
+          <figure><Img f="flavors-scanner-login.jpg" w={920} h={1640} alt="Flavors attendance app" /><figcaption>02 / COMMUNITY TOOLS</figcaption></figure>
+          <figure><ShowcaseImage file="harange-home.jpg" fallback={<Img f="learningnco-vocab-lesson.webp" w={1440} h={810} alt="" />} /><figcaption>03 / WEB EXPERIENCES</figcaption></figure>
         </div>
       </section>
       <ProjectShowcase />
