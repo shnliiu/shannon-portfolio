@@ -211,7 +211,7 @@ function ProjectShowcase() {
         <h2 id="archive">Selected <em>projects.</em></h2>
         <p>Five projects across AI, software, and design. Select one to see its story, then open the full case study for the engineering details.</p>
       </div>
-      <div className="showcase-stage" ref={container} onPointerMove={track} onPointerLeave={() => setCursor(c => ({ ...c, visible: false }))}>
+      <div className="showcase-stage" data-active={active} ref={container} onPointerMove={track} onPointerLeave={() => setCursor(c => ({ ...c, visible: false }))}>
         {projectsToShow.map((p, i) => (
           <article key={p.id} className={`showcase-panel ${i === active ? "is-active" : ""}`} style={{ "--panel-index": i }} onPointerEnter={(e) => { if (e.pointerType === "mouse") choose(i); }}>
             <button type="button" className="showcase-select" aria-pressed={i === active} onClick={() => choose(i)} onFocus={() => choose(i)} aria-label={`Select project ${p.n}, ${p.title}`}>
@@ -247,10 +247,10 @@ function Work() {
             <div className="intro-cta"><button onClick={() => document.getElementById("selected-projects")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth"})}>Discover my work</button><Link to="resume">Résumé</Link></div>
           </div>
           <div className="cover-collage">
-            <div className="collage-number">PORTFOLIO / 001</div>
-            <div className="collage-film"><Img f="mini-clint-team.jpg" w={782} h={1036} alt="Mini Clint team celebrating their first-place award" /><div className="film-strip"><span>MINI CLINT</span><span>AI / AGENTS</span></div></div>
-            <div className="collage-ticket"><span>01 / FEATURED STORY</span><strong>FIRST PLACE</strong><span>CAL POLY AWS AI SUMMER CAMP</span></div>
-            <Link to="work/mini-clint" className="collage-link">EXPLORE THE STORY</Link>
+            <div className="collage-number">SHANNON LIU / ABOUT THE BUILDER</div>
+            <div className="collage-film"><Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="Shannon Liu holding an award at the Cal Poly AWS AI Summer Camp" /><div className="film-strip"><span>SHANNON LIU</span><span>ENGINEERING / DESIGN</span></div></div>
+            <div className="collage-ticket"><span>ABOUT THE BUILDER</span><strong>Curiosity in practice.</strong><span>USC / COMPUTER SCIENCE & ENGINEERING</span></div>
+            <Link to="about" className="collage-link">ABOUT SHANNON</Link>
           </div>
         </div>
         <div className="cover-foot"><span>USC VITERBI / LOS ANGELES</span><span>AVAILABLE SUMMER 2027</span><span>SCROLL TO EXPLORE</span></div>
@@ -298,6 +298,7 @@ function Case({ id }) {
         <p className="label">{p.n} · {p.kind} · {p.year} · {p.org}</p>
         <h1 tabIndex={-1} className="focus-h">{p.title}</h1>
         <p className="deck">{p.lead}</p>
+        {p.links.length > 0 && <div className="case-quicklinks">{p.links.map(l => <Ext key={l.href} href={l.href}>{l.label.includes("GitHub") || l.label.includes("Source") ? "View public GitHub source" : l.label}</Ext>)}</div>}
         <span className="chip">{p.badge}</span>
       </header>
       {p.video && <section aria-label="Project demonstration video" className="case-video"><Video id={p.video} title={`${p.title} project demonstration`} /></section>}
@@ -307,7 +308,7 @@ function Case({ id }) {
         <aside>
           <h2 className="label">Stack</h2>
           <ul className="tags">{p.stack.map((s) => <li key={s}>{s}</li>)}</ul>
-          {p.links.length > 0 && <><h2 className="label">Links</h2><ul className="links">{p.links.map((l) => <li key={l.href}><Ext href={l.href}>{l.label}</Ext></li>)}</ul></>}
+          {p.links.length > 0 && <><h2 className="label">Project resources</h2><ul className="links">{p.links.map((l) => <li key={l.href}><Ext href={l.href}>{l.label}</Ext></li>)}</ul></>}
         </aside>
       </div>
       {p.creds && <section className="creds" aria-label="Recognition and credentials"><h2 className="label">Recognition and credentials</h2><ul>{p.creds.map((c) => <li key={c}>{c}</li>)}</ul></section>}
