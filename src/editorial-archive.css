@@ -2,10 +2,10 @@
 /* VOL 05 — A real editorial system, not a preset portfolio template.
    Two disciplined display faces, ink / cobalt / apricot, imagery as evidence.
    Legacy component styles load first; this is the single active art-direction file. */
-:root{--paper:#f8f5ee;--ink:#181d26;--brick:#e26448;--cobalt:#324bd7;--quiet:#60616a;--line:#b7b8b6;--serif:"Instrument Serif",Georgia,serif;--sans:"DM Sans",Arial,sans-serif;--display:"Syne",Arial,sans-serif;--mono:"IBM Plex Mono",monospace}
+:root{--paper:#f5f4f0;--ink:#242823;--brick:#9f695d;--cobalt:#5b6755;--quiet:#696e65;--line:#c3c4ba;--serif:"Instrument Serif",Georgia,serif;--sans:"DM Sans",Arial,sans-serif;--display:"DM Sans",Arial,sans-serif;--mono:"IBM Plex Mono",monospace}
 html{background:var(--paper);scroll-behavior:smooth}
 body{background:var(--paper);color:var(--ink);font:400 15px/1.65 var(--sans);letter-spacing:-.012em}
-::selection{background:#b7c2ff;color:#101b4a}
+::selection{background:#d1dcc9;color:#20251d}
 .top{max-width:none;min-height:78px;margin:0;padding:15px clamp(22px,4.2vw,74px);display:flex;align-items:center;border-bottom:1px solid #1a2028;background:var(--paper)}
 .wordmark{font:800 21px/1 var(--display);letter-spacing:-.065em;text-decoration:none;padding:0;color:var(--ink)}
 .wordmark span{font:400 24px/1 var(--serif);vertical-align:baseline;color:var(--cobalt)}
@@ -21,10 +21,10 @@ main{max-width:none;padding:0 clamp(22px,4.2vw,74px) 80px;background:transparent
 .folio-meta{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:17px 0;border-bottom:1px solid var(--line);font:500 10px/1.4 var(--mono);letter-spacing:.075em}
 .folio-head{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(275px,.55fr);align-items:end;gap:5%;padding:48px 0 38px}
 .folio-kicker{font:700 10px var(--mono);letter-spacing:.11em;color:var(--cobalt);display:block;margin-bottom:23px}
-.folio-name h1{margin:0;font:800 clamp(76px,9.6vw,160px)/.8 var(--display);letter-spacing:-.1em;white-space:normal}
-.folio-name h1 em{font:400 clamp(98px,12.2vw,195px)/.73 var(--serif);letter-spacing:-.065em;color:var(--cobalt);margin-left:.02em}
+.folio-name h1{margin:0;font:400 clamp(95px,11vw,181px)/.8 var(--serif);letter-spacing:-.056em;white-space:normal}
+.folio-name h1 em{font:400 clamp(99px,12vw,191px)/.77 var(--serif);letter-spacing:-.07em;color:#76765d;margin-left:.02em}
 .folio-description{max-width:365px;padding-bottom:8px;justify-self:end}
-.folio-description:before{content:"";display:block;background:var(--cobalt);height:5px;width:68px;margin-bottom:25px}
+.folio-description:before{content:"";display:block;background:var(--ink);height:1px;width:100%;margin-bottom:23px}
 .folio-description p{font:500 clamp(17px,1.45vw,23px)/1.45 var(--sans);letter-spacing:-.03em;margin:0 0 24px}
 .folio-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
 .folio-actions button{background:var(--ink);color:#fff;border:1px solid var(--ink);padding:13px 16px;border-radius:0;font:700 12px var(--sans);min-height:44px;cursor:pointer;transition:background .22s ease}
@@ -34,50 +34,50 @@ main{max-width:none;padding:0 clamp(22px,4.2vw,74px) 80px;background:transparent
 .folio-visuals figure{margin:0;position:relative;min-width:0;min-height:0;overflow:hidden}
 .folio-visuals figure img{display:block;width:100%;height:100%;object-fit:cover;max-width:none;image-rendering:auto;transition:transform .5s ease,filter .5s ease}
 .folio-visuals figure:hover img{transform:scale(1.023)}
-.folio-photo{background:#27344e}
+.folio-photo{background:#555a53}
 .folio-photo img{object-position:50% 38%;filter:saturate(.88) contrast(.99)}
 .folio-photo:after{content:"";position:absolute;inset:65% 0 0;pointer-events:none;background:linear-gradient(transparent,#09172190)}
 .folio-visuals figcaption{position:absolute;left:18px;right:18px;bottom:18px;z-index:1;display:flex;justify-content:space-between;gap:15px;color:#fff;font:600 10px/1.35 var(--mono);letter-spacing:.04em}
 .folio-sidebar{display:flex;flex-direction:column;gap:13px;min-height:0}
-.folio-blueprint{background:var(--cobalt);color:#fff;flex:0 0 43%;padding:clamp(22px,3vw,40px);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
+.folio-blueprint{background:#dce2d6;color:#273026;flex:0 0 43%;padding:clamp(22px,3vw,40px);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
 .folio-blueprint>span{font:600 11px var(--mono);letter-spacing:.09em}
-.folio-blueprint strong{font:400 clamp(32px,4vw,67px)/.94 var(--serif);letter-spacing:-.025em;max-width:440px}
+.folio-blueprint strong{font:400 clamp(36px,4.1vw,69px)/.92 var(--serif);font-style:italic;letter-spacing:-.03em;max-width:440px}
 .folio-blueprint small{font:500 10px var(--mono);letter-spacing:.04em;opacity:.85}
-.folio-interface{flex:1;background:#dbdfdc}
+.folio-interface{flex:1;background:#d2cbc4}
 .folio-interface img{object-position:center}
 .folio-interface figcaption{font-size:9px}
 .folio-interface:after{content:"";position:absolute;inset:55% 0 0;background:linear-gradient(transparent,#18212878);pointer-events:none}
-.folio-foot{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:17px 0;font:600 10px/1.45 var(--mono);letter-spacing:.05em;color:#474c52}
+.folio-foot{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:17px 0;font:600 10px/1.45 var(--mono);letter-spacing:.05em;color:#555a54}
 /* Square-inspired interactive projects remain image-led. */
 .project-showcase{padding:103px 0 42px}
 .showcase-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,.55fr);gap:30px;align-items:end;margin:0 0 30px;padding:0}
 .showcase-intro .label{grid-column:1/-1;border-top:1px solid var(--ink);padding:17px 0 0;margin:0;color:var(--cobalt);font:700 10px var(--mono);letter-spacing:.095em}
-.showcase-intro h2{font:800 clamp(48px,5.5vw,90px)/.98 var(--display);letter-spacing:-.075em;margin:0}
+.showcase-intro h2{font:500 clamp(50px,5.6vw,90px)/.98 var(--serif);letter-spacing:-.045em;margin:0}
 .showcase-intro h2 em{color:var(--cobalt);font:400 clamp(59px,6.7vw,110px)/.8 var(--serif);letter-spacing:-.04em}
-.showcase-intro>p:last-child{font:400 14px/1.7 var(--sans);max-width:360px;color:#4c535e;margin:0 0 5px}
+.showcase-intro>p:last-child{font:400 14px/1.7 var(--sans);max-width:360px;color:#545a53;margin:0 0 5px}
 .showcase-stage{gap:8px}
 .showcase-panel{border-radius:0}
-.showcase-access-note{font:500 10px var(--mono);color:#5d626b;margin:16px 0 0}
+.showcase-access-note{font:500 10px var(--mono);color:#61675f;margin:16px 0 0}
 .client-sites{padding:85px 0 0}
-.client-sites-heading h2{font:800 clamp(48px,5.1vw,85px)/1 var(--display);letter-spacing:-.07em}
+.client-sites-heading h2{font:400 clamp(55px,5.8vw,94px)/.91 var(--serif);letter-spacing:-.045em}
 .client-sites-heading h2 em{font:400 clamp(61px,6.1vw,102px)/.8 var(--serif);color:var(--cobalt)}
 .client-sites-heading .label{color:var(--cobalt)}
-.client-site-name{font:600 clamp(26px,2.6vw,39px)/1.05 var(--display);letter-spacing:-.055em}
+.client-site-name{font:400 clamp(30px,3vw,49px)/1.02 var(--serif);letter-spacing:-.025em}
 .client-site-row{border-bottom:1px solid var(--line)}
-.client-site-row:hover{background:#e9e7fa}
+.client-site-row:hover{background:#e7e9e1}
 .client-site-index{color:var(--cobalt)}
-.client-site-meta small{color:#545865}
+.client-site-meta small{color:#5a6058}
 .client-site-visit{color:var(--cobalt)}
 .contact-strip{padding:50px 0 60px;margin-top:90px;background:transparent!important;color:var(--ink)!important;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
 .contact-strip:after{display:none}
-.contact-strip h2{font:800 clamp(47px,5.9vw,95px)/1 var(--display);letter-spacing:-.075em}
+.contact-strip h2{font:400 clamp(57px,6.6vw,103px)/.93 var(--serif);letter-spacing:-.048em}
 .contact-strip h2 em{font:400 clamp(62px,6.5vw,105px)/.75 var(--serif);color:var(--cobalt)}
 .contact-strip .label{color:var(--cobalt)}
 .contact-strip a{color:var(--ink)!important;border-bottom:1px solid var(--ink);background:transparent!important}
 /* Other pages: type hierarchy feels like the same publication. */
 .page{background:transparent;border:0;box-shadow:none;padding:75px 0 85px}
 .page>.label,.case-head .label{color:var(--cobalt);font:700 11px var(--mono)}
-.page>h1,.about h1{font:800 clamp(65px,7.1vw,118px)/.94 var(--display);letter-spacing:-.078em;margin-bottom:43px}
+.page>h1,.about h1{font:400 clamp(69px,7.9vw,132px)/.9 var(--serif);letter-spacing:-.052em;margin-bottom:43px}
 .page>h1 em,.about h1 em{font:400 clamp(78px,8vw,132px)/.82 var(--serif);color:var(--cobalt);letter-spacing:-.04em}
 .about{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(290px,.8fr);gap:8%;align-items:start;padding-top:90px}
 .about .deck{font:500 clamp(17px,1.8vw,24px)/1.5 var(--sans);letter-spacing:-.03em}
@@ -85,11 +85,11 @@ main{max-width:none;padding:0 clamp(22px,4.2vw,74px) 80px;background:transparent
 .xp{border-top:1px solid var(--ink);margin:45px 0 65px}
 .xp>li{grid-template-columns:minmax(132px,.22fr) minmax(0,1fr);gap:25px;padding:30px 0 37px;border-color:var(--line)}
 .xp time{font:600 10px var(--mono);color:var(--cobalt)}
-.xp h2{font:700 clamp(28px,3vw,45px)/1.1 var(--display);letter-spacing:-.055em}
+.xp h2{font:400 clamp(34px,3.4vw,54px)/1.02 var(--serif);letter-spacing:-.03em}
 .xp .role{font:700 12px var(--sans)}
 .case{padding:60px 0 77px}
 .case-head{padding-bottom:40px;border-bottom:1px solid var(--ink)}
-.case-head h1{font:800 clamp(60px,7.8vw,124px)/.95 var(--display);letter-spacing:-.076em}
+.case-head h1{font:400 clamp(65px,7.8vw,130px)/.89 var(--serif);letter-spacing:-.045em}
 .case-head .deck{font:400 clamp(22px,2.6vw,34px)/1.15 var(--serif);max-width:780px}
 .case-body{margin-top:44px;max-width:1200px}
 .case-video{background:transparent;padding:0;box-shadow:none;border:0}
