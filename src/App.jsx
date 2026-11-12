@@ -213,7 +213,9 @@ function ProjectShowcase() {
       setCursor((c) => c.visible ? { ...c, visible: false } : c);
       return;
     }
-    const safeX = Math.min(panelRect.right - 12, Math.max(panelRect.left + 12, event.clientX));
+    // Keep the floating project title within the active card instead of clipping at its edges.
+    const titleHalfWidth = Math.min(230, Math.max(65, panelRect.width * 0.3));
+    const safeX = Math.min(panelRect.right - titleHalfWidth, Math.max(panelRect.left + titleHalfWidth, event.clientX));
     setCursor({
       x: safeX - stageRect.left,
       y: Math.min(stageRect.height - 160, Math.max(65, event.clientY - stageRect.top)),
@@ -228,13 +230,9 @@ function ProjectShowcase() {
     );
     if (p.id === "usc-flavors") return (
       <div className="cover-scene scene-flavors">
-        <div className="flavors-device" aria-hidden="true">
-          <div className="flavors-device-screen">
-            <Img f="flavors-scanner-login.jpg" w={920} h={1640} alt="" />
-            <div className={`flavors-scan-state ${isActive ? "is-visible" : ""}`}>
-              <Img f="flavors-scanner.jpg" w={920} h={1640} alt="" />
-            </div>
-          </div>
+        <Img f="flavors-scanner-login.jpg" w={920} h={1640} alt="" />
+        <div className={`flavors-open-image ${isActive ? "is-visible" : ""}`}>
+          <Img f="flavors-scanner.jpg" w={920} h={1640} alt="" />
         </div>
       </div>
     );
