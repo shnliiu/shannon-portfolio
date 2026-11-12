@@ -572,3 +572,44 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--brick);outline-offs
   .showcase-panel .cover-scene > img,
   .showcase-panel.is-active .cover-scene > img{object-fit:cover!important}
 }
+
+
+/* Repair: project card typography and physically proportionate Flavors device.
+   This override follows the earlier stacked legacy rules. */
+.showcase-stage{align-items:stretch}
+.showcase-panel{min-width:0}
+.showcase-panel .showcase-select{width:100%;max-width:100%;padding:26px clamp(14px,1.4vw,26px)}
+.showcase-panel .showcase-name{display:block;overflow:visible!important;max-width:100%;text-overflow:clip!important;white-space:normal!important;word-break:normal;overflow-wrap:break-word;hyphens:none!important;line-height:1.02}
+.showcase-panel.is-active .showcase-name{max-width:100%;font-size:clamp(27px,2.6vw,44px)!important;line-height:1.03!important}
+.showcase-panel:nth-child(2).is-active .showcase-name{font-size:clamp(25px,2.2vw,37px)!important;max-width:100%;letter-spacing:-.04em!important}
+.showcase-panel:nth-child(3).is-active .showcase-name{font-size:clamp(24px,2.15vw,37px)!important;letter-spacing:-.055em!important}
+.showcase-panel:not(.is-active) .showcase-name{font-size:clamp(14px,1.05vw,20px)!important;line-height:1.1!important;overflow-wrap:anywhere}
+.showcase-panel:nth-child(2) .showcase-select,.showcase-panel:nth-child(3) .showcase-select{padding-right:22px}
+.showcase-panel .scene-flavors{position:absolute;inset:0!important;background:radial-gradient(ellipse at 48% 38%,#a65458 0%,#6f373a 60%,#3a1e29 100%)!important;display:grid!important;place-items:center!important;padding:0!important;overflow:hidden}
+.showcase-panel .scene-flavors>img{display:none!important}
+.flavors-device{height:78%;max-height:470px;aspect-ratio:9/19.5;width:auto;max-width:none;flex:none;position:relative;border:7px solid #29282a;border-radius:clamp(22px,2vw,38px);background:#18191c;box-shadow:0 0 0 2px #ad8888,10px 18px 35px #0007;transform:rotate(-3deg);overflow:hidden;transition:transform .5s ease}
+.flavors-device:before{content:"";position:absolute;top:5px;left:50%;transform:translateX(-50%);width:29%;height:10px;border-radius:0 0 10px 10px;background:#1b1c1e;z-index:4}
+.flavors-device-screen{position:absolute;inset:5px;overflow:hidden;border-radius:clamp(17px,1.5vw,29px);background:#bf242c}
+.flavors-device-screen>img,
+.flavors-device-screen>.flavors-scan-state,
+.flavors-device-screen>.flavors-scan-state>img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;padding:0!important;margin:0!important;border:0!important;transform:none!important;object-fit:cover!important;object-position:center center!important;border-radius:0!important;filter:none!important;display:block!important}
+.flavors-device-screen>.flavors-scan-state{z-index:2;opacity:0;transition:opacity .28s ease;pointer-events:none}
+.flavors-device-screen>.flavors-scan-state.is-visible{opacity:1}
+.showcase-panel:not(.is-active) .flavors-device{transform:rotate(-3deg) translateX(10%);height:76%;max-height:450px}
+.showcase-panel.is-active .flavors-device{transform:rotate(-2deg);height:78%}
+.showcase-panel .scene-clint img,.showcase-panel .scene-physics img,.showcase-panel .scene-harange img{object-fit:cover!important}
+.showcase-panel .showcase-cursor{white-space:normal!important;text-overflow:clip!important;overflow:visible!important;max-width:min(440px,55vw);font-size:clamp(24px,2.65vw,42px)!important}
+.showcase-stage[data-active="1"] .showcase-cursor,.showcase-stage[data-active="2"] .showcase-cursor{font-size:clamp(23px,2.5vw,36px)!important}
+.showcase-panel:nth-child(2).is-active .showcase-select,.showcase-panel:nth-child(3).is-active .showcase-select{padding-top:26px}
+@media(max-width:760px){
+ .showcase-panel .showcase-select{padding:14px 18px}
+ .showcase-panel.is-active .showcase-name,
+ .showcase-panel:nth-child(2).is-active .showcase-name,
+ .showcase-panel:nth-child(3).is-active .showcase-name{font-size:clamp(27px,6.7vw,39px)!important;line-height:1.04!important}
+ .showcase-panel:not(.is-active) .showcase-name{font-size:clamp(20px,5vw,29px)!important}
+ .flavors-device{height:72%;max-height:320px;border-width:5px}
+ .showcase-panel.is-active .flavors-device{height:72%}
+ .showcase-panel:not(.is-active) .flavors-device{height:132%;max-height:none}
+ .showcase-panel .scene-flavors{padding:0!important}
+}
+@media(prefers-reduced-motion:reduce){.flavors-device,.flavors-device-screen>.flavors-scan-state{transition:none!important}}
