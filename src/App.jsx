@@ -206,10 +206,10 @@ function ProjectShowcase() {
       setCursor((c) => c.visible ? { ...c, visible: false } : c);
       return;
     }
-    const safeX = Math.min(panelRect.right - 10, Math.max(panelRect.left + 10, event.clientX));
+    const safeX = Math.min(panelRect.right - 12, Math.max(panelRect.left + 12, event.clientX));
     setCursor({
       x: safeX - stageRect.left,
-      y: Math.min(stageRect.height - 150, Math.max(55, event.clientY - stageRect.top)),
+      y: Math.min(stageRect.height - 160, Math.max(65, event.clientY - stageRect.top)),
       visible: true
     });
   };
@@ -218,7 +218,7 @@ function ProjectShowcase() {
     if (p.id === "usc-flavors") return <Img f="flavors-pass.jpg" w={920} h={1640} alt="" />;
     if (p.id === "physics-ai") return <div className="showcase-graphic showcase-physics"><span>PHYSICS / RAG</span><strong>AI STUDY</strong><span>3 TEXTBOOKS / ONE STUDY SPACE</span></div>;
     if (p.id === "harange") return <div className="showcase-graphic showcase-harange"><span>GIRLSWHOML / MOZILLA FESTIVAL</span><strong>HARANGÈ</strong><span>FRONTEND DEVELOPMENT</span></div>;
-    return <Img f="learningnco-vocab-dashboard.webp" w={1440} h={810} alt="" />;
+    return <Img f="learningnco-vocab-cover.webp" w={1440} h={810} alt="" />;
   };
   return (
     <section className="project-showcase" id="selected-projects" aria-labelledby="archive">
@@ -240,13 +240,12 @@ function ProjectShowcase() {
               aria-label={`Select project ${p.n}: ${p.title}`}>
               <span className="showcase-number">{p.n} / {p.kind}</span>
               <span className="showcase-name">{p.title}</span>
-              <span className="showcase-lead">{p.lead}</span>
             </button>
             <div className="showcase-details">
               <div className="showcase-rule" aria-hidden="true"/>
-              <strong className="showcase-stat">{p.badge}</strong>
+              <strong className="showcase-stat">{["1st place / 15 teams", "A lower-cost check-in", "3 textbooks / AI tutor", "Website for Mozilla Festival", "44-page app prototype"][i]}</strong>
               <div className="showcase-details-row">
-                <span className="showcase-year">{p.year} / {p.lead}</span>
+                <span className="showcase-year">{p.lead}</span>
                 <Link to={`work/${p.id}`} className="showcase-link" onFocus={() => setCursor(c => ({...c, visible:false}))}>View case study</Link>
               </div>
             </div>
