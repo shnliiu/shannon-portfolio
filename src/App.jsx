@@ -228,7 +228,14 @@ function ProjectShowcase() {
     );
     if (p.id === "usc-flavors") return (
       <div className="cover-scene scene-flavors">
-        <Img f={"flavors-scanner.jpg"} w={920} h={1640} alt="" />
+        <div className="flavors-device" aria-hidden="true">
+          <div className="flavors-device-screen">
+            <Img f="flavors-scanner-login.jpg" w={920} h={1640} alt="" />
+            <div className={`flavors-scan-state ${isActive ? "is-visible" : ""}`}>
+              <Img f="flavors-scanner.jpg" w={920} h={1640} alt="" />
+            </div>
+          </div>
+        </div>
       </div>
     );
     if (p.id === "physics-ai") return (
@@ -266,7 +273,7 @@ function ProjectShowcase() {
               aria-pressed={i === active} onClick={() => choose(i)} onFocus={() => choose(i)}
               aria-label={`Select project ${p.n}: ${p.title}`}>
               <span className="showcase-number">{p.n} / {p.kind}</span>
-              <span className="showcase-name">{i === active ? p.title : ({ "usc-flavors": "USC Flavors", "physics-ai": "Physics Study Hub" }[p.id] || p.title)}</span>
+              <span className="showcase-name">{p.title}</span>
             </button>
             <div className="showcase-details">
               <div className="showcase-rule" aria-hidden="true"/>
