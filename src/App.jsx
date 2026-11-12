@@ -355,11 +355,11 @@ function Work() {
         <div className="folio-meta"><span>SL / 2026</span><span>A PERSONAL COLLECTION OF THINGS I'VE MADE</span><span>LOS ANGELES, CA</span></div>
         <div className="folio-head">
           <div className="folio-name">
-            <span className="folio-kicker">DESIGNED, BUILT & CURIOUS</span>
+            <span className="folio-kicker">SHANNON LIU / SELECTED WORK</span>
             <h1 id="folio-title">Shannon <em>Liu.</em></h1>
           </div>
           <div className="folio-description">
-            <p>I'm a Computer Science & Engineering student at USC who likes making useful things feel good to use.</p>
+            <p>I'm studying Computer Science & Engineering at USC. I build AI study tools, websites, and software that people actually use.</p>
             <div className="folio-actions">
               <button type="button" onClick={() => document.getElementById("selected-projects")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth"})}>Selected work</button>
               <Link to="about">More about me</Link>
@@ -373,9 +373,9 @@ function Work() {
           </figure>
           <div className="folio-sidebar">
             <div className="folio-blueprint">
-              <span>IN MY ELEMENT</span>
-              <strong>Code, design, and everything in between.</strong>
-              <small>ENGINEERING / DIGITAL EXPERIENCES / PEOPLE</small>
+              <span>NOTES FROM THE STUDIO / 01</span>
+              <strong>Things that begin as questions.</strong>
+              <small>AND SOMETIMES BECOME WORKING PROJECTS.</small>
             </div>
             <figure className="folio-interface">
               <Img f="learningnco-vocab-lesson.webp" w={1440} h={810} alt="Vocabulary learning app interface from LearningNCo" />
@@ -389,7 +389,7 @@ function Work() {
       <ClientWebsites />
       <section className="contact-strip">
         <span className="label">A LITTLE MORE ABOUT ME</span>
-        <h2>Curiosity meets <em>craft.</em></h2>
+        <h2>There’s more <em>to the story.</em></h2>
         <Link to="about">Get to know me</Link>
       </section>
     </>
