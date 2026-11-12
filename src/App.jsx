@@ -295,23 +295,27 @@ function Work() {
   return (
     <>
       <section className="cover-intro">
-        <div className="cover-topline"><span>SHANNON LIU / PORTFOLIO 2026</span><span>SOFTWARE ENGINEERING · CREATIVE TECHNOLOGY</span></div>
+        <div className="cover-topline"><span>SHANNON LIU / PORTFOLIO 2026</span><span>USC · COMPUTER SCIENCE & ENGINEERING</span></div>
         <div className="cover-layout">
           <div className="cover-heading">
-            <p className="label">HELLO, I'M SHANNON.</p>
-            <h1>Ideas in<br/><em>motion.</em></h1>
-            <p className="deck">I'm a USC Computer Science & Engineering student building practical AI systems, interactive web products, and tools for communities.</p>
-            <div className="intro-tags"><span>ENGINEERING</span><span>PRODUCT</span><span>CREATIVE THINKING</span></div>
-            <div className="intro-cta"><button onClick={() => document.getElementById("selected-projects")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth"})}>Discover my work</button><Link to="resume">Résumé</Link></div>
+            <p className="label"><span className="edition-dot" aria-hidden="true"></span> INTRODUCING / SHANNON LIU</p>
+            <h1>BUILDING<br/><em>the unexpected.</em></h1>
+            <p className="deck">I build AI tools, useful software, and playful digital experiences. Currently studying Computer Science & Engineering at USC.</p>
+            <div className="intro-tags"><span>01 / ENGINEERING</span><span>02 / DESIGN</span><span>03 / PEOPLE</span></div>
+            <div className="intro-cta">
+              <button onClick={() => document.getElementById("selected-projects")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth"})}>Explore selected work</button>
+              <Link to="resume">View résumé</Link>
+            </div>
           </div>
           <div className="cover-collage">
-            <div className="collage-number">SHANNON LIU / ABOUT THE BUILDER</div>
-            <div className="collage-film"><Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="Shannon Liu holding an award at the Cal Poly AWS AI Summer Camp" /><div className="film-strip"><span>SHANNON LIU</span><span>ENGINEERING / DESIGN</span></div></div>
-            <div className="collage-ticket"><span>ABOUT THE BUILDER</span><strong>Curiosity in practice.</strong><span>USC / COMPUTER SCIENCE & ENGINEERING</span></div>
-            <Link to="about" className="collage-link">ABOUT SHANNON</Link>
+            <div className="collage-number">FIG. 01 / THE PERSON BEHIND THE PROJECTS</div>
+            <div className="collage-film"><Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="Shannon holding an award at the Cal Poly AWS AI Summer Camp" /></div>
+            <div className="collage-ticket"><span>FIELD NOTE / 2026</span><strong>Curious by default.</strong><span>ENGINEERING × CREATIVE TECH</span></div>
+            <div className="cover-photo-caption">CAL POLY AWS AI SUMMER CAMP / 2025</div>
+            <Link to="about" className="collage-link">MEET THE MAKER</Link>
           </div>
         </div>
-        <div className="cover-foot"><span>USC VITERBI / LOS ANGELES</span><span>AVAILABLE SUMMER 2027</span><span>SCROLL TO EXPLORE</span></div>
+        <div className="cover-foot"><span>LOS ANGELES, CA</span><span>OPEN TO SUMMER 2027 INTERNSHIPS</span><span>VOL. 01 / SELECTED WORK BELOW</span></div>
       </section>
       <ProjectShowcase />
       <section className="contact-strip">
