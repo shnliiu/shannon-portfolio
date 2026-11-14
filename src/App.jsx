@@ -358,22 +358,6 @@ function ClientWebsites() {
   );
 }
 
-function HomeIntroduction() {
-  return (
-    <section className="home-introduction" aria-labelledby="home-introduction-title">
-      <div className="home-introduction-title">
-        <p className="label">A LITTLE MORE ABOUT ME</p>
-        <h2 id="home-introduction-title">Engineering, design, <em>and the people behind both.</em></h2>
-      </div>
-      <div className="home-introduction-copy">
-        <p>I enjoy the part of a project where a real problem starts becoming something useful. That has taken me from building AI tools and websites to helping student organizations run more smoothly.</p>
-        <p>At USC, I work on university web and newsletter projects. Outside class, I'm involved with Flavors USC and Project Play, a startup developing a beginner-friendly musical instrument. I've also explored semiconductor fabrication through UCLA CNSI training.</p>
-        <div className="home-introduction-links"><Link to="about">More about me</Link><Link to="experience">My experience</Link></div>
-      </div>
-    </section>
-  );
-}
-
 function HomeClosing() {
   return (
     <section className="home-closing" aria-labelledby="home-closing-title">
@@ -420,7 +404,6 @@ function Work() {
           <span>AI & ENGINEERING</span><span>WEB DESIGN</span><span>COMMUNITY PROJECTS</span><span>SELECTED WORK · 2025—2026</span>
         </div>
       </section>
-      <HomeIntroduction />
       <ProjectShowcase />
       <ClientWebsites />
       <HomeClosing />
