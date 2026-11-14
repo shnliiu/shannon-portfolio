@@ -578,17 +578,6 @@ const involvement = [
   }
 ];
 
-function OptionalPhoto({ file, alt }) {
-  const [ready, setReady] = useState(false);
-  useEffect(() => {
-    let active = true;
-    fetch(img(file), { method: "HEAD" })
-      .then((res) => { if (active) setReady(res.ok && (res.headers.get("content-type") || "").startsWith("image/")); })
-      .catch(() => { if (active) setReady(false); });
-    return () => { active = false; };
-  }, [file]);
-  return ready ? <Img f={file} w={900} h={600} alt={alt} /> : null;
-}
 function InvolvementPhotos({ files, name }) {
   const [available, setAvailable] = useState([]);
   useEffect(() => {
