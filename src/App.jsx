@@ -328,9 +328,9 @@ function ClientWebsites() {
       <div className="client-sites-heading">
         <div>
           <p className="label">ALSO MADE / CLIENT WEBSITES</p>
-          <h2 id="client-sites-title">Made for <em>real people.</em></h2>
+          <h2 id="client-sites-title">Client <em>websites.</em></h2>
         </div>
-        <p>Alongside coding projects, I've worked with clients to turn their ideas into usable websites through visual website builders, content design, and brand decisions.</p>
+        <p>Websites I've designed and built using website builders, working with clients on layout, content, and presentation.</p>
       </div>
       <div className="client-sites-index">
         {clientWebsites.map((site, i) => (
@@ -400,8 +400,8 @@ function Work() {
       <ProjectShowcase />
       <ClientWebsites />
       <section className="contact-strip">
-        <span className="label">ABOUT / NEXT</span>
-        <h2>More about <em>my work.</em></h2>
+        <span className="label">ABOUT</span>
+        <h2>About <em>me.</em></h2>
         <Link to="about">About me</Link>
       </section>
     </>
