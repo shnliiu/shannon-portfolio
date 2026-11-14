@@ -3,7 +3,7 @@
 export const BASE = import.meta.env.BASE_URL;
 export const img = (f) => `${BASE}assets/img/${f}`;
 
-export const RESUME_URL = `${BASE}assets/docs/Shannon_Liu_Resume.pdf`;
+export const RESUME_URL = `${BASE}assets/docs/Shannon_Liu_Resume.pdf?v=4b8f7390`;
 export const EMAIL = "shannon.liu04@gmail.com";
 export const LINKS = {
   github: "https://github.com/shnliiu",
