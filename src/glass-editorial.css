@@ -271,14 +271,15 @@ a:focus-visible,button:focus-visible{outline:2px solid #8c6664;outline-offset:4p
 .cnsi-certificate-info small{font:400 10px/1.5 var(--sans);color:#655c56}
 .cnsi-certificate-action{font:600 10px/1.4 var(--sans);text-decoration:underline;text-underline-offset:3px;color:#8b6261;margin-top:5px}
 @media(max-width:1000px){
- .cnsi-photo-grid{grid-template-columns:1.2fr 1fr}
- .cnsi-photo-third{display:none}
+ .cnsi-photo-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
  .cnsi-certificate{flex-direction:column;align-items:start}
 }
 @media(max-width:680px){
  .cnsi-media{margin-top:12px}
  .cnsi-photo-grid{grid-template-columns:1fr 1fr;gap:8px}
- .cnsi-photo{height:240px}
+ .cnsi-photo-main{grid-column:1/-1}
+ .cnsi-photo{height:205px}
+ .cnsi-photo-main{height:320px}
  .cnsi-photo figcaption{font-size:9px;padding:8px}
  .cnsi-certificates{margin-top:33px}
  .cnsi-certificate-heading{display:block;margin-bottom:16px}
