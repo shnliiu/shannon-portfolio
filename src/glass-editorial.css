@@ -381,3 +381,68 @@ a:focus-visible,button:focus-visible{outline:2px solid #8c6664;outline-offset:4p
  .about-award-photo{max-width:480px;aspect-ratio:4/5}
 }
 @media(prefers-reduced-motion:reduce){.home-student-id .badge{transition:none}}
+
+
+/* ID reverse: editorial layout from the approved back-card design.
+   Live HTML preserves the original button's accessible flip interaction. */
+.home-student-id .badge .back.id-back-design{
+ display:flex;flex-direction:column;align-items:stretch;justify-content:space-between;
+ padding:clamp(18px,3.1vw,43px) clamp(21px,3.45vw,52px) clamp(16px,2.6vw,36px);
+ border:1px solid #b6aeb5;border-radius:clamp(14px,2.7vw,25px);
+ background:linear-gradient(148deg,#fcfaf9,#faf5f5 77%,#f7f1f3);color:#2a242a;
+ box-shadow:inset 0 0 0 1px #ffffffba;
+}
+.id-back-content{width:100%;display:flex;flex-direction:column;gap:0}
+.home-student-id .badge .back .id-back-row{
+ display:flex;flex-direction:column;gap:clamp(7px,.9vw,13px);
+ padding:0 0 clamp(12px,1.8vw,25px);
+ margin:0 0 clamp(12px,1.8vw,25px);
+ border-bottom:1px solid #c9c5cd;position:relative;
+}
+.home-student-id .badge .back .id-back-row:before,
+.home-student-id .badge .back .id-back-focus:before{
+ content:"";position:absolute;top:1px;left:0;width:5px;height:clamp(17px,1.6vw,26px);background:#ecd1d4;
+}
+.home-student-id .badge .back .id-back-row small,
+.home-student-id .badge .back .id-back-focus>small{
+ display:block;padding-left:clamp(13px,1.5vw,22px);
+ color:#875467;font:700 clamp(9px,.85vw,13px)/1.25 var(--mono);letter-spacing:.15em;
+}
+.home-student-id .badge .back .id-back-row strong{
+ display:block;margin:0;padding-left:clamp(13px,1.5vw,22px);
+ font:500 clamp(18px,2.23vw,38px)/1.06 var(--serif);letter-spacing:-.02em;
+ color:#282228;text-wrap:balance;
+}
+.home-student-id .badge .back .id-back-focus{display:flex;align-items:center;gap:clamp(12px,2vw,28px);position:relative}
+.home-student-id .badge .back .id-focus-tags{display:flex;align-items:center;justify-content:flex-start;flex-wrap:wrap;gap:clamp(5px,.7vw,12px)}
+.home-student-id .badge .back .id-focus-tags>span{
+ padding:clamp(4px,.55vw,8px) clamp(9px,1.15vw,17px);
+ border-radius:999px;background:#f1e4e9;color:#815568;
+ font:500 clamp(10px,.96vw,16px)/1.25 var(--sans);letter-spacing:0;
+}
+.home-student-id .badge .back .id-back-flip{
+ display:flex;align-items:center;justify-content:center;gap:clamp(9px,1.5vw,23px);
+ width:100%;color:#86566c;font:italic 500 clamp(14px,1.42vw,23px)/1.2 var(--serif);
+ border:0;letter-spacing:0;white-space:nowrap;
+}
+.home-student-id .badge .back .id-back-flip:before,
+.home-student-id .badge .back .id-back-flip:after{
+ content:"";display:block;width:24%;height:1px;background:#b7b4be;
+}
+@media(max-width:950px){
+ .home-student-id .badge .back.id-back-design{padding:17px 21px 15px}
+ .home-student-id .badge .back .id-back-row{gap:6px;padding-bottom:12px;margin-bottom:12px}
+ .home-student-id .badge .back .id-back-row strong{font-size:clamp(18px,2.5vw,27px)}
+ .home-student-id .badge .back .id-back-row small,.home-student-id .badge .back .id-back-focus>small{font-size:9px}
+ .home-student-id .badge .back .id-focus-tags>span{font-size:10px}
+ .home-student-id .badge .back .id-back-flip{font-size:13px}
+}
+@media(max-width:680px){
+ .home-student-id .badge .back.id-back-design{padding:clamp(13px,4vw,24px)}
+ .home-student-id .badge .back .id-back-row{gap:4px;padding-bottom:clamp(8px,2vw,16px);margin-bottom:clamp(8px,2vw,16px)}
+ .home-student-id .badge .back .id-back-row strong{font-size:clamp(16px,4.3vw,27px)}
+ .home-student-id .badge .back .id-back-row small,.home-student-id .badge .back .id-back-focus>small{font-size:clamp(8px,2vw,11px)}
+ .home-student-id .badge .back .id-focus-tags>span{font-size:clamp(9px,2.4vw,12px);padding:4px 8px}
+ .home-student-id .badge .back .id-back-focus{gap:9px}
+ .home-student-id .badge .back .id-back-flip{font-size:clamp(12px,3.1vw,17px)}
+}
