@@ -500,3 +500,49 @@ a:focus-visible,button:focus-visible{outline:2px solid #8c6664;outline-offset:4p
   transform: none !important;
   transition: none;
 }
+
+/* Case study tool list: airy editorial chips instead of stacked full-width rows. */
+.case-story {
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 340px);
+  gap: clamp(32px, 5vw, 76px);
+}
+.case-story aside {
+  min-width: 0;
+  padding: 8px 0 0;
+  background: transparent;
+}
+.case-story aside .label {
+  font: 500 clamp(28px, 2.8vw, 39px)/1.12 var(--serif);
+  letter-spacing: -.025em;
+  text-transform: none;
+  color: #6e5550;
+  margin: 0 0 22px;
+}
+.case-story aside .tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 0;
+  margin: 0;
+}
+.case-story aside .tags li {
+  display: inline-flex;
+  align-items: center;
+  width: auto;
+  max-width: 100%;
+  min-height: 42px;
+  padding: 10px 15px;
+  margin: 0;
+  border: 1px solid #d2c4b9;
+  border-radius: 24px;
+  background: #f8f4ef;
+  color: #51413c;
+  font: 500 13px/1.4 var(--sans);
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+}
+@media(max-width:900px) {
+  .case-story { grid-template-columns: minmax(0, 1fr); gap: 30px; }
+  .case-story aside { padding-top: 12px; }
+}
