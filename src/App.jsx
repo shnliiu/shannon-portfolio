@@ -371,7 +371,7 @@ function Work() {
           </div>
           <div className="editorial-hero-art home-student-id">
             <Badge />
-            <p className="home-id-hint">Select the ID to flip it</p>
+            
           </div>
         </div>
         <div className="editorial-ribbon">
