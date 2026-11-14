@@ -348,6 +348,39 @@ function ClientWebsites() {
   );
 }
 
+function HomeIntroduction() {
+  return (
+    <section className="home-introduction" aria-labelledby="home-introduction-title">
+      <div className="home-introduction-title">
+        <p className="label">A LITTLE MORE ABOUT ME</p>
+        <h2 id="home-introduction-title">Engineering, design, <em>and the people behind both.</em></h2>
+      </div>
+      <div className="home-introduction-copy">
+        <p>I enjoy the part of a project where a real problem starts becoming something useful. That has taken me from building AI tools and websites to helping student organizations run more smoothly.</p>
+        <p>At USC, I work on university web and newsletter projects. Outside class, I'm involved with Flavors USC and Project Play, a startup developing a beginner-friendly musical instrument. I've also explored semiconductor fabrication through UCLA CNSI training.</p>
+        <div className="home-introduction-links"><Link to="about">More about me</Link><Link to="experience">My experience</Link></div>
+      </div>
+    </section>
+  );
+}
+
+function HomeClosing() {
+  return (
+    <section className="home-closing" aria-labelledby="home-closing-title">
+      <div className="home-closing-intro">
+        <p className="label">EXPERIENCE / INVOLVEMENT</p>
+        <h2 id="home-closing-title">Beyond the <em>projects.</em></h2>
+        <p>My experience includes web development at USC Viterbi, an education-technology internship in Seoul, and leadership in student organizations.</p>
+      </div>
+      <div className="home-closing-links">
+        <div><span>01 / EXPERIENCE</span><strong>Work and internships</strong><Link to="experience">View experience</Link></div>
+        <div><span>02 / ABOUT</span><strong>Clubs, Project Play & UCLA CNSI</strong><Link to="about">View involvement</Link></div>
+        <div><span>03 / RÉSUMÉ</span><strong>Education, skills & experience</strong><Link to="resume">View résumé</Link></div>
+      </div>
+    </section>
+  );
+}
+
 function Work() {
   return (
     <>
@@ -361,7 +394,7 @@ function Work() {
           <div className="editorial-hero-copy">
             <p className="editorial-eyebrow">PORTFOLIO / 2026</p>
             <h1 id="editorial-cover-title">Hi, I'm<br/><em>Shannon.</em></h1>
-            <p className="editorial-lead">I study Computer Science & Engineering at USC and build AI tools, websites, and software for the communities around me.</p>
+            <p className="editorial-lead">I’m a Computer Science & Engineering student at USC, interested in practical software and the way people experience it. My projects range from AI learning tools to websites and systems for student communities.</p>
             <div className="editorial-hero-links">
               <button type="button" onClick={() => document.getElementById("selected-projects")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"})}>View selected work</button>
               <Link to="about">About me</Link>
@@ -373,7 +406,7 @@ function Work() {
               <Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="Shannon holding an award at the Cal Poly AWS AI Summer Camp" />
               <figcaption>CAL POLY / AWS AI SUMMER CAMP · 2025</figcaption>
             </figure>
-            <div className="editorial-hero-caption" aria-hidden="true">01 / SELECTED WORK</div>
+            <div className="editorial-hero-caption" aria-hidden="true">USC / COMPUTER SCIENCE & ENGINEERING</div>
             <div className="editorial-hero-seal" aria-hidden="true"><span>SHANNON</span><strong>LIU</strong><span>EST. 2026</span></div>
           </div>
         </div>
@@ -381,8 +414,10 @@ function Work() {
           <span>AI & ENGINEERING</span><span>WEB DESIGN</span><span>COMMUNITY PROJECTS</span><span>SELECTED WORK · 2025—2026</span>
         </div>
       </section>
+      <HomeIntroduction />
       <ProjectShowcase />
       <ClientWebsites />
+      <HomeClosing />
 
     </>
   );
@@ -507,18 +542,15 @@ function Case({ id }) {
         {p.links.length > 0 && <div className="case-quicklinks">{p.links.map(l => <Ext key={l.href} href={l.href}>{l.label.includes("GitHub") || l.label.includes("Source") ? "View public GitHub source" : l.label}</Ext>)}</div>}
         <span className="chip">{p.badge}</span>
       </header>
+      <div className="case-body case-story">
+        <div className="prose">{p.sections.map(([h, t]) => <section key={h}><h2>{h}</h2><p>{t}</p></section>)}</div>
+        <aside><h2 className="label">Tools used</h2><ul className="tags">{p.stack.map((s) => <li key={s}>{s}</li>)}</ul></aside>
+      </div>
       {p.video && <section aria-label="Project demonstration video" className="case-video"><Video id={p.video} title={`${p.title} project demonstration`} /></section>}
       {p.id === "physics-ai" && <PhysicsLivePreview />}
       {p.id === "harange" && <HarangeLivePreview />}
       {p.layout === "diagram" && <Diagram />}
-      <div className="case-body">
-        <div className="prose">{p.sections.map(([h, t]) => <section key={h}><h2>{h}</h2><p>{t}</p></section>)}</div>
-        <aside>
-          <h2 className="label">Stack</h2>
-          <ul className="tags">{p.stack.map((s) => <li key={s}>{s}</li>)}</ul>
-          {p.links.length > 0 && <><h2 className="label">Project resources</h2><ul className="links">{p.links.map((l) => <li key={l.href}><Ext href={l.href}>{l.label}</Ext></li>)}</ul></>}
-        </aside>
-      </div>
+
       {p.creds && <section className="creds" aria-label="Recognition and credentials"><h2 className="label">Recognition and credentials</h2><ul>{p.creds.map((c) => <li key={c}>{c}</li>)}</ul></section>}
       <Gallery items={p.id === "learningnco" && !internshipReady ? [] : p.media} label={`${p.title} images`} />
       {p.documents && (
