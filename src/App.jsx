@@ -671,6 +671,50 @@ function CnsiGallery() {
   );
 }
 
+const diplomaImages = [
+  { file: "diploma-physics-norco.jpg", title: "Physics for Transfer", school: "Norco College" },
+  { file: "diploma-pre-engineering-norco.jpg", title: "Pre-Engineering", school: "Norco College" },
+  { file: "diploma-math-science-norco.jpg", title: "Math and Science", school: "Norco College" },
+  { file: "diploma-social-behavioral-norco.jpg", title: "Social and Behavioral Studies", school: "Norco College" },
+  { file: "diploma-mathematics-mt-sac.jpg", title: "Liberal Arts and Sciences (Mathematics)", school: "Mt. San Antonio College" }
+];
+
+function DiplomaGallery() {
+  const [found, setFound] = useState([]);
+  const [pdfFound, setPdfFound] = useState(false);
+  const diplomaPdf = `${BASE}assets/docs/Shannon_Liu_Associate_Degrees.pdf`;
+  useEffect(() => {
+    let mounted = true;
+    Promise.all(diplomaImages.map(async (d) => {
+      try {
+        const r = await fetch(img(d.file), { method: "HEAD" });
+        return r.ok && (r.headers.get("content-type") || "").startsWith("image/") ? d.file : null;
+      } catch { return null; }
+    })).then(files => { if (mounted) setFound(files.filter(Boolean)); });
+    fetch(diplomaPdf, { method: "HEAD" })
+      .then(r => { if (mounted) setPdfFound(r.ok && (r.headers.get("content-type") || "").includes("pdf")); })
+      .catch(() => {});
+    return () => { mounted = false; };
+  }, []);
+  if (!found.length && !pdfFound) return null;
+  return (
+    <div className="diploma-gallery" aria-label="Associate degree diplomas">
+      <div className="diploma-gallery-heading">
+        <h3>Degree certificates</h3>
+        {pdfFound && <a href={diplomaPdf} target="_blank" rel="noopener noreferrer">View all five diplomas (PDF)</a>}
+      </div>
+      {found.length > 0 && <div className="diploma-gallery-grid">
+        {diplomaImages.filter(d => found.includes(d.file)).map(d => (
+          <a key={d.file} href={img(d.file)} target="_blank" rel="noopener noreferrer" className="diploma-thumbnail" aria-label={`View ${d.title} diploma from ${d.school}`}>
+            <Img f={d.file} w={850} h={680} alt={`${d.school} diploma: ${d.title}`} />
+            <span>{d.title}<small>{d.school}</small></span>
+          </a>
+        ))}
+      </div>}
+    </div>
+  );
+}
+
 function About() {
   return (
     <div className="about-page">
@@ -716,6 +760,7 @@ function About() {
             </div>
           </div>
         </div>
+        <DiplomaGallery />
       </section>
       <section className="involvement-section" aria-labelledby="involvement-title">
         <div className="about-section-heading">
