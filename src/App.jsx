@@ -134,38 +134,12 @@ function Diagram() {
 
 /* ---------- ID badge ---------- */
 function Badge() {
-  const [flip, setFlip] = useState(false);
-  const ref = useRef(null);
-  const move = (e) => {
-    const r = ref.current.getBoundingClientRect();
-    ref.current.style.setProperty("--rx", `${((e.clientY - r.top) / r.height - 0.5) * -8}deg`);
-    ref.current.style.setProperty("--ry", `${((e.clientX - r.left) / r.width - 0.5) * 10}deg`);
-  };
-  const reset = () => { ref.current.style.setProperty("--rx", "0deg"); ref.current.style.setProperty("--ry", "0deg"); };
   return (
-    <button ref={ref} className={`badge${flip ? " flip" : ""}`} onPointerMove={move} onPointerLeave={reset}
-      onClick={() => setFlip(!flip)} aria-pressed={flip} aria-label="USC student ID. Press to flip for a little more about Shannon.">
+    <div className="badge badge-static">
       <span className="face front">
         <Img f="about-usc-id.png" w={1400} h={600} alt="Shannon Liu USC student ID, with student number obscured" />
       </span>
-      <span className="face back id-back-design">
-        <span className="id-back-content">
-          <span className="id-back-row">
-            <small>CURRENTLY</small>
-            <strong>Seeking Summer 2027 software engineering internships.</strong>
-          </span>
-          <span className="id-back-row">
-            <small>BUILDS</small>
-            <strong>AI agents, full-stack web apps, educational tools.</strong>
-          </span>
-          <span className="id-back-focus">
-            <small>FOCUS</small>
-            <span className="id-focus-tags"><span>product</span><span>software</span><span>design</span></span>
-          </span>
-        </span>
-        <span className="id-back-flip">Tap to flip to front</span>
-      </span>
-    </button>
+    </div>
   );
 }
 
