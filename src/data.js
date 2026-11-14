@@ -28,7 +28,6 @@ export const projects = [
     ],
     media: [
       { f: "mini-clint-team.jpg", w: 782, h: 1036, alt: "Mini Clint team holding awards at the Cal Poly AWS AI Summer Camp", cap: "Mini Clint team" },
-      { f: "mini-clint-award-photo.jpg", w: 782, h: 1036, alt: "Shannon holding her award at the AI Summer Camp", cap: "Personal award photograph" },
       { f: "mini-clint-first-place.jpg", w: 1404, h: 1084, alt: "Mini Clint first-place team award certificate", cap: "First-place team award" },
       { f: "mini-clint-ai-mastery.jpeg", w: 1404, h: 1084, alt: "Shannon Liu AI Mastery certificate", cap: "AI Mastery certificate" },
       { f: "mini-clint-shaving-the-yak.jpeg", w: 1404, h: 1084, alt: "Shannon Liu Shaving the Yak award certificate", cap: "Shaving the Yak award" },
