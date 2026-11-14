@@ -486,3 +486,17 @@ a:focus-visible,button:focus-visible{outline:2px solid #8c6664;outline-offset:4p
  .diploma-gallery-heading{align-items:start;flex-direction:column;gap:8px}
 }
 @media(prefers-reduced-motion:reduce){.diploma-thumbnail img{transition:none}}
+
+/* Photo ID stays still: no flip, tilt, or button affordance. */
+.home-student-id .badge.badge-static,
+.about .badge.badge-static {
+  cursor: default;
+  transform: none !important;
+  transform-style: flat;
+  transition: none;
+  will-change: auto;
+}
+.badge.badge-static .face.front {
+  transform: none !important;
+  transition: none;
+}
