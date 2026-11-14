@@ -380,30 +380,10 @@ function Work() {
         <div className="editorial-ribbon">
           <span>AI & ENGINEERING</span><span>WEB DESIGN</span><span>COMMUNITY PROJECTS</span><span>SELECTED WORK · 2025—2026</span>
         </div>
-        <div className="editorial-preview">
-          <div className="editorial-preview-text">
-            <span className="editorial-eyebrow">WORK IN PRACTICE / 01</span>
-            <h2>Projects built to <em>be used.</em></h2>
-            <p>From a university math-placement agent to a community check-in system, I focus on turning problems into working products.</p>
-            <Link to="work/mini-clint">Explore Mini Clint</Link>
-          </div>
-          <figure className="editorial-preview-image">
-            <ShowcaseImage file="mini-clint-terminal.jpg" fallback={<Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="" />} />
-            <figcaption>MINI CLINT / AWS AI SUMMER CAMP</figcaption>
-          </figure>
-          <figure className="editorial-preview-detail">
-            <ShowcaseImage file="harange-home.jpg" fallback={<Img f="learningnco-vocab-lesson.webp" w={1440} h={810} alt="" />} />
-            <figcaption>HARANGÈ / WEB DEVELOPMENT</figcaption>
-          </figure>
-        </div>
       </section>
       <ProjectShowcase />
       <ClientWebsites />
-      <section className="contact-strip">
-        <span className="label">ABOUT</span>
-        <h2>About <em>me.</em></h2>
-        <Link to="about">About me</Link>
-      </section>
+
     </>
   );
 }
@@ -575,18 +555,101 @@ function Case({ id }) {
   );
 }
 
+const involvement = [
+  {
+    id: "flavors",
+    index: "01",
+    name: "Flavors USC",
+    tag: "STUDENT ORGANIZATION / USC",
+    role: "Executive Board · Graphic Design",
+    text: "I work on visuals and member experiences for Flavors, a USC student community. I also built the check-in system used for cohort meetings.",
+    photos: ["about-flavors-1.jpg", "about-flavors-2.jpg"],
+    link: { to: "work/usc-flavors", label: "See the attendance system" }
+  },
+  {
+    id: "project-play",
+    index: "02",
+    name: "Project Play",
+    tag: "STARTUP / MUSIC TECHNOLOGY",
+    role: "Founding Team",
+    text: "Project Play is building a beginner-friendly chord synthesizer to make playing music more approachable. I've been involved in the team's launch and creative work.",
+    photos: ["about-project-play-1.jpg", "about-project-play-2.jpg"],
+    link: { href: "https://www.instagram.com/projectplay.tech/", label: "Project Play on Instagram" }
+  }
+];
+
+function OptionalPhoto({ file, alt }) {
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    let active = true;
+    fetch(img(file), { method: "HEAD" })
+      .then((res) => { if (active) setReady(res.ok && (res.headers.get("content-type") || "").startsWith("image/")); })
+      .catch(() => { if (active) setReady(false); });
+    return () => { active = false; };
+  }, [file]);
+  return ready ? <Img f={file} w={900} h={600} alt={alt} /> : null;
+}
+function InvolvementPhotos({ files, name }) {
+  const [available, setAvailable] = useState([]);
+  useEffect(() => {
+    let active = true;
+    Promise.all(files.map(async (file) => {
+      try { const r = await fetch(img(file), { method: "HEAD" }); return r.ok && (r.headers.get("content-type") || "").startsWith("image/") ? file : null; }
+      catch { return null; }
+    })).then(found => { if (active) setAvailable(found.filter(Boolean)); });
+    return () => { active = false; };
+  }, [files.join("|")]);
+  if (!available.length) return null;
+  return <div className="involvement-photos">{available.map((file, i) => <Img key={file} f={file} w={900} h={600} alt={`${name} photo ${i+1}`} />)}</div>;
+}
+
 function About() {
   return (
-    <section className="page about">
-      <div>
-        <p className="label">PERSONAL FILE / 02</p>
-        <h1 tabIndex={-1} className="focus-h">A little more <em>about me.</em></h1>
-        <p className="deck">I’m a Computer Science and Engineering student at USC Viterbi, transferring in with five associate degrees from Norco College and Mt. SAC. I like building software people can use right away: AI assistants, check-in tools, study aids, websites.</p>
-        <p>I lead teams (project manager for Mini Clint, ACM vice president) and I care about the design side too, from Figma-to-code frontends to email templates that survive dark mode.</p>
-        <p><Link to="experience" className="btn">Experience</Link> <Link to="work" className="btn ghost">The work</Link></p>
-      </div>
-      <Badge />
-    </section>
+    <div className="about-page">
+      <section className="page about">
+        <div>
+          <p className="label">ABOUT</p>
+          <h1 tabIndex={-1} className="focus-h">About <em>me.</em></h1>
+          <p className="deck">I'm studying Computer Science and Engineering at USC Viterbi, after earning five associate degrees through Norco College and Mt. SAC.</p>
+          <p>My work includes AI tools, web development, and student-led projects. Outside of coursework, I've also spent time on student organizations, design, music technology, and hands-on microelectronics training.</p>
+          <p><Link to="experience" className="btn">Experience</Link> <Link to="work" className="btn ghost">Projects</Link></p>
+        </div>
+        <Badge />
+      </section>
+      <section className="involvement-section" aria-labelledby="involvement-title">
+        <div className="about-section-heading">
+          <p className="label">AT USC / INVOLVEMENT</p>
+          <h2 id="involvement-title">Outside the <em>classroom.</em></h2>
+          <p>Student organizations and projects I'm involved in beyond my coursework.</p>
+        </div>
+        <div className="involvement-list">
+          {involvement.map((item) => <article key={item.id} className={`involvement-entry involvement-${item.id}`}>
+            <span className="involvement-number">{item.index}</span>
+            <div className="involvement-content">
+              <span className="label">{item.tag}</span>
+              <h3>{item.name}</h3>
+              <p className="involvement-role">{item.role}</p>
+              <p>{item.text}</p>
+              {item.link.to ? <Link to={item.link.to}>{item.link.label}</Link> : <a target="_blank" rel="noopener noreferrer" href={item.link.href}>{item.link.label}</a>}
+              <InvolvementPhotos files={item.photos} name={item.name} />
+            </div>
+          </article>)}
+        </div>
+      </section>
+      <section className="cnsi-section" aria-labelledby="cnsi-title">
+        <div className="cnsi-index"><span className="label">ADDITIONAL TRAINING / 2025</span><span>UCLA CNSI</span></div>
+        <div className="cnsi-body">
+          <div>
+            <h2 id="cnsi-title">Inside the <em>cleanroom.</em></h2>
+            <p className="cnsi-role">UCLA California NanoSystems Institute · Microelectronics Training Program</p>
+          </div>
+          <div className="cnsi-description">
+            <p>Selected as one of ten participants for microelectronics training in October–November 2025. I learned about semiconductor fabrication and lithography, including cleanroom procedures and wafer processing.</p>
+            <InvolvementPhotos files={["about-cnsi-1.jpg", "about-cnsi-2.jpg"]} name="UCLA CNSI semiconductor training" />
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }
 
