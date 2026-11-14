@@ -247,3 +247,45 @@ a:focus-visible,button:focus-visible{outline:2px solid #8c6664;outline-offset:4p
  .cnsi-index{font-size:9px}
  .cnsi-body h2{font-size:clamp(61px,12vw,86px)}
 }
+
+
+/* UCLA CNSI: photography first, a restrained three-certificate row below. */
+.cnsi-media{grid-column:1/-1;margin-top:28px}
+.cnsi-photo-grid{display:grid;grid-template-columns:1.35fr .8fr .8fr;gap:12px;align-items:stretch}
+.cnsi-photo{position:relative;margin:0;min-width:0;height:clamp(225px,29vw,420px);overflow:hidden;background:#e8e5e2}
+.cnsi-photo img{display:block;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center}
+.cnsi-photo-main img{object-position:50% 46%}
+.cnsi-photo-second img{object-position:50% 45%}
+.cnsi-photo-third img{object-position:50% 52%}
+.cnsi-photo figcaption{position:absolute;bottom:0;left:0;right:0;padding:10px 14px;background:linear-gradient(transparent,#29201ba6);color:white;font:500 10px/1.45 var(--mono)}
+.cnsi-certificates{margin-top:42px}
+.cnsi-certificate-heading{display:flex;gap:30px;align-items:baseline;justify-content:space-between;margin-bottom:17px}
+.cnsi-certificate-heading h3{font:500 clamp(34px,3.5vw,53px)/1 var(--serif);letter-spacing:-.035em;margin:0;color:#483228}
+.cnsi-certificate-heading p{font:400 12px/1.6 var(--sans);color:#75685e;margin:0}
+.cnsi-certificate-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.cnsi-certificate{display:flex;align-items:center;gap:13px;background:#f4f6f7;border:1px solid #d8dce0;padding:15px;text-decoration:none;color:#4b3930;min-width:0;transition:background .2s}
+.cnsi-certificate:hover{background:#e7eff6}
+.cnsi-certificate>img{width:82px;height:82px;flex:none;object-fit:contain;max-width:none}
+.cnsi-certificate-info{display:flex;flex-direction:column;gap:5px;min-width:0}
+.cnsi-certificate-info strong{font:600 12px/1.35 var(--sans)}
+.cnsi-certificate-info small{font:400 10px/1.5 var(--sans);color:#655c56}
+.cnsi-certificate-action{font:600 10px/1.4 var(--sans);text-decoration:underline;text-underline-offset:3px;color:#8b6261;margin-top:5px}
+@media(max-width:1000px){
+ .cnsi-photo-grid{grid-template-columns:1.2fr 1fr}
+ .cnsi-photo-third{display:none}
+ .cnsi-certificate{flex-direction:column;align-items:start}
+}
+@media(max-width:680px){
+ .cnsi-media{margin-top:12px}
+ .cnsi-photo-grid{grid-template-columns:1fr 1fr;gap:8px}
+ .cnsi-photo{height:240px}
+ .cnsi-photo figcaption{font-size:9px;padding:8px}
+ .cnsi-certificates{margin-top:33px}
+ .cnsi-certificate-heading{display:block;margin-bottom:16px}
+ .cnsi-certificate-heading h3{font-size:39px}
+ .cnsi-certificate-heading p{margin-top:8px}
+ .cnsi-certificate-grid{grid-template-columns:1fr;gap:8px}
+ .cnsi-certificate{flex-direction:row;align-items:center;padding:11px}
+ .cnsi-certificate>img{width:65px;height:65px}
+}
+@media(prefers-reduced-motion:reduce){.cnsi-certificate{transition:none}}
