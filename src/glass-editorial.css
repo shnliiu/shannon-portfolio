@@ -352,3 +352,32 @@ a:focus-visible,button:focus-visible{outline:2px solid #8c6664;outline-offset:4p
 .involvement-links{display:flex;flex-wrap:wrap;gap:10px 23px;margin:0 0 4px}
 .involvement-content .involvement-links>a{display:inline-block;color:#523b30;font:600 12px var(--sans);padding-bottom:4px;text-decoration:none;border-bottom:1px solid #786a62}
 .involvement-content .involvement-links>a:hover{color:#a16e70;border-color:#a16e70}
+
+
+/* Photo swap: real USC student ID is the homepage centerpiece; award photo moves to About. */
+.editorial-hero{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}
+.editorial-hero-art.home-student-id{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:16px;background:linear-gradient(155deg,#cbdff0,#e6edf3 55%,#d6dce8);padding:clamp(24px,4vw,64px);min-height:0}
+.home-student-id .badge{display:block;width:100%;max-width:760px;height:auto;min-height:0;aspect-ratio:1.81/1;margin:0;transform:perspective(1100px) rotateX(var(--rx)) rotateY(var(--ry));transition:transform .22s ease;outline-offset:8px}
+.home-student-id .badge .face{position:absolute;inset:0;display:flex;justify-content:center;align-items:center;overflow:hidden;gap:10px;padding:0;box-shadow:none;border:0;border-radius:0;background:transparent}
+.home-student-id .badge .front{border:0;background:transparent}
+.home-student-id .badge .front img{display:block;width:100%;height:100%;max-width:none;object-fit:contain;filter:none;image-rendering:auto}
+.home-student-id .badge .back{background:#f5f6f7;color:#352c30;padding:clamp(18px,2.3vw,36px);border:1px solid #a9a7af;border-radius:18px;align-items:flex-start}
+.home-student-id .badge .back small{color:#855e73}
+.home-student-id .badge .back span{font:500 clamp(12px,1.4vw,18px)/1.45 var(--sans)}
+.home-id-hint{font:500 10px/1.4 var(--mono);letter-spacing:.04em;color:#55515c;margin:0;text-align:center}
+.about-award-photo{position:relative;width:100%;max-width:540px;min-width:0;aspect-ratio:4/5;margin:0 auto;overflow:hidden;background:#dedbd6}
+.about-award-photo img{display:block;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center 45%}
+.about-award-photo figcaption{position:absolute;bottom:0;left:0;right:0;background:#352e2cba;padding:12px 15px;color:#fff;font:500 10px/1.5 var(--mono);letter-spacing:.015em}
+@media(max-width:980px){
+ .editorial-hero{grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr)}
+ .editorial-hero-art.home-student-id{padding:23px}
+}
+@media(max-width:680px){
+ .editorial-hero{display:flex;flex-direction:column}
+ .editorial-hero-art.home-student-id{height:auto;min-height:0;padding:34px 6%}
+ .home-student-id .badge{width:100%;max-width:620px}
+ .home-student-id .badge .back{padding:18px}
+ .home-student-id .badge .back span{font-size:12px}
+ .about-award-photo{max-width:480px;aspect-ratio:4/5}
+}
+@media(prefers-reduced-motion:reduce){.home-student-id .badge{transition:none}}
