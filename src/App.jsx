@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { projects, experience, img, RESUME_URL, EMAIL, LINKS } from "./data.js";
+import { projects, experience, img, BASE, RESUME_URL, EMAIL, LINKS } from "./data.js";
 
 /* ---------- routing (hash-based, so deep links work on GitHub Pages) ---------- */
 const parse = () => {
@@ -592,6 +592,47 @@ function InvolvementPhotos({ files, name }) {
   return <div className="involvement-photos">{available.map((file, i) => <Img key={file} f={file} w={900} h={600} alt={`${name} photo ${i+1}`} />)}</div>;
 }
 
+const cnsiCertificates = [
+  { title: "Cleanroom Protocols and Safety", description: "Certificate of participation · October 3, 2025", badge: "cnsi-badge-cleanroom.png", pdf: "cnsi-cleanroom-protocols.pdf" },
+  { title: "Introduction to Microfabrication", description: "Certificate of participation · October 10, 2025", badge: "cnsi-badge-microfabrication.png", pdf: "cnsi-introduction-to-microfabrication.pdf" },
+  { title: "Introduction to Lithography", description: "Certificate of completion · November 7, 2025", badge: "cnsi-badge-lithography.png", pdf: "cnsi-introduction-to-lithography.pdf" }
+];
+
+function CnsiGallery() {
+  return (
+    <div className="cnsi-media">
+      <div className="cnsi-photo-grid">
+        <figure className="cnsi-photo cnsi-photo-main">
+          <Img f="about-cnsi-1.jpg" w={1200} h={1600} alt="Participants in protective cleanroom suits during UCLA CNSI microelectronics training" />
+          <figcaption>Cleanroom training</figcaption>
+        </figure>
+        <figure className="cnsi-photo cnsi-photo-second">
+          <Img f="about-cnsi-2.jpg" w={1200} h={1600} alt="Microscope and monitor in a microelectronics laboratory" />
+          <figcaption>Laboratory equipment</figcaption>
+        </figure>
+        <figure className="cnsi-photo cnsi-photo-third">
+          <Img f="about-cnsi-3.jpg" w={1200} h={1600} alt="Semiconductor wafers and tools on a laboratory workbench" />
+          <figcaption>Wafer samples</figcaption>
+        </figure>
+      </div>
+      <div className="cnsi-certificates">
+        <div className="cnsi-certificate-heading">
+          <h3>Training certificates</h3>
+          <p>IEEE certificates earned during the UCLA CNSI program.</p>
+        </div>
+        <div className="cnsi-certificate-grid">
+          {cnsiCertificates.map((certificate) => (
+            <a key={certificate.pdf} className="cnsi-certificate" href={`${BASE}assets/docs/${certificate.pdf}`} target="_blank" rel="noopener noreferrer" aria-label={`View ${certificate.title} PDF certificate`}>
+              <Img f={certificate.badge} w={400} h={400} alt={`${certificate.title} IEEE course badge`} />
+              <span className="cnsi-certificate-info"><strong>{certificate.title}</strong><small>{certificate.description}</small><span className="cnsi-certificate-action">View certificate (PDF)</span></span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function About() {
   return (
     <div className="about-page">
@@ -634,9 +675,10 @@ function About() {
           </div>
           <div className="cnsi-description">
             <p>Selected as one of ten participants for microelectronics training in October–November 2025. I learned about semiconductor fabrication and lithography, including cleanroom procedures and wafer processing.</p>
-            <InvolvementPhotos files={["about-cnsi-1.jpg", "about-cnsi-2.jpg"]} name="UCLA CNSI semiconductor training" />
+
           </div>
         </div>
+        <CnsiGallery />
       </section>
     </div>
   );
