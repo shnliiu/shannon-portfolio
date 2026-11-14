@@ -401,13 +401,9 @@ function Work() {
             </div>
             <div className="editorial-hero-footnote">USC VITERBI / B.S. COMPUTER SCIENCE & ENGINEERING</div>
           </div>
-          <div className="editorial-hero-art">
-            <figure className="editorial-hero-portrait">
-              <Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="Shannon holding an award at the Cal Poly AWS AI Summer Camp" />
-              <figcaption>CAL POLY / AWS AI SUMMER CAMP · 2025</figcaption>
-            </figure>
-            <div className="editorial-hero-caption" aria-hidden="true">USC / COMPUTER SCIENCE & ENGINEERING</div>
-            <div className="editorial-hero-seal" aria-hidden="true"><span>SHANNON</span><strong>LIU</strong><span>EST. 2026</span></div>
+          <div className="editorial-hero-art home-student-id">
+            <Badge />
+            <p className="home-id-hint">Select the ID to flip it</p>
           </div>
         </div>
         <div className="editorial-ribbon">
@@ -676,7 +672,10 @@ function About() {
           <p>My work includes AI tools, web development, and student-led projects. Outside of coursework, I've also spent time on student organizations, design, music technology, and hands-on microelectronics training.</p>
           <p><Link to="experience" className="btn">Experience</Link> <Link to="work" className="btn ghost">Projects</Link></p>
         </div>
-        <Badge />
+        <figure className="about-award-photo">
+          <Img f="mini-clint-award-photo.jpg" w={782} h={1036} alt="Shannon holding her award at the Cal Poly AWS AI Summer Camp" />
+          <figcaption>Cal Poly AWS AI Summer Camp · 2025</figcaption>
+        </figure>
       </section>
       <section className="involvement-section" aria-labelledby="involvement-title">
         <div className="about-section-heading">
