@@ -148,12 +148,22 @@ function Badge() {
       <span className="face front">
         <Img f="about-usc-id.png" w={1400} h={600} alt="Shannon Liu USC student ID, with student number obscured" />
       </span>
-      <span className="face back">
-        <small>CURRENTLY</small>
-        <span>Seeking Summer 2027 software engineering internships.</span>
-        <small>BUILDS</small>
-        <span>AI agents, full-stack web apps, educational tools.</span>
-        <small>TAP TO SEE FRONT</small>
+      <span className="face back id-back-design">
+        <span className="id-back-content">
+          <span className="id-back-row">
+            <small>CURRENTLY</small>
+            <strong>Seeking Summer 2027 software engineering internships.</strong>
+          </span>
+          <span className="id-back-row">
+            <small>BUILDS</small>
+            <strong>AI agents, full-stack web apps, educational tools.</strong>
+          </span>
+          <span className="id-back-focus">
+            <small>FOCUS</small>
+            <span className="id-focus-tags"><span>product</span><span>software</span><span>design</span></span>
+          </span>
+        </span>
+        <span className="id-back-flip">Tap to flip to front</span>
       </span>
     </button>
   );
