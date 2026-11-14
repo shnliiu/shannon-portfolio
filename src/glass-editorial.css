@@ -346,3 +346,9 @@ a:focus-visible,button:focus-visible{outline:2px solid #8c6664;outline-offset:4p
  .case-story .prose>section{padding-bottom:18px;margin-bottom:18px}
  .case-story .prose h2{font-size:34px}
 }
+
+
+/* Official organization links: grouped without extra divider lines. */
+.involvement-links{display:flex;flex-wrap:wrap;gap:10px 23px;margin:0 0 4px}
+.involvement-content .involvement-links>a{display:inline-block;color:#523b30;font:600 12px var(--sans);padding-bottom:4px;text-decoration:none;border-bottom:1px solid #786a62}
+.involvement-content .involvement-links>a:hover{color:#a16e70;border-color:#a16e70}
