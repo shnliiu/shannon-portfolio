@@ -687,6 +687,36 @@ function About() {
           <figcaption>Cal Poly AWS AI Summer Camp · 2025</figcaption>
         </figure>
       </section>
+      <section className="about-education" aria-labelledby="education-title">
+        <div className="about-education-heading">
+          <p className="label">EDUCATION</p>
+          <h2 id="education-title">Academic <em>background.</em></h2>
+          <p>My path to USC included coursework in mathematics, physics, and engineering at two community colleges.</p>
+        </div>
+        <div className="about-education-records">
+          <div className="education-record">
+            <span className="education-record-year">2026–2028 (expected)</span>
+            <div>
+              <h3>University of Southern California</h3>
+              <p>B.S. in Computer Science and Engineering · Viterbi School of Engineering</p>
+            </div>
+          </div>
+          <div className="education-record">
+            <span className="education-record-year">2026</span>
+            <div>
+              <h3>Norco College &amp; Mt. San Antonio College</h3>
+              <p>Five associate degrees, including four from Norco College awarded with Great Distinction.</p>
+              <ul className="education-degrees">
+                <li><strong>A.S. Physics for Transfer</strong><span>Norco · Great Distinction</span></li>
+                <li><strong>A.S. Pre-Engineering</strong><span>Norco · Great Distinction</span></li>
+                <li><strong>A.S. Math and Science</strong><span>Norco · Great Distinction</span></li>
+                <li><strong>A.A. Social and Behavioral Studies</strong><span>Norco · Great Distinction</span></li>
+                <li><strong>A.A. Liberal Arts and Sciences, Mathematics Emphasis</strong><span>Mt. SAC</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
       <section className="involvement-section" aria-labelledby="involvement-title">
         <div className="about-section-heading">
           <p className="label">AT USC / INVOLVEMENT</p>
