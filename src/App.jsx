@@ -596,7 +596,7 @@ const involvement = [
     role: "Executive Board · Graphic Design",
     text: "I work on visuals and member experiences for Flavors, a USC student community. I also built the check-in system used for cohort meetings.",
     photos: ["about-flavors-1.jpg", "about-flavors-2.jpg"],
-    link: { to: "work/usc-flavors", label: "See the attendance system" }
+    links: [{ href: "https://www.uscflavors.com/", label: "Flavors website" }, { href: "https://www.instagram.com/uscflavors/?hl=en", label: "Flavors Instagram" }, { to: "work/usc-flavors", label: "My attendance system" }]
   },
   {
     id: "project-play",
@@ -606,7 +606,7 @@ const involvement = [
     role: "Founding Team",
     text: "Project Play is building a beginner-friendly chord synthesizer to make playing music more approachable. I've been involved in the team's launch and creative work.",
     photos: ["about-project-play-1.jpg", "about-project-play-2.jpg"],
-    link: { href: "https://www.instagram.com/projectplay.tech/", label: "Project Play on Instagram" }
+    links: [{ href: "https://www.projectplay.tech/", label: "Project Play website" }, { href: "https://www.instagram.com/projectplay.tech/", label: "Project Play Instagram" }]
   }
 ];
 
@@ -692,7 +692,7 @@ function About() {
               <h3>{item.name}</h3>
               <p className="involvement-role">{item.role}</p>
               <p>{item.text}</p>
-              {item.link.to ? <Link to={item.link.to}>{item.link.label}</Link> : <a target="_blank" rel="noopener noreferrer" href={item.link.href}>{item.link.label}</a>}
+              <div className="involvement-links">{item.links.map((link) => link.to ? <Link key={link.to} to={link.to}>{link.label}</Link> : <a key={link.href} target="_blank" rel="noopener noreferrer" href={link.href}>{link.label}</a>)}</div>
               <InvolvementPhotos files={item.photos} name={item.name} />
             </div>
           </article>)}
