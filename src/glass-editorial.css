@@ -293,15 +293,6 @@ a:focus-visible,button:focus-visible{outline:2px solid #8c6664;outline-offset:4p
 
 
 /* Content hierarchy: introduction, work, context, then resume. Keep each divider singular. */
-.home-introduction{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(250px,.75fr);gap:clamp(36px,7vw,118px);align-items:start;border-bottom:1px solid #c8beb5;padding:70px 0 76px}
-.home-introduction-title .label{color:#8f6e6a;margin:0 0 17px}
-.home-introduction-title h2{font:500 clamp(53px,5.8vw,92px)/.87 var(--serif);letter-spacing:-.045em;color:#473328;margin:0;max-width:750px}
-.home-introduction-title h2 em{font-weight:500;color:#95716e}
-.home-introduction-copy{max-width:570px;padding-top:13px}
-.home-introduction-copy p{font:400 clamp(15px,1.2vw,18px)/1.73 var(--sans);color:#5b5149;margin:0 0 21px}
-.home-introduction-links{display:flex;flex-wrap:wrap;gap:27px;margin-top:29px}
-.home-introduction-links a{font:600 12px var(--sans);color:#4a342b;text-decoration:none;border-bottom:1px solid #7e6c61;padding:0 0 5px}
-.home-introduction-links a:hover{color:#946f6e;border-color:#946f6e}
 .project-showcase{padding-top:60px}
 .project-showcase .showcase-intro:before{display:none!important}
 .showcase-intro{margin-bottom:29px}
@@ -325,16 +316,9 @@ a:focus-visible,button:focus-visible{outline:2px solid #8c6664;outline-offset:4p
 .case-story aside .label{color:#8c6e67}
 .case-video{margin-top:32px}
 @media(max-width:950px){
- .home-introduction{grid-template-columns:1fr;gap:24px;padding:58px 0}
- .home-introduction-title h2{max-width:760px}
- .home-introduction-copy{max-width:760px}
  .home-closing{grid-template-columns:1fr;gap:36px}
 }
 @media(max-width:680px){
- .home-introduction{padding:43px 0 51px;gap:19px}
- .home-introduction-title h2{font-size:clamp(54px,11vw,82px)}
- .home-introduction-copy{padding-top:0}
- .home-introduction-copy p{font-size:15px}
  .project-showcase{padding-top:49px}
  .home-closing{padding:48px 0 60px;gap:30px}
  .home-closing-intro h2{font-size:clamp(54px,11vw,79px)}
